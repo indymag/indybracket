@@ -1,0 +1,4 @@
+<property name="src" location="src"/>
+<property name="bin" location="bin"/>
+<property name="dist" location="dist"/>
+
