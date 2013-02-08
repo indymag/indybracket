@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans/>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+    <action path="/validatePicks"
+    	    type="net.indybracket.tourney.servlet.ValidatePicksAction"    	    
+    	    scope="request">
+   	 	<forward name="success" path="/bracket.do" />
+  	</action>
+    <action path="/savebracket"
+    	    type="net.indybracket.tourney.servlet.SaveBracketAction"    	    
+    	    scope="request">
+   	 	<forward name="success" path="/saved.do" />
+   	 	<forward name="failure" path="/bracket.do" />
+  	</action> 
+    <action path="/viewbracket"
+    	    type="net.indybracket.tourney.servlet.ViewBracketAction"    	    
+    	    scope="request">
+   	 	<forward name="success" path="/bracket_readonly.do" />
+   	 	<forward name="failure" path="/listbracketsaction.do" />
+  	</action> 
+    <action path="/listbracketsaction"
+    	    type="net.indybracket.tourney.servlet.ListBracketsAction"    	    
+    	    scope="request">
+   	 	<forward name="success" path="/listbrackets.do" />
+  	</action> 
+
+    <action path="/loadbracketaction"
+    	    type="net.indybracket.tourney.servlet.LoadBracketAction"    	    
+    	    scope="request">
+   	 	<forward name="success" path="/bracket.do" />
+   	 	<forward name="failure" path="/loadform.do" />
+  	</action>
+    <action path="/newbracket"
+    	    type="net.indybracket.tourney.servlet.ResetAction"    	    
+    	    scope="request">
+   	 	<forward name="success" path="/bracket.do" />
+  	</action>
+    <action path="/addcomment"
+    	    type="net.indybracket.tourney.servlet.AddCommentAction"    	    
+    	    scope="request">
+   	 	<forward name="success" path="/viewbracket.do" />
+   	 	<forward name="failure" path="/bracket_readonly.do" />
+  	</action>
+  	
+    <action path="/bracket" forward="/jsp/bracket.jsp"/>
+    <action path="/bracket_readonly" forward="/jsp/bracket_readonly.jsp"/>
+    <action path="/listbrackets" forward="/jsp/listbrackets.jsp"/>
+    <action path="/loadform" forward="/jsp/loadform.jsp"/>
+    <action path="/home" forward="/jsp/main.jsp"/>
+    <action path="/saved" forward="/jsp/successsaved.jsp"/>
+    <action path="/submitted" forward="/jsp/successsubmission.jsp"/>
+    <action path="/error" forward="/jsp/error.jsp"/>
+  </action-mappings>
+  <message-resources parameter="ApplicationResources" />
+</struts-config>
