@@ -1,4 +1,4 @@
-package scoring;
+package net.indybracket.tourney.scoring;
 
 public class PoolStandings 
 {

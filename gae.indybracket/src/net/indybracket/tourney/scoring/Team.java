@@ -1,4 +1,4 @@
-package scoring;
+package net.indybracket.tourney.scoring;
 
 import java.io.IOException;
 import java.io.InputStream;

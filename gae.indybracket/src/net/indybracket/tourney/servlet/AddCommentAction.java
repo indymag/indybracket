@@ -1,4 +1,4 @@
-package bracket;
+package net.indybracket.tourney.servlet;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

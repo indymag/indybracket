@@ -1,4 +1,4 @@
-package bracket;
+package net.indybracket.tourney.servlet;
 
 /*
  * Created on Feb 15, 2005
