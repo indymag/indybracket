@@ -15,7 +15,6 @@ package net.indybracket.tourney.servlet;
  */
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -117,10 +116,12 @@ public class SaveBracketAction
         {
             try
             {
-                BufferedWriter out =
+                BufferedWriter out = null;
+                		/* move to GAE storage
                     new BufferedWriter(
                         new FileWriter(
                             BRACKET_FILE_PATH + bracketName + ".txt"));
+                            */
 
                 String ffWinners = (String) oSession.getAttribute("ffWinners");
                 String eastWinners =
