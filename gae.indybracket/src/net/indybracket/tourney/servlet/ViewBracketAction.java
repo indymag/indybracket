@@ -13,10 +13,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import scoring.BlazerScorer2;
-import scoring.Bracket;
-import scoring.BracketResult;
-import scoring.Grader;
+import net.indybracket.tourney.scoring.BlazerScorer2;
+import net.indybracket.tourney.scoring.Bracket;
+import net.indybracket.tourney.scoring.BracketResult;
+import net.indybracket.tourney.scoring.Grader;
 
 
 /*

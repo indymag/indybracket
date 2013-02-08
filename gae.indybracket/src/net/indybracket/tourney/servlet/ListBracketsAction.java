@@ -21,13 +21,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.MessageResources;
 
-import scoring.BeatenTable;
-import scoring.BlazerScorer2;
-import scoring.Bracket;
-import scoring.BracketResult;
-import scoring.PoolGrader;
-import scoring.PoolStandings;
-import scoring.Team;
+import net.indybracket.tourney.scoring.BeatenTable;
+import net.indybracket.tourney.scoring.BlazerScorer2;
+import net.indybracket.tourney.scoring.Bracket;
+import net.indybracket.tourney.scoring.BracketResult;
+import net.indybracket.tourney.scoring.PoolGrader;
+import net.indybracket.tourney.scoring.PoolStandings;
+import net.indybracket.tourney.scoring.Team;
 
 
 /*

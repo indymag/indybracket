@@ -17,7 +17,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
-import scoring.Bracket;
+import net.indybracket.tourney.scoring.Bracket;
 
 
 /*
