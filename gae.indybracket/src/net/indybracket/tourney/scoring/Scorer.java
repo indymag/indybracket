@@ -1,10 +1,7 @@
 package net.indybracket.tourney.scoring;
-/**
- * @author Indian Magic
- *
- * To change the template for this generated type comment go to
- * Window>Preferences>Java>Code Generaution>Code and Comments
- */
+
+import net.indybracket.tourney.common.Match;
+
 public abstract class Scorer
 {
     public abstract long scoreWin(Match oGame);

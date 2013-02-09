@@ -1,6 +1,7 @@
-package net.indybracket.tourney.scoring;
+package net.indybracket.tourney.common;
 
 import java.util.Comparator;
+
 
 public class BracketResult extends Bracket 
 {

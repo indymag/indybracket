@@ -1,15 +1,10 @@
-package net.indybracket.tourney.scoring;
+package net.indybracket.tourney.common;
 
-/**
- * @author Indian Magic
- *
- * To change the template for this generated type comment go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
+
 public class FirstMatch extends Match
 {
-    protected Team moTeam1;
-    protected Team moTeam2;
+    public Team moTeam1;
+    public Team moTeam2;
     
     public FirstMatch (Team t1, Team t2) 
     {

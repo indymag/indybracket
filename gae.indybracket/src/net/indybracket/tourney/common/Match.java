@@ -1,15 +1,7 @@
-package net.indybracket.tourney.scoring;
+package net.indybracket.tourney.common;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
-/**
- * @author Indian Magic
- *
- * To change the template for this generated type comment go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
+
 public class Match
 {
     private Match moPreMatch1 = null;
@@ -79,30 +71,7 @@ public class Match
     {
         mnStatus = status;
     }
-    
-    public void persist(OutputStream oOut)throws IOException
-    {
-        StreamString.writeInt(oOut, mnStatus);
-        if (moPreMatch1 != null) {
-            moPreMatch1.persist(oOut);
-        }
-        if (moPreMatch2 != null) {
-            moPreMatch2.persist(oOut);
-        }
-    }
-    
-    public void desist(InputStream oIn)throws IOException
-    {
-        mnStatus = StreamString.readInt(oIn);
-        if (moPreMatch1 != null) {
-            moPreMatch1.desist(oIn);
-        }
-        if (moPreMatch2 != null) {
-            moPreMatch2.desist(oIn);
-        }
         
-    }
-    
     public void copysheet (Match oOrig)
     {
         mnStatus = oOrig.mnStatus;

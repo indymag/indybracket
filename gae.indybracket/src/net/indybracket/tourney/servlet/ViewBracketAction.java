@@ -9,14 +9,14 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.indybracket.tourney.common.Bracket;
+import net.indybracket.tourney.common.BracketResult;
+import net.indybracket.tourney.scoring.BlazerScorer2;
+import net.indybracket.tourney.scoring.Grader;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-import net.indybracket.tourney.scoring.BlazerScorer2;
-import net.indybracket.tourney.scoring.Bracket;
-import net.indybracket.tourney.scoring.BracketResult;
-import net.indybracket.tourney.scoring.Grader;
 
 
 /*

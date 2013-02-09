@@ -10,24 +10,23 @@ package net.indybracket.tourney.servlet;
  * @author Scott Mennealy
  */
 import java.io.File;
-import java.util.Hashtable;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.indybracket.tourney.common.BeatenTable;
+import net.indybracket.tourney.common.Bracket;
+import net.indybracket.tourney.common.BracketResult;
+import net.indybracket.tourney.common.Team;
+import net.indybracket.tourney.scoring.BlazerScorer2;
+import net.indybracket.tourney.scoring.PoolGrader;
+import net.indybracket.tourney.scoring.PoolStandings;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.MessageResources;
-
-import net.indybracket.tourney.scoring.BeatenTable;
-import net.indybracket.tourney.scoring.BlazerScorer2;
-import net.indybracket.tourney.scoring.Bracket;
-import net.indybracket.tourney.scoring.BracketResult;
-import net.indybracket.tourney.scoring.PoolGrader;
-import net.indybracket.tourney.scoring.PoolStandings;
-import net.indybracket.tourney.scoring.Team;
 
 
 /*
@@ -97,9 +96,9 @@ public class ListBracketsAction
             sSortBy = ((sSortBy == null) || (sSortBy.equals(""))) ? "score" : sSortBy;
             sAsc = ((sAsc == null) || (sAsc.equals(""))) ? "false" : sAsc;
 
-            BeatenTable oBeatenBy = new BeatenTable(BRACKET_ROOT + "beaten.txt");
+            BeatenTable oBeatenBy = new BeatenTable();
             PoolStandings oStandings = oGrader.gradePool(oBrackets,oBeatenBy, sSortBy,sAsc);
-            oBeatenBy.persist();
+//            oBeatenBy.persist();
 
             Vector oScores = convertStandings(oStandings, oBeatenBy);
 
@@ -164,7 +163,7 @@ public class ListBracketsAction
     /**
     *
     */
-    private void setupTeams(HttpServletRequest oRequest)
+    private synchronized void setupTeams(HttpServletRequest oRequest)
     {
         if (!initialized)
         {

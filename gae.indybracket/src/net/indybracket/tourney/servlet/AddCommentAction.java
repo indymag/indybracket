@@ -1,12 +1,8 @@
 package net.indybracket.tourney.servlet;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;

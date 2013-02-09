@@ -1,15 +1,6 @@
-package net.indybracket.tourney.scoring;
+package net.indybracket.tourney.common;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
-/**
- * @author Indian Magic
- *
- * To change the template for this generated type comment go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
 public class Team
 {
     public static final int snNumTeams = 64;    
@@ -28,35 +19,6 @@ public class Team
         return soTeams;
     }
     
-    public void persistID(OutputStream oOut) throws IOException
-    {
-        StreamString.writeInt(oOut, mnID);
-    }
-    
-    public static Team desistID(InputStream oIn) throws IOException
-    {
-        int ID = StreamString.readInt(oIn);
-        return soTeams[ID];
-    }
-    
-    public void persist(OutputStream oOut) throws IOException
-    {
-        StreamString.writeInt(oOut, mnSeed);
-        StreamString.serialize(oOut, msName.getBytes());
-        StreamString.serialize(oOut, msConference.getBytes());
-        StreamString.writeInt(oOut, mnWins);
-        StreamString.writeInt(oOut, mnLosses);                
-    }
-    
-    public void desist(InputStream oIn) throws IOException
-    {
-        mnSeed = StreamString.readInt(oIn);
-        msName = new String(StreamString.deserialize(oIn));
-        msConference = new String(StreamString.deserialize(oIn));
-        mnWins = StreamString.readInt(oIn);
-        mnLosses = StreamString.readInt(oIn);        
-    }
-
     /**
      * @return
      */

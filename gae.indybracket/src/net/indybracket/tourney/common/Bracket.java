@@ -1,4 +1,4 @@
-package net.indybracket.tourney.scoring;
+package net.indybracket.tourney.common;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -9,9 +9,8 @@ import java.io.OutputStream;
 import java.util.LinkedList;
 import java.util.Vector;
 
+
 /**
- * @author Indian Magic
- *
  * To change the template for this generated type comment go to
  * Window>Preferences>Java>Code Generation>Code and Comments
  */
@@ -74,17 +73,7 @@ public class Bracket
         
         moChampionship = oPrevRound[0];
     }
-    
-    public void persist(OutputStream oOut) throws IOException
-    {
-        moChampionship.persist(oOut);
-    }
-    
-    public void desist(InputStream oIn) throws IOException
-    {
-        moChampionship.desist(oIn);
-    }
-    
+        
     /**
      * @return
      */

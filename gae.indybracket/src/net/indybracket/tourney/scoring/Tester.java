@@ -4,12 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-/**
- * @author csabnis
- *
- * To change the template for this generated type comment go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
+import net.indybracket.tourney.common.Bracket;
+import net.indybracket.tourney.common.BracketResult;
+import net.indybracket.tourney.common.Team;
+
 public class Tester
 {
 

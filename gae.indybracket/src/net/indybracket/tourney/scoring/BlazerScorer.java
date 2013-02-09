@@ -1,11 +1,7 @@
 package net.indybracket.tourney.scoring;
 
-/**
- * @author Indian Magic
- *
- * To change the template for this generated type comment go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
+import net.indybracket.tourney.common.Match;
+
 public class BlazerScorer extends Scorer
 {
     

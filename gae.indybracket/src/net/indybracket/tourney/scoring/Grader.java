@@ -1,11 +1,11 @@
 package net.indybracket.tourney.scoring;
 
-/**
- * @author Indian Magic
- *
- * To change the template for this generated type comment go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
+import net.indybracket.tourney.common.Bracket;
+import net.indybracket.tourney.common.BracketResult;
+import net.indybracket.tourney.common.FirstMatch;
+import net.indybracket.tourney.common.Match;
+import net.indybracket.tourney.common.Team;
+
 public class Grader
 {
     Bracket moMaster;
