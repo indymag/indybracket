@@ -1,7 +1,6 @@
 package net.indybracket.tourney.scoring;
 
 import net.indybracket.tourney.common.Bracket;
-import net.indybracket.tourney.common.BracketResult;
 import net.indybracket.tourney.common.FirstMatch;
 import net.indybracket.tourney.common.Match;
 import net.indybracket.tourney.common.Team;
@@ -99,11 +98,11 @@ public class Grader
         		if (oMaster.getWinner() == oSubject.getWinner())
         		{
         			score += nPotentialWin;
-        			oSubject.setData("$" + nPotentialWin);
+        			oSubject.setScoringData("$" + nPotentialWin);
         		}
         		else
         		{
-        			oSubject.setData("#" + nPotentialWin);
+        			oSubject.setScoringData("#" + nPotentialWin);
         		}
         	}
         	else // winner has not been decided
@@ -111,11 +110,11 @@ public class Grader
         		// could still be a * if team has lost
         		if (canWin(oMaster, oSubject))
         		{
-        			oSubject.setData("@" + nPotentialWin);
+        			oSubject.setScoringData("@" + nPotentialWin);
         		}
         		else
         		{
-        			oSubject.setData("#" + nPotentialWin);
+        			oSubject.setScoringData("#" + nPotentialWin);
         		}
 
         	}

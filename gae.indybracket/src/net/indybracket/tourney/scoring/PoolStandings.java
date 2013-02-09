@@ -1,6 +1,5 @@
 package net.indybracket.tourney.scoring;
 
-import net.indybracket.tourney.common.BracketResult;
 
 public class PoolStandings 
 {

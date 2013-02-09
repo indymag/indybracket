@@ -8,7 +8,6 @@ import java.util.Vector;
 
 import net.indybracket.tourney.common.BeatenTable;
 import net.indybracket.tourney.common.Bracket;
-import net.indybracket.tourney.common.BracketResult;
 
 public class PoolGrader 
 {

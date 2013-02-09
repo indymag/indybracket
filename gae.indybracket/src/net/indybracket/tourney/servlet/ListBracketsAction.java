@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.indybracket.tourney.common.BeatenTable;
 import net.indybracket.tourney.common.Bracket;
-import net.indybracket.tourney.common.BracketResult;
 import net.indybracket.tourney.common.Team;
 import net.indybracket.tourney.scoring.BlazerScorer2;
+import net.indybracket.tourney.scoring.BracketResult;
 import net.indybracket.tourney.scoring.PoolGrader;
 import net.indybracket.tourney.scoring.PoolStandings;
 

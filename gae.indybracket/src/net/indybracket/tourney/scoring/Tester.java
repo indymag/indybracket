@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import net.indybracket.tourney.common.Bracket;
-import net.indybracket.tourney.common.BracketResult;
 import net.indybracket.tourney.common.Team;
 
 public class Tester

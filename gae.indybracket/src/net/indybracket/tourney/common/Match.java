@@ -6,18 +6,23 @@ public class Match
 {
     private Match moPreMatch1 = null;
     private Match moPreMatch2 = null;
-    private Match moNext = null;
-        
-    protected String msData = "";
-    protected int mnStatus = 0;
+    private Match moNext = null;        
+    protected transient String msScoringData = "";
+    protected transient int mnStatus = 0;
        
     protected Match()
     {
     }   
     
-    public void setData(String sVal)
+    public String getScoringData()
     {
-    	msData = sVal;
+    	return msScoringData;
+    }
+
+    
+    public void setScoringData(String sVal)
+    {
+    	msScoringData = sVal;
     }
         
     public Match(Match m1, Match m2)
@@ -59,7 +64,7 @@ public class Match
         	return " ";
         }                
     	
-        return oTeam.getName() + msData;        
+        return oTeam.getName() + msScoringData;        
     }
     
     public int getRound()
