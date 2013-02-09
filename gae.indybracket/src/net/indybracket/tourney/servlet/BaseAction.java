@@ -153,7 +153,7 @@ public abstract class BaseAction
              }
              int iTotalComments = oComments.size();
             
-             Bracket oEntry = Bracket.newInstance();
+             Bracket oEntry = Bracket.newDbInstance(bracket);
              oEntry.importFromWebapp(sPassword, iTotalComments,
                  eastWinners, southWinners, midwestWinners, westWinners,
                  ffWinners, bIsMaster, bComplete);

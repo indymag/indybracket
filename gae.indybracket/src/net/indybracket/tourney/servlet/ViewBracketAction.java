@@ -89,7 +89,7 @@ public class ViewBracketAction extends BaseAction {
    	            }
             }        
             
-            Bracket oBracket = Bracket.newInstance();
+            Bracket oBracket = Bracket.newDbInstance(bracketName);
             oBracket.importFromWebapp(sPassword, iTotalComments, eastWinners, southWinners, midwestWinners, 
             		westWinners, ffWinners, false, false);
 

@@ -1,7 +1,9 @@
 package net.indybracket.tourney.common;
 
+import com.googlecode.objectify.annotation.Entity;
 
 
+@Entity
 public class Match
 {
     private Match moPreMatch1 = null;
@@ -19,7 +21,6 @@ public class Match
     	return msScoringData;
     }
 
-    
     public void setScoringData(String sVal)
     {
     	msScoringData = sVal;

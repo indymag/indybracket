@@ -1,6 +1,8 @@
 package net.indybracket.tourney.common;
 
+import com.googlecode.objectify.annotation.Entity;
 
+@Entity
 public class Team
 {
     public static final int snNumTeams = 64;    

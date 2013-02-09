@@ -30,7 +30,6 @@ public class Grader
 		oResult.setScore(score);
 		oResult.setMax(max);
 		oResult.setBracket(oSubject);
-		oResult.setTotalComments(oSubject.getTotalComments());
         return oResult;
     }
     

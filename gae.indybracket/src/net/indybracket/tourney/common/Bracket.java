@@ -9,24 +9,31 @@ import java.io.OutputStream;
 import java.util.LinkedList;
 import java.util.Vector;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
 
-/**
- * To change the template for this generated type comment go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
+@Entity
 public class Bracket
 {
     public static final int snNumRound = 6;
     
+    @Id private String msId;
     private Match moChampionship;
     private Match moBases[];
     private String msName;
     private String msPassword;
-    private int miTotalComments;
     
     public static Bracket newInstance()
     {
-        return new Bracket();
+        Bracket bracket = new Bracket();
+        return bracket;
+    }
+    
+    public static Bracket newDbInstance(String id)
+    {
+        Bracket bracket = new Bracket();
+        bracket.msId = id;
+        return bracket;
     }
     
     public static Bracket createCopy(Bracket oOrig)
@@ -39,14 +46,6 @@ public class Bracket
     public String getPassword()
     {
         return msPassword;
-    }
-    public int getTotalComments()
-    {
-        return miTotalComments;
-    }
-    public void setTotalComments(int iTotalComments)
-    {
-    	miTotalComments = iTotalComments;
     }
     protected Bracket()
     {
@@ -134,7 +133,6 @@ public class Bracket
         
         importFromPicks(oPicks, bStrict);
         msPassword = sPassword;
-        miTotalComments = iTotalComments;
     }
     
     public void readRegion(Vector oPicks[], String sData)

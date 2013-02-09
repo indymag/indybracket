@@ -1,10 +1,6 @@
 package net.indybracket.tourney.servlet;
 
-
-/*
- * Created on Feb 15, 2005
- *
- */
+import static net.indybracket.tourney.common.OfyService.ofy;
 
 /**
  * @author Scott Mennealy
@@ -56,8 +52,9 @@ public class ListBracketsAction
         try
         {  
         	setupTeams(oRequest);
-        	Bracket oMaster =
-        		readBracket(BRACKET_ROOT + "PERFECT.txt", true, false);
+        	ofy().save().entity(Bracket.newDbInstance("123123")).now();
+        	Bracket oMaster = ofy().load().type(Bracket.class).id("123123").get();
+//        		readBracket(BRACKET_ROOT + "PERFECT.txt", true, false);
         	if (oMaster == null)
         	{
         		throw new RuntimeException("Unable to read master");
@@ -140,7 +137,7 @@ public class ListBracketsAction
             oBean.setChampionAlive(oResults[i].isChampionAlive());
             oBean.setNumFinalFourTeams(oResults[i].getNumFinalFourAlive());
             oBean.setWhoIsBetter(sWhoIsBetter);
-            oBean.setTotalComments(oResults[i].getTotalComments());
+            oBean.setTotalComments(0);
             oBean.setWinner(
                 oResults[i].getBracket().getChampionship().getWinner().getName());
 

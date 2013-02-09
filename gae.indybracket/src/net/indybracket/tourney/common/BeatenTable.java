@@ -4,7 +4,6 @@ import java.util.Hashtable;
 
 public class BeatenTable 
 {
-    static Object soSync = new Object();
     Hashtable<String,String> moTable = new Hashtable<String,String>();
     String msFile;
 
