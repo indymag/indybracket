@@ -32,19 +32,9 @@ public class AddCommentAction
 		}
 		else
 		{
-			// Append to bracket file
 			try
 			{	
-				BufferedWriter out =		
-					new BufferedWriter(
-							new FileWriter(
-									BRACKET_COMPLETED_PATH + sBracketName + ".txt",true));
-			
-				
-				out.write("<i>"+sAuthor + "</i>: <b>"+
-						StringEscapeUtils.escapeHtml(StringEscapeUtils.escapeJavaScript(sComment))+"</b>\n");
-				
-				out.close();
+				// TODO write out comment
 			}       
 			catch (Exception e)
 	        {
