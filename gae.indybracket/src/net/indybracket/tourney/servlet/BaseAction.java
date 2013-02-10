@@ -1,5 +1,7 @@
 package net.indybracket.tourney.servlet;
 
+import static net.indybracket.tourney.common.OfyService.ofy;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -128,52 +130,11 @@ public abstract class BaseAction
      */ /**
      *
      */
-     public Bracket readBracket(String bracket, boolean bIsMaster, boolean bComplete)
+     public Bracket readBracket(String bracketId, boolean bComplete)
      {
-    	 FileInputStream fstream = null;
-         try
-         {
-             fstream = new FileInputStream(bracket);
-             BufferedReader d =
-                 new BufferedReader(new InputStreamReader(fstream));
-             String sPassword = d.readLine();
-             String ffWinners = d.readLine();
-             String eastWinners = d.readLine();
-             String southWinners = d.readLine();
-             String midwestWinners = d.readLine();
-             String westWinners = d.readLine();
-
-             String curcomment = "";
-             
-             Vector oComments = new Vector();
-             
-             while((curcomment = d.readLine()) != null)
-             {
-             	oComments.add(curcomment);
-             }
-             int iTotalComments = oComments.size();
-            
-             Bracket oEntry = Bracket.newDbInstance(bracket);
-             oEntry.importFromWebapp(sPassword, iTotalComments,
-                 eastWinners, southWinners, midwestWinners, westWinners,
-                 ffWinners, bIsMaster, bComplete);
-             return oEntry;
-         }
-         catch (Exception e) {}
-         finally
-         {
-        	 if (fstream != null)
-        	 {
-        		 try
-        		 {
-        			 fstream.close();
-        		 }
-        		 catch (Exception oEx) {}
-        	 }
-         }
-
-         return null;
-
+     	Bracket oEntry = ofy().load().type(Bracket.class).id(bracketId).get();
+     	// oEntry.validate(bComplete);
+     	return oEntry;
      } // readBracket()
     /*
     ****************************************************************************

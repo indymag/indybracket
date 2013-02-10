@@ -1,8 +1,5 @@
 package net.indybracket.tourney.common;
 
-import com.googlecode.objectify.annotation.EntitySubclass;
-
-@EntitySubclass(index=true)
 public class FirstMatch extends Match
 {
     public Team moTeam1;

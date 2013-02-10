@@ -23,7 +23,7 @@ public class Grader
 		oResult.getChampionship().copysheet(oSubject.getChampionship());
 		
     	long score = gradeTree(moMaster.getChampionship(), oResult.getChampionship());
-		long max = findMax(Bracket.createCopy(oSubject));
+		long max = findMax(Bracket.createTransientCopy(oSubject));
 		
 		// build basic results
 
@@ -40,7 +40,7 @@ public class Grader
     
     public static Bracket getBest(Bracket oMaster, Bracket oSubject)
     {
-        Bracket oBest = Bracket.createCopy(oMaster);
+        Bracket oBest = Bracket.createTransientCopy(oMaster);
         fillBest(oBest.getChampionship(), oSubject.getChampionship());
         return oBest;
     }

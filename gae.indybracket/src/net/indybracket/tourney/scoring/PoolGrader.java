@@ -34,9 +34,9 @@ public class PoolGrader
 			
 			// read a bracket
 			FileInputStream oCSV = new FileInputStream(oDir.toString()+ "/" + sFile);
-			Bracket oBracket = Bracket.newInstance();
-			oBracket = Bracket.newInstance();
-			oBracket.importCSV(oCSV, true);
+			Bracket oBracket = Bracket.newTransientInstance();
+			oBracket = Bracket.newTransientInstance();
+//			oBracket.importCSV(oCSV, true);
 			oCSV.close();
 			oBracket.setName(sFile);
 			oEntries.add(oBracket);

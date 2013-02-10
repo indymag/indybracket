@@ -7,8 +7,6 @@ import com.googlecode.objectify.ObjectifyService;
 public class OfyService {
 	static {
 		factory().register(Bracket.class);
-		factory().register(Match.class);
-		factory().register(Team.class);
 	}
 
 	public static Objectify ofy() {

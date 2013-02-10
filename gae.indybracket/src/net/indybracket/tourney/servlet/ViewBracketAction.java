@@ -47,53 +47,10 @@ public class ViewBracketAction extends BaseAction {
         	bracketName = (String)oSession.getAttribute("viewingBracket");
         }
 
-        String eastWinners = "";
-        String southWinners = "";
-        String midwestWinners = "";
-        String westWinners = "";
-        String ffWinners = "";
-        String curcomment = "";
-        String comments = "";
         
-        // verify if File by name of BracketName actually exists
-        BufferedReader d = null;
         try {
-            FileInputStream fstream = new FileInputStream(BRACKET_COMPLETED_PATH +
-                    bracketName + ".txt");
-            d = new BufferedReader(new InputStreamReader(fstream));
-            String sPassword = d.readLine();
-            ffWinners = d.readLine();
-            eastWinners = d.readLine();
-            southWinners = d.readLine();
-            midwestWinners = d.readLine();
-            westWinners = d.readLine();
-            
-            Vector oComments = new Vector();
-            
-            while((curcomment = d.readLine()) != null)
-            {
-            	oComments.add(curcomment);
-            }
-            int iTotalComments = oComments.capacity();
-            if(!oComments.isEmpty())
-            {
-   	            for(int i=0; i< MAX_COMMENTS; i++)
-   	            {
-   	            	String sCurComment = (String)oComments.lastElement();
-   	            	comments+= sCurComment + "&#160;&#160;&#160;&#160;";
-   	            	oComments.remove(sCurComment);
-   	            	if(oComments.isEmpty())
-   	            	{
-   	            		i = MAX_COMMENTS;
-   	            	}
-   	            }
-            }        
-            
-            Bracket oBracket = Bracket.newDbInstance(bracketName);
-            oBracket.importFromWebapp(sPassword, iTotalComments, eastWinners, southWinners, midwestWinners, 
-            		westWinners, ffWinners, false, false);
-
-            Bracket oMaster = readBracket(BRACKET_ROOT + "PERFECT.txt", true, false);
+            Bracket oBracket = readBracket(bracketName, false);
+            Bracket oMaster = readBracket(Bracket.PERFECT_ID, false);
 
             Grader oGrader = new Grader(new BlazerScorer2(), oMaster);
             BracketResult oResult = oGrader.grade(oBracket);
@@ -104,11 +61,11 @@ public class ViewBracketAction extends BaseAction {
             StringBuffer o4 = new StringBuffer();
             StringBuffer oFF = new StringBuffer();
             oResult.toWebAppStrings(o1, o2, o3, o4, oFF);
-            ffWinners = oFF.toString().trim();
-            eastWinners = o1.toString().trim();            
-            southWinners = o2.toString().trim();
-            midwestWinners = o3.toString().trim();
-            westWinners = o4.toString().trim();
+            String ffWinners = oFF.toString().trim();
+            String eastWinners = o1.toString().trim();            
+            String southWinners = o2.toString().trim();
+            String midwestWinners = o3.toString().trim();
+            String westWinners = o4.toString().trim();
 
             oSession.setAttribute("viewingBracket", bracketName);
             
@@ -118,7 +75,7 @@ public class ViewBracketAction extends BaseAction {
             oSession.setAttribute("southWinners", southWinners);
             oSession.setAttribute("midwestWinners", midwestWinners);
             oSession.setAttribute("westWinners", westWinners);
-            oSession.setAttribute("comments",comments);
+            oSession.setAttribute("comments","");
 
             String eastFF = findWinner(eastWinners);
             String midwestFF = findWinner(midwestWinners);
@@ -147,13 +104,6 @@ public class ViewBracketAction extends BaseAction {
         } catch (Exception e) {
             oErrorCode = FORWARD_RETURN_FAILURE;
             addError(oRequest, "invalid.bracket.name");
-        }
-        finally
-        {
-            try {
-                d.close();
-            } catch (IOException e) {
-            }
         }
 
         return oMapping.findForward(oErrorCode);

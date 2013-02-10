@@ -1,10 +1,7 @@
 package net.indybracket.tourney.common;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -16,19 +13,35 @@ import com.googlecode.objectify.annotation.Id;
 public class Bracket
 {
     public static final int snNumRound = 6;
+
+	public static final String PERFECT_ID = "MASTER";
     
-    @Id private String msId;
-    private Match moChampionship;
-    private Match moBases[];
+    private @Id String msId;
+    // Properties that are peristed
     private String msName;
     private String msPassword;
+    private String msRegion1;
+    private String msRegion2;
+    private String msRegion3;
+    private String msRegion4;
+    private String msFF;
+
+    // Constructed, not persisted.
+    private final Match moChampionship;
+    private final Match moBases[];
     
-    public static Bracket newInstance()
+    /**
+     * Use this for brackets that will never be persisted.
+     */
+    public static Bracket newTransientInstance()
     {
         Bracket bracket = new Bracket();
         return bracket;
     }
-    
+
+    /**
+     * Use this for brackets that will be persisted.
+     */
     public static Bracket newDbInstance(String id)
     {
         Bracket bracket = new Bracket();
@@ -36,7 +49,7 @@ public class Bracket
         return bracket;
     }
     
-    public static Bracket createCopy(Bracket oOrig)
+    public static Bracket createTransientCopy(Bracket oOrig)
     {
         Bracket oBracket = new Bracket();
         oBracket.getChampionship().copysheet(oOrig.getChampionship());
@@ -106,7 +119,7 @@ public class Bracket
     }
     
     public void importFromWebapp(String sPassword, int iTotalComments, String s1, String s2, 
-    		String s3, String s4, String sFF, boolean bIsMaster, boolean bStrict)    		
+    		String s3, String s4, String sFF, boolean bStrict)    		
     {
         Vector oPicks[] = new Vector[7];
         for (int i=0; i < oPicks.length; i++)
@@ -132,7 +145,14 @@ public class Bracket
         oPicks[6].add(oParts[2].trim());
         
         importFromPicks(oPicks, bStrict);
+        
+        // Set members
         msPassword = sPassword;
+        msRegion1 = s1;
+        msRegion2 = s2;
+        msRegion3 = s3;
+        msRegion4 = s4;
+        msFF = sFF;
     }
     
     public void readRegion(Vector oPicks[], String sData)
@@ -242,53 +262,7 @@ public class Bracket
             oOut.write(sLine.getBytes());
             oOut.write('\n');
         }
-    }
-    
-    public void importCSV(InputStream oIn, boolean bStrict)
-    {
-        String sName = "";
-        BufferedReader oReader = new BufferedReader(new InputStreamReader(oIn));
-        Vector oPicks[] = new Vector[7];
-        for (int i=0; i < oPicks.length; i++)
-        {
-            oPicks[i] = new Vector();
-        }
-        
-        try
-        {
-            sName = oReader.readLine();
-            // get to the first line
-            while (oReader.ready())
-            {
-                String sLine = oReader.readLine();
-                if (sLine.startsWith("Region"))
-                {
-                    break;
-                }
-            }
-            
-            // read in the picks
-            int nLine = 1;
-            while (nLine <= 64)
-            {
-                String sLine = oReader.readLine();
-                String[] oParts = sLine.split(",");
-                for (int i=2; i < oParts.length; i++)
-                {
-                    oPicks[i-2].add(oParts[i]);
-                }
-                nLine++;                
-            }                       
-            
-            importFromPicks(oPicks, bStrict);
-        }
-        catch (Exception e)
-        {
-            System.out.println("Invalid import" + e);
-            e.printStackTrace();
-        }
-    }
-    
+    }    
     
     public void importFromPicks(Vector oPicks[], boolean bStrict)
     {

@@ -155,9 +155,9 @@ public class Tester
         try
         {
             // build the master sheet
-            Bracket oMaster = Bracket.newInstance();
+            Bracket oMaster = Bracket.newTransientInstance();
             FileInputStream oMasterCSV = new FileInputStream("c:/ncaa/2005/master.csv");
-            oMaster.importCSV(oMasterCSV, true);
+//            oMaster.importCSV(oMasterCSV, true);
             
             // grade it
             Grader oGrader = new Grader(new BlazerScorer(), oMaster);
@@ -176,8 +176,8 @@ public class Tester
             System.out.print(o4.toString());
             System.out.print(oFF.toString());
             
-            Bracket oMasterDup = Bracket.newInstance();
-            oMasterDup.importFromWebapp("", 0, o1.toString(), o2.toString(), o3.toString(), o4.toString(), oFF.toString(), true, false);
+            Bracket oMasterDup = Bracket.newTransientInstance();
+            oMasterDup.importFromWebapp("", 0, o1.toString(), o2.toString(), o3.toString(), o4.toString(), oFF.toString(), false);
             
             // manipulate the master, clear out final four
             oMasterDup.getChampionship().setStatus(0);

@@ -6,6 +6,7 @@ import static net.indybracket.tourney.common.OfyService.ofy;
  * @author Scott Mennealy
  */
 import java.io.File;
+import java.util.List;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.MessageResources;
+
+import com.googlecode.objectify.Objectify;
+import com.googlecode.objectify.cmd.Query;
 
 
 /*
@@ -52,9 +56,12 @@ public class ListBracketsAction
         try
         {  
         	setupTeams(oRequest);
+        	
         	ofy().save().entity(Bracket.newDbInstance("123123")).now();
-        	Bracket oMaster = ofy().load().type(Bracket.class).id("123123").get();
-//        		readBracket(BRACKET_ROOT + "PERFECT.txt", true, false);
+        	ofy().save().entity(Bracket.newDbInstance("321321")).now();        	
+        	ofy().save().entity(Bracket.newDbInstance(Bracket.PERFECT_ID)).now();
+
+        	Bracket oMaster = readBracket(Bracket.PERFECT_ID, false);
         	if (oMaster == null)
         	{
         		throw new RuntimeException("Unable to read master");
@@ -62,29 +69,13 @@ public class ListBracketsAction
 
         	PoolGrader oGrader = new PoolGrader(new BlazerScorer2(), oMaster);
 
-            File dir = new File(BRACKET_COMPLETED_PATH);
-            String[] brackets = dir.list();
-            Bracket[] oBrackets = new Bracket[brackets.length];
-            String[] oBracketNames = new String[brackets.length];
+            List<Bracket> oBrackets = getEntries();
+            String[] oBracketNames = new String[oBrackets.size()];
             
-            for (int i = 0; i < brackets.length; i++)
+            int i = 0;
+            for (Bracket oBracket : oBrackets)
             {
-                String sName = brackets[i];
-                
-                try
-                {
-                oBrackets[i] =
-                    readBracket(BRACKET_COMPLETED_PATH + sName, false, true);
-                }
-                catch (Exception oEx)
-                {
-                    System.err.println("Error reading: " + sName);
-                    throw oEx;
-                }
-            	
-                sName = sName.substring(0,sName.indexOf(".txt"));
-                oBrackets[i].setName(sName);
-                oBracketNames[i] = sName;
+                oBracketNames[i++] = oBracket.getName();
             }
             
             oSession.setAttribute("bracketnames", oBracketNames);
@@ -94,7 +85,8 @@ public class ListBracketsAction
             sAsc = ((sAsc == null) || (sAsc.equals(""))) ? "false" : sAsc;
 
             BeatenTable oBeatenBy = new BeatenTable();
-            PoolStandings oStandings = oGrader.gradePool(oBrackets,oBeatenBy, sSortBy,sAsc);
+            PoolStandings oStandings = oGrader.gradePool(
+            		oBrackets.toArray(new Bracket[oBrackets.size()]),oBeatenBy, sSortBy,sAsc);
 //            oBeatenBy.persist();
 
             Vector oScores = convertStandings(oStandings, oBeatenBy);
@@ -111,7 +103,11 @@ public class ListBracketsAction
 
     } // doExecute()
 
-    /*
+	private List<Bracket> getEntries() {
+		return ofy().load().type(Bracket.class).filter("msId !=", Bracket.PERFECT_ID).list();
+	}
+
+	/*
     ****************************************************************************
     * convertStandings()
     ****************************************************************************
