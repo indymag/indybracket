@@ -26,8 +26,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.MessageResources;
 
-import com.google.appengine.repackaged.com.google.common.base.Predicate;
-import com.google.appengine.repackaged.com.google.common.collect.FluentIterable;
+import com.google.common.base.Predicate;
+import com.google.common.collect.FluentIterable;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.cmd.Query;
 
@@ -111,7 +111,7 @@ public class ListBracketsAction
 				FluentIterable.from(ofy().load().type(Bracket.class).filter("msId !=", Bracket.PERFECT_ID));
 		entries = entries.filter(new Predicate<Bracket>(){
 			@Override
-			public boolean apply(@Nullable Bracket b) {
+			public boolean apply(Bracket b) {
 				return b.isComplete();
 			}});
 		return entries.toList();
