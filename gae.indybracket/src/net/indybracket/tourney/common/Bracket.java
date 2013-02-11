@@ -13,18 +13,18 @@ import com.googlecode.objectify.annotation.Id;
 public class Bracket
 {
     public static final int snNumRound = 6;
-
 	public static final String PERFECT_ID = "MASTER";
+	public static final String DEFAULT_REGION = " , , , , , , , , , , , , , , ";
+	public static final String DEFAULT_FF = " , , ";
     
     private @Id String msId;
     // Properties that are peristed
     private String msName;
-    private String msPassword;
-    private String msRegion1;
-    private String msRegion2;
-    private String msRegion3;
-    private String msRegion4;
-    private String msFF;
+    private String msRegion1 = DEFAULT_REGION;
+    private String msRegion2 = DEFAULT_REGION;
+    private String msRegion3 = DEFAULT_REGION;
+    private String msRegion4 = DEFAULT_REGION;
+    private String msFF = DEFAULT_FF;
 
     // Constructed, not persisted.
     private final Match moChampionship;
@@ -56,10 +56,6 @@ public class Bracket
         return oBracket;
     }
     
-    public String getPassword()
-    {
-        return msPassword;
-    }
     protected Bracket()
     {
         // create the base matches
@@ -84,6 +80,7 @@ public class Bracket
         }
         
         moChampionship = oPrevRound[0];
+        importFromWebapp(msRegion1, msRegion2, msRegion3, msRegion4, msFF);
     }
         
     /**
@@ -118,8 +115,7 @@ public class Bracket
         return sReturn;
     }
     
-    public void importFromWebapp(String sPassword, int iTotalComments, String s1, String s2, 
-    		String s3, String s4, String sFF, boolean bStrict)    		
+    public void importFromWebapp(String s1, String s2, String s3, String s4, String sFF)    		
     {
         Vector oPicks[] = new Vector[7];
         for (int i=0; i < oPicks.length; i++)
@@ -144,15 +140,7 @@ public class Bracket
         oPicks[5].add(oParts[1].trim());
         oPicks[6].add(oParts[2].trim());
         
-        importFromPicks(oPicks, bStrict);
-        
-        // Set members
-        msPassword = sPassword;
-        msRegion1 = s1;
-        msRegion2 = s2;
-        msRegion3 = s3;
-        msRegion4 = s4;
-        msFF = sFF;
+        importFromPicks(oPicks);
     }
     
     public void readRegion(Vector oPicks[], String sData)
@@ -264,22 +252,8 @@ public class Bracket
         }
     }    
     
-    public void importFromPicks(Vector oPicks[], boolean bStrict)
-    {
-        // make sure we have the right number of picks
-        if  ( 
-                (oPicks[0].size() != 64) ||
-                (oPicks[1].size() != 32) ||
-                (oPicks[2].size() != 16) ||
-                (oPicks[3].size() != 8) ||
-                (oPicks[4].size() != 4) ||
-                (oPicks[5].size() != 2) ||
-                (oPicks[6].size() != 1))
-        {
-            System.out.println("Improper Size");
-            throw new RuntimeException("Bad size");
-        }
-        
+    private void importFromPicks(Vector oPicks[])
+    {        
         // now set the data structures
         int mnRound = 1;
         Vector oCurrentRound = new Vector();
@@ -307,10 +281,7 @@ public class Bracket
                 String sPre2 = (String) oPicks[mnRound-1].elementAt(i*2+1);
                 if (sPick.equals(""))
                 {
-                    if (bStrict)
-                    {
-                        throw new RuntimeException("Empty selection");
-                    }
+                	// Empty selection
                 }                
                 else if (sPick.equals(sPre1))
                 {
@@ -322,10 +293,7 @@ public class Bracket
                 }
                 else 
                 {
-                    if (bStrict)
-                    {
-                        throw new RuntimeException("Inconsistent selection");
-                    }
+                	throw new RuntimeException("Inconsistent selection");
                 }
             }
             
@@ -342,6 +310,31 @@ public class Bracket
     public void setName(String name)
     {
         msName = name;
-    }    
+    }
+
+	public void validate(boolean bComplete) {
+		if (bComplete) {
+			confirmStatusSet(moChampionship);
+		}		
+	}
+
+	private void confirmStatusSet(Match oMatch) {
+		if (oMatch != null) {
+			if (oMatch.mnStatus == 0) {
+				throw new RuntimeException("Match not set: " + oMatch.getRound());
+			}
+		}
+		confirmStatusSet(oMatch.getPreMatch1());
+		confirmStatusSet(oMatch.getPreMatch2());
+	}
+
+	public boolean isComplete() {
+		try {
+			validate(true);
+			return true;
+		} catch (Exception ex) {
+			return false;
+		}
+	}    
     
 }

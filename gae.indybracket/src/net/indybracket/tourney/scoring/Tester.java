@@ -177,7 +177,7 @@ public class Tester
             System.out.print(oFF.toString());
             
             Bracket oMasterDup = Bracket.newTransientInstance();
-            oMasterDup.importFromWebapp("", 0, o1.toString(), o2.toString(), o3.toString(), o4.toString(), oFF.toString(), false);
+            oMasterDup.importFromWebapp(o1.toString(), o2.toString(), o3.toString(), o4.toString(), oFF.toString());
             
             // manipulate the master, clear out final four
             oMasterDup.getChampionship().setStatus(0);

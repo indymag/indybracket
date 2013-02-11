@@ -120,7 +120,7 @@ public class Grader
         }
         catch (Exception oEx)
         {
-        	throw new RuntimeException("Error grading round " + oMaster.getRound());
+        	throw new RuntimeException("Error grading round " + oMaster.getRound(), oEx);
         }
         
         if (oMaster.getRound() != 1)

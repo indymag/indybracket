@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Vector;
 
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,6 +26,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.MessageResources;
 
+import com.google.appengine.repackaged.com.google.common.base.Predicate;
+import com.google.appengine.repackaged.com.google.common.collect.FluentIterable;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.cmd.Query;
 
@@ -104,7 +107,14 @@ public class ListBracketsAction
     } // doExecute()
 
 	private List<Bracket> getEntries() {
-		return ofy().load().type(Bracket.class).filter("msId !=", Bracket.PERFECT_ID).list();
+		FluentIterable<Bracket> entries = 
+				FluentIterable.from(ofy().load().type(Bracket.class).filter("msId !=", Bracket.PERFECT_ID));
+		entries = entries.filter(new Predicate<Bracket>(){
+			@Override
+			public boolean apply(@Nullable Bracket b) {
+				return b.isComplete();
+			}});
+		return entries.toList();
 	}
 
 	/*

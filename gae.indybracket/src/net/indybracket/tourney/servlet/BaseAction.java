@@ -133,7 +133,7 @@ public abstract class BaseAction
      public Bracket readBracket(String bracketId, boolean bComplete)
      {
      	Bracket oEntry = ofy().load().type(Bracket.class).id(bracketId).get();
-     	// oEntry.validate(bComplete);
+     	oEntry.validate(bComplete);
      	return oEntry;
      } // readBracket()
     /*

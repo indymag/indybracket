@@ -1,5 +1,5 @@
 <%@ page import="java.util.*" %>
-<%@ page import="bracket.DisplayBracketBean" %>
+<%@ page import="net.indybracket.tourney.servlet.DisplayBracketBean" %>
 <%@ taglib uri="/tags/struts-html" prefix="html" %>
 <%@ taglib uri="/tags/struts-logic" prefix="logic" %>
 
@@ -64,7 +64,7 @@
 		 counter++;   
  		} %>
   </table>
-<br/><font style="color:green"><a href="http://www.google.com/moderator/#15/e=652f3&t=652f3.40">Questions and Comments</a></font>
+<br/>
 </div>
 
 
