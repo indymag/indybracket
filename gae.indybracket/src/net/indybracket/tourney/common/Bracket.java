@@ -19,7 +19,9 @@ public class Bracket
     
     private @Id String msId;
     // Properties that are peristed
-    private String msName;
+    private String msUserEmail;
+    private String msUserName;
+    private String msEntryName;
     private String msRegion1 = DEFAULT_REGION;
     private String msRegion2 = DEFAULT_REGION;
     private String msRegion3 = DEFAULT_REGION;
@@ -302,15 +304,40 @@ public class Bracket
         }
     }
     
-    public String getName()
+    public String getEntryName()
     {
-        return msName;
+        return msEntryName;
     }
     
-    public void setName(String name)
+    public void setEntryName(String name)
     {
-        msName = name;
+    	msEntryName = name;
     }
+    
+    public String getUserName()
+    {
+        return msUserName;
+    }
+    
+    public void setUserName(String name)
+    {
+    	msUserName = name;
+    }
+    
+    public String getName() {
+    	return msUserName + " - " + msEntryName;
+    }
+    
+    public String getUserEmail()
+    {
+        return msUserEmail;
+    }
+    
+    public void setUserEmail(String email)
+    {
+    	msUserEmail = email;
+    }
+
 
 	public void validate(boolean bComplete) {
 		if (bComplete) {

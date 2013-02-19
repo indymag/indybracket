@@ -19,33 +19,7 @@ public class PoolGrader
 		moScorer = oScorer;
 		moMaster = oMaster;
 	}
-	
-	public PoolStandings gradePool(File oDir) throws IOException
-	{
-		String oFiles[] = oDir.list();
-		Vector oEntries = new Vector();
-		for (int i = 0; i < oFiles.length; i++)
-		{
-			String sFile = oFiles[i];
-			if (!sFile.endsWith(".csv"))
-			{
-				continue;
-			}
-			
-			// read a bracket
-			FileInputStream oCSV = new FileInputStream(oDir.toString()+ "/" + sFile);
-			Bracket oBracket = Bracket.newTransientInstance();
-			oBracket = Bracket.newTransientInstance();
-//			oBracket.importCSV(oCSV, true);
-			oCSV.close();
-			oBracket.setName(sFile);
-			oEntries.add(oBracket);
-		}
 		
-		return gradePool((Bracket[]) oEntries.toArray(new Bracket[oEntries.size()]),
-                new BeatenTable(), "score","desc");
-	}
-	
 	public PoolStandings gradePool(Bracket[] oEntries, BeatenTable oBeatenBy, String sSortBy, String sAsc)
 	{
 		Grader oGrader = new Grader(moScorer, moMaster);

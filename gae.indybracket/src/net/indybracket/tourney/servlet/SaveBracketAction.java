@@ -77,59 +77,50 @@ public class SaveBracketAction
 
         bracketName = (bracketName == null) ? "" : bracketName.trim();
         bracketName = bracketName.replaceAll(" ", "");
-        if (bracketName != null)
+        if (!bracketName.matches("^[a-zA-Z0-9_]+$"))
         {
-            if (
-                (bracketName.indexOf("/") > -1) ||
-                (bracketName.indexOf(".") > -1) ||
-                (bracketName.indexOf(" ") > -1))
-            {
-                addError(oRequest, "invalid.character");
-                oReturnCode = FORWARD_RETURN_FAILURE;
-                return oMapping.findForward(oReturnCode);
-            }
+        	addError(oRequest, "invalid.character in bracket name");
+        	oReturnCode = FORWARD_RETURN_FAILURE;
+        	return oMapping.findForward(oReturnCode);
         }
-
 
         if (bracketName.equals(""))
         {
-            oRequest.setAttribute("errorCode", "Empty Field");
+            oRequest.setAttribute("errorCode", "Bracket name cannot be empty");
             oReturnCode = FORWARD_RETURN_FAILURE;
+        	return oMapping.findForward(oReturnCode);
         }
-        else
+        
+        try
         {
-            try
-            {
-                String ffWinners = (String) oSession.getAttribute("ffWinners");
-                String eastWinners =
-                    (String) oSession.getAttribute("eastWinners");
-                String southWinners =
-                    (String) oSession.getAttribute("southWinners");
-                String midwestWinners =
-                    (String) oSession.getAttribute("midwestWinners");
-                String westWinners =
-                    (String) oSession.getAttribute("westWinners");
-                if (oRequest.getUserPrincipal() != null) {
-                	String principal = oRequest.getUserPrincipal().getName();
-                	String email = userService.getCurrentUser().getEmail();
-                	String nickname = userService.getCurrentUser().getNickname();
-                	ActionMessages messages = new ActionMessages();
-                	ActionMessage message = new ActionMessage("success.saved");
-                	messages.add(ActionMessages.GLOBAL_MESSAGE, message);
-                	saveMessages(oRequest, messages);
-                } else {
-                	throw new RuntimeException("User not logged in");
-                }
+        	String ffWinners = (String) oSession.getAttribute("ffWinners");
+        	String eastWinners =
+        			(String) oSession.getAttribute("eastWinners");
+        	String southWinners =
+        			(String) oSession.getAttribute("southWinners");
+        	String midwestWinners =
+        			(String) oSession.getAttribute("midwestWinners");
+        	String westWinners =
+        			(String) oSession.getAttribute("westWinners");
+        	if (oRequest.getUserPrincipal() != null) {
+        		String principal = oRequest.getUserPrincipal().getName();
+        		String email = userService.getCurrentUser().getEmail();
+        		String nickname = userService.getCurrentUser().getNickname();
+        		ActionMessages messages = new ActionMessages();
+        		ActionMessage message = new ActionMessage("success.saved");
+        		messages.add(ActionMessages.GLOBAL_MESSAGE, message);
+        		saveMessages(oRequest, messages);
+        	} else {
+        		throw new RuntimeException("User not logged in");
+        	}
 
-            }
-            catch (Exception e)
-            {
-            	e.printStackTrace();
-                oRequest.setAttribute("errorCode", "Failed to save. Check bracket root directory");
-                oReturnCode = FORWARD_RETURN_FAILURE;
-            }
         }
-
+        catch (Exception e)
+        {
+        	e.printStackTrace();
+        	oRequest.setAttribute("errorCode", "Failed to save. Check bracket root directory");
+        	oReturnCode = FORWARD_RETURN_FAILURE;
+        }
 
         return oMapping.findForward(oReturnCode);
 
