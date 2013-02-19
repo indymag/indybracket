@@ -64,8 +64,7 @@ public class LoadBracketAction
         else
         {
             try
-            {
-                
+            {                
                 oSession.setAttribute("loadedBracketName", bracketName);
                 oSession.setAttribute("ffWinners", ffWinners);
                 oSession.setAttribute("eastWinners", eastWinners);
