@@ -13,12 +13,10 @@ package net.indybracket.tourney.servlet;
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.indybracket.tourney.common.Bracket;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -59,27 +57,16 @@ public class LoadBracketAction
         String ffWinners = "";
         
         // validate Bracket Name
-        if ((bracketName == null) || (bracketName.equals("")))
+        if (!bracketName.matches(Bracket.BRACKET_NAME_REGEX))
         {
             oReturnCode = FORWARD_RETURN_FAILURE;
         }
         else
         {
-            // verify if File by name of BracketName actually exists
             try
             {
-                FileInputStream fstream =
-                    new FileInputStream(BRACKET_FILE_PATH + bracketName + ".txt");
-                BufferedReader d =
-                    new BufferedReader(new InputStreamReader(fstream));
-                ffWinners = d.readLine();
-                eastWinners = d.readLine();
-                southWinners = d.readLine();
-                midwestWinners = d.readLine();
-                westWinners = d.readLine();
                 
                 oSession.setAttribute("loadedBracketName", bracketName);
-
                 oSession.setAttribute("ffWinners", ffWinners);
                 oSession.setAttribute("eastWinners", eastWinners);
                 oSession.setAttribute("southWinners", southWinners);

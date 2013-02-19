@@ -1,10 +1,6 @@
 package net.indybracket.tourney.scoring;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.Vector;
 
 import net.indybracket.tourney.common.BeatenTable;
 import net.indybracket.tourney.common.Bracket;

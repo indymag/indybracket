@@ -16,6 +16,8 @@ package net.indybracket.tourney.servlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.indybracket.tourney.common.Bracket;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -77,7 +79,7 @@ public class SaveBracketAction
 
         bracketName = (bracketName == null) ? "" : bracketName.trim();
         bracketName = bracketName.replaceAll(" ", "");
-        if (!bracketName.matches("^[a-zA-Z0-9_]+$"))
+        if (!bracketName.matches(Bracket.BRACKET_NAME_REGEX))
         {
         	addError(oRequest, "invalid.character in bracket name");
         	oReturnCode = FORWARD_RETURN_FAILURE;

@@ -16,6 +16,7 @@ public class Bracket
 	public static final String PERFECT_ID = "MASTER";
 	public static final String DEFAULT_REGION = " , , , , , , , , , , , , , , ";
 	public static final String DEFAULT_FF = " , , ";
+	public static final String BRACKET_NAME_REGEX = "^[a-zA-Z0-9_]+$";
     
     private @Id String msId;
     // Properties that are peristed
