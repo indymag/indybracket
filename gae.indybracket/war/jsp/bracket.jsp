@@ -1697,7 +1697,7 @@
    <input type="hidden" name="southWinners" value=""/>
    <input type="hidden" name="westWinners" value=""/>
     <input type="hidden" name="ffWinners" value=""/>
-   <div class="submitName">Your Name:</div>
+   <div class="submitName">Entry Name</div>
    <div class="nameField">
 	<% java.lang.String sBracketName = (java.lang.String)session.getAttribute("loadedBracketName"); 
 		if((sBracketName != null) && (!sBracketName.equals(""))) { %>
@@ -1708,10 +1708,6 @@
 	 <input class="fieldBG" type="text" name="bracketName" value=""/>
 	<% } %>
    </div>
-   <div class="passwordLabel">Password:</div>
-   <div class="passwordField"><input class="fieldBG" type="password" name="password"/></div>
-   <div class="confirmPasswordLabel">Confirm Password:</div>
-   <div class="confirmPasswordField"><input class="fieldBG" type="password" name="confirmPassword"/></div>
    <div class="ffButtons">
     <input class="button" type="button" onClick="savePicks()" value="Save Picks"/></div>
  </form>

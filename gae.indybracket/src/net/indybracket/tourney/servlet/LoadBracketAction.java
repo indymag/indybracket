@@ -49,17 +49,14 @@ public class LoadBracketAction
         String oReturnCode = FORWARD_RETURN_SUCCESS;
 
         String bracketName = oRequest.getParameter("name");
-        String password = oRequest.getParameter("password");
         bracketName = (bracketName == null) ? "" : bracketName.trim();
         bracketName = bracketName.replaceAll(" ", "");
-        password = (password == null) ? "" : password.trim();
 
         String eastWinners = "";
         String southWinners = "";
         String midwestWinners = "";
         String westWinners = "";
         String ffWinners = "";
-        String verifyPassword = "";
         
         // validate Bracket Name
         if ((bracketName == null) || (bracketName.equals("")))
@@ -75,7 +72,6 @@ public class LoadBracketAction
                     new FileInputStream(BRACKET_FILE_PATH + bracketName + ".txt");
                 BufferedReader d =
                     new BufferedReader(new InputStreamReader(fstream));
-                verifyPassword = d.readLine();
                 ffWinners = d.readLine();
                 eastWinners = d.readLine();
                 southWinners = d.readLine();
@@ -100,17 +96,6 @@ public class LoadBracketAction
         if (oReturnCode.equals(FORWARD_RETURN_FAILURE))
         {
             addError(oRequest, "invalid.bracket.name");
-        }
-        else
-        {
-            // Bracket name OK, now validate Password		
-            if (
-                (password == null) || (password.equals("")) ||
-                (!password.equals(verifyPassword)))
-            {
-                oReturnCode = FORWARD_RETURN_FAILURE;
-                addError(oRequest, "invalid.password");
-            }
         }
 
         return oMapping.findForward(oReturnCode);

@@ -13,9 +13,6 @@ package net.indybracket.tourney.servlet;
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-import java.io.BufferedWriter;
-import java.io.File;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,6 +21,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
+
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 
 /*
@@ -36,6 +36,7 @@ import org.apache.struts.action.ActionMessages;
 public class SaveBracketAction
     extends BaseAction
 {
+	private static UserService userService = UserServiceFactory.getUserService();
     /*
     ****************************************************************************
     * doExecute()
@@ -73,8 +74,6 @@ public class SaveBracketAction
             (loadedBracketName == null) ? "" : loadedBracketName;
 
         String bracketName = oRequest.getParameter("bracketName");
-        String password = oRequest.getParameter("password");
-        String confirmPassword = oRequest.getParameter("confirmPassword");
 
         bracketName = (bracketName == null) ? "" : bracketName.trim();
         bracketName = bracketName.replaceAll(" ", "");
@@ -91,38 +90,16 @@ public class SaveBracketAction
             }
         }
 
-        password = (password == null) ? "" : password.trim();
-        confirmPassword =
-            (confirmPassword == null) ? "" : confirmPassword.trim();
 
-        boolean fileInUse = fileInUseCheck(bracketName);
-
-        if ((bracketName.equals("")) || (password.equals("")))
+        if (bracketName.equals(""))
         {
             oRequest.setAttribute("errorCode", "Empty Field");
-            oReturnCode = FORWARD_RETURN_FAILURE;
-        }
-        else if (fileInUse && (!(loadedBracketName.equals(bracketName))))
-        {
-            oRequest.setAttribute("errorCode", "Bracket Name in use");
-            oReturnCode = FORWARD_RETURN_FAILURE;
-        }
-        else if (!(password.equals(confirmPassword)))
-        {
-            oRequest.setAttribute("errorCode", "Passwords do not match");
             oReturnCode = FORWARD_RETURN_FAILURE;
         }
         else
         {
             try
             {
-                BufferedWriter out = null;
-                		/* move to GAE storage
-                    new BufferedWriter(
-                        new FileWriter(
-                            BRACKET_FILE_PATH + bracketName + ".txt"));
-                            */
-
                 String ffWinners = (String) oSession.getAttribute("ffWinners");
                 String eastWinners =
                     (String) oSession.getAttribute("eastWinners");
@@ -132,25 +109,22 @@ public class SaveBracketAction
                     (String) oSession.getAttribute("midwestWinners");
                 String westWinners =
                     (String) oSession.getAttribute("westWinners");
+                if (oRequest.getUserPrincipal() != null) {
+                	String principal = oRequest.getUserPrincipal().getName();
+                	String email = userService.getCurrentUser().getEmail();
+                	String nickname = userService.getCurrentUser().getNickname();
+                	ActionMessages messages = new ActionMessages();
+                	ActionMessage message = new ActionMessage("success.saved");
+                	messages.add(ActionMessages.GLOBAL_MESSAGE, message);
+                	saveMessages(oRequest, messages);
+                } else {
+                	throw new RuntimeException("User not logged in");
+                }
 
-                out.write(password + "\n");
-                out.write(ffWinners + "\n");
-                out.write(eastWinners + "\n");
-                out.write(southWinners + "\n");
-                out.write(midwestWinners + "\n");
-                out.write(westWinners + "\n");
-
-                out.close();
-
-                ActionMessages messages = new ActionMessages();
-                ActionMessage message = new ActionMessage("success.saved");
-                messages.add(ActionMessages.GLOBAL_MESSAGE, message);
-                saveMessages(oRequest, messages);
             }
             catch (Exception e)
             {
-                System.out.println("Exception: " + e.toString());
-
+            	e.printStackTrace();
                 oRequest.setAttribute("errorCode", "Failed to save. Check bracket root directory");
                 oReturnCode = FORWARD_RETURN_FAILURE;
             }
@@ -160,26 +134,5 @@ public class SaveBracketAction
         return oMapping.findForward(oReturnCode);
 
     } // doExecute()
-
-    /*
-    ****************************************************************************
-    * fileInUseCheck()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    private boolean fileInUseCheck(String bracketName)
-    {
-        boolean returnVal = false;
-        try
-        {
-            File f = new File(BRACKET_FILE_PATH + bracketName + ".txt");
-            returnVal = f.exists();
-        }
-        catch (Exception e) {}
-
-        return returnVal;
-
-    } // fileInUseCheck()
 
 } // Class: SaveBracketAction

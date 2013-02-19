@@ -630,7 +630,7 @@ function gup( name )
 			var tabStyle = document.getElementById("_" + name + "Tab").style;
 			tabStyle.backgroundColor= "#cccccc";      
             tabStyle.borderBottomColor = "#0066cc";
-            	document.getElementById("bracketname").innerHTML= gup("name") + "'s bracket";
+//           document.getElementById("bracketname").innerHTML= gup("name") + "'s bracket";
             
             if(name == "ff"){
             	document.getElementById("bracketBars").style.display = "block";

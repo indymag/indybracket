@@ -1,3 +1,5 @@
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ taglib uri="/tags/struts-html" prefix="html" %>
 
 <html>
@@ -11,13 +13,12 @@
 <div class="titleBar">&nbsp;</div>
 <div class="titleHeader">NCAA Bracket Challenge</div>
 <div class="tourneyInfo">
-This pool is not endorsed by Epok in any way.  
-Entry is limited to Epok employees, ex-employees, contractors, and their immediate family members.
+Entry is limited to people I know.
 <font style="color:black">I reserve the right to refuse any entry before the games start.</font>
 <br><br>
 Fee: Free this year.  I don't have time to collect.
 <br><br>
-<font style="color:red">Deadline:  Thursday 3/17/2010 at 11:00 a.m. EDT</font>  
+<font style="color:red">Deadline:  Thursday 3/21/2013 at 11:00 a.m. EDT</font>  
 <br><br>
 Prize: Winner takes all, I take no cut and get no discount.  Remember, it's free to enter.
 <br><br>
@@ -31,8 +32,8 @@ reaccess it. You should Validate it before your last save to make sure there are
 <br><br>
 Scoring System:
 <br>
-This year's scoring system is the same as last year.  
-It will be (seed +4) * round weight for each win.  The round 
+This year's scoring system is the same as in the most recent years.  
+It will be (seed + 4) * round weight for each win.  The round 
 weights are listed below.  
 <ul>
 <li>1st Round - 2</li>

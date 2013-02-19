@@ -52,7 +52,7 @@
 
   <!-- The Usual Welcome File List -->
   <welcome-file-list>
-    <welcome-file>jsp/post-deadline-main.jsp</welcome-file>
+    <welcome-file>jsp/pre-deadline-main.jsp</welcome-file>
   </welcome-file-list>
 
   <!-- Struts Tag Library Descriptors -->
@@ -72,4 +72,22 @@
     <taglib-uri>/tags/struts-nested</taglib-uri>
     <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
   </taglib>
+
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
 </web-app>
