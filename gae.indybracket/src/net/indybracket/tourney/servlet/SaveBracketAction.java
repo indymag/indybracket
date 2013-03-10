@@ -2,18 +2,11 @@ package net.indybracket.tourney.servlet;
 
 /*
  * Created on Feb 15, 2005
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
+import static net.indybracket.tourney.common.OfyService.ofy;
 
-/**
- * @author Scott Mennealy
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 
 import net.indybracket.tourney.common.Bracket;
@@ -51,6 +44,7 @@ public class SaveBracketAction
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
         String oReturnCode = FORWARD_RETURN_SUCCESS;
+    	InitUtil.setupTeams(getResources(oRequest));
 
         String eastWinnersRequest = oRequest.getParameter("eastWinners");
         String midwestWinnersRequest = oRequest.getParameter("midwestWinners");
@@ -108,6 +102,13 @@ public class SaveBracketAction
         		String principal = oRequest.getUserPrincipal().getName();
         		String email = userService.getCurrentUser().getEmail();
         		String nickname = userService.getCurrentUser().getNickname();
+        		String id = email + "/" + bracketName;
+        		Bracket b = Bracket.newDbInstance(id);
+        		b.setEntryName(bracketName);
+        		b.setUserEmail(email);
+        		b.setUserName(nickname);
+        		b.importFromWebapp(eastWinners, southWinners, midwestWinners, westWinners, ffWinners);
+        		ofy().save().entity(b).now();
         		ActionMessages messages = new ActionMessages();
         		ActionMessage message = new ActionMessage("success.saved");
         		messages.add(ActionMessages.GLOBAL_MESSAGE, message);

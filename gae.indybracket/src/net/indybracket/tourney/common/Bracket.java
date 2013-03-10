@@ -3,9 +3,12 @@ package net.indybracket.tourney.common;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Vector;
 
+import com.google.appengine.labs.repackaged.com.google.common.base.Splitter;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
@@ -22,12 +25,12 @@ public class Bracket
     // Properties that are peristed
     private String msUserEmail;
     private String msUserName;
-    private String msEntryName;
-    private String msRegion1 = DEFAULT_REGION;
-    private String msRegion2 = DEFAULT_REGION;
-    private String msRegion3 = DEFAULT_REGION;
-    private String msRegion4 = DEFAULT_REGION;
-    private String msFF = DEFAULT_FF;
+    private String msEntryName = "";
+    private String msRegion1;
+    private String msRegion2;
+    private String msRegion3;
+    private String msRegion4;
+    private String msFF;
 
     // Constructed, not persisted.
     private final Match moChampionship;
@@ -83,7 +86,7 @@ public class Bracket
         }
         
         moChampionship = oPrevRound[0];
-        importFromWebapp(msRegion1, msRegion2, msRegion3, msRegion4, msFF);
+        importFromWebapp(DEFAULT_REGION, DEFAULT_REGION, DEFAULT_REGION, DEFAULT_REGION, DEFAULT_FF);
     }
         
     /**
@@ -138,19 +141,29 @@ public class Bracket
         readRegion(oPicks, s4);
                 
         // remove the newline
-        String[] oParts = sFF.substring(0, sFF.length()).split(",");
-        oPicks[5].add(oParts[0].trim());
-        oPicks[5].add(oParts[1].trim());
-        oPicks[6].add(oParts[2].trim());
+        Iterator<String> oParts = Splitter.on(',').split(sFF).iterator();
+        oPicks[5].add(oParts.next().trim());
+        oPicks[5].add(oParts.next().trim());
+        oPicks[6].add(oParts.next().trim());
+        if (oParts.hasNext()) {
+        	throw new RuntimeException("Invalid FF string");
+        }
         
         importFromPicks(oPicks);
+        
+        // We want to persist the CSV strings as well for now
+        msRegion1 = s1;
+        msRegion2 = s2;
+        msRegion3 = s3;
+        msRegion4 = s4;
+        msFF = sFF;
     }
     
     public void readRegion(Vector oPicks[], String sData)
     {
         // remove the newline
-        String[] oParts = sData.substring(0, sData.length()).split(",");
-        for (int i=0; i < oParts.length; i++)
+        List<String> oParts = Splitter.on(',').splitToList(sData);
+        for (int i=0; i < oParts.size(); i++)
         {
             int nRound;
             if (i < 8)
@@ -162,7 +175,7 @@ public class Bracket
             else
                 nRound = 4;
             
-            oPicks[nRound].add(oParts[i].trim());
+            oPicks[nRound].add(oParts.get(i).trim());
         }               
     }
     
