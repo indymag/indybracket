@@ -347,6 +347,27 @@ public class Bracket
         return msUserEmail;
     }
     
+    public String getRegion1() {
+    	return msRegion1;
+    }
+    
+    public String getRegion2() {
+    	return msRegion2;
+    }
+    
+    public String getRegion3() {
+    	return msRegion3;
+    }
+    
+    public String getRegion4() {
+    	return msRegion4;
+    }
+    
+    public String getFF() {
+    	return msFF;
+    }
+
+    
     public void setUserEmail(String email)
     {
     	msUserEmail = email;

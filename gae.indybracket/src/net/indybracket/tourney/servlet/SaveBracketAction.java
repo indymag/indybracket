@@ -31,7 +31,6 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class SaveBracketAction
     extends BaseAction
 {
-	private static UserService userService = UserServiceFactory.getUserService();
     /*
     ****************************************************************************
     * doExecute()
@@ -100,8 +99,8 @@ public class SaveBracketAction
         			(String) oSession.getAttribute("westWinners");
         	if (oRequest.getUserPrincipal() != null) {
         		String principal = oRequest.getUserPrincipal().getName();
-        		String email = userService.getCurrentUser().getEmail();
-        		String nickname = userService.getCurrentUser().getNickname();
+        		String email = getEmail();
+        		String nickname = getNickname();
         		String id = email + "/" + bracketName;
         		Bracket b = Bracket.newDbInstance(id);
         		b.setEntryName(bracketName);

@@ -1,18 +1,6 @@
 package net.indybracket.tourney.servlet;
 
-/*
- * Created on Feb 15, 2005
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
-
-/**
- * @author Scott Mennealy
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
+import static net.indybracket.tourney.common.OfyService.ofy;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -50,12 +38,6 @@ public class LoadBracketAction
         String bracketName = oRequest.getParameter("name");
         bracketName = (bracketName == null) ? "" : bracketName.trim();
         bracketName = bracketName.replaceAll(" ", "");
-
-        String eastWinners = "";
-        String southWinners = "";
-        String midwestWinners = "";
-        String westWinners = "";
-        String ffWinners = "";
         
         // validate Bracket Name
         if (!bracketName.matches(Bracket.BRACKET_NAME_REGEX))
@@ -65,8 +47,17 @@ public class LoadBracketAction
         else
         {
             try
-            {                
+            {         
+            	String bracketId = getBracketId(bracketName);
+            	Bracket b = readBracket(bracketId, false);
                 oSession.setAttribute("loadedBracketName", bracketName);
+                
+                String eastWinners = b.getRegion1();
+                String southWinners = b.getRegion2();;
+                String midwestWinners = b.getRegion3();;
+                String westWinners = b.getRegion4();;
+                String ffWinners = b.getFF();
+
                 oSession.setAttribute("ffWinners", ffWinners);
                 oSession.setAttribute("eastWinners", eastWinners);
                 oSession.setAttribute("southWinners", southWinners);

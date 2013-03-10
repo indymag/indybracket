@@ -16,6 +16,9 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
 
 /*
 ********************************************************************************
@@ -27,6 +30,8 @@ import org.apache.struts.action.ActionMessages;
 public abstract class BaseAction
     extends Action
 {
+	private static UserService userService = UserServiceFactory.getUserService();
+
 	public final String FORWARD_RETURN_SUCCESS = "success";
 	public final String FORWARD_RETURN_FAILURE = "failure";
 	
@@ -65,9 +70,7 @@ public abstract class BaseAction
     	ActionForward oReturn = null;
         try
         {
-	    	oSession = oRequest.getSession(false);
-	     
-	        setBracketPath();
+	    	oSession = oRequest.getSession(false);	     
 	        oReturn = doExecute(oMapping, oActionForm, oRequest, oResponse);
         }
         catch(Exception e)
@@ -97,28 +100,6 @@ public abstract class BaseAction
     } // addError()
 
     /*
-    ****************************************************************************
-    * setBracketPath()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    private void setBracketPath() throws NullPointerException
-    {
-        try
-        {
-            BRACKET_ROOT = getServlet().getInitParameter("bracket-root");
-            BRACKET_FILE_PATH = BRACKET_ROOT + "brackets/";
-            BRACKET_COMPLETED_PATH = BRACKET_ROOT + "completed/";
-        }
-        catch (NullPointerException e)
-        {
-            System.out.print("Error setting bracket path: " + e);
-            throw e;
-        }
-
-    } // setBracketPath()
-    /*
      ****************************************************************************
      * readBracket()
      ****************************************************************************
@@ -131,6 +112,19 @@ public abstract class BaseAction
      	oEntry.validate(bComplete);
      	return oEntry;
      } // readBracket()
+     
+ 	public String getBracketId(String bracketName) {
+ 		return getEmail() + "/" + bracketName;
+ 	}
+ 	
+ 	public String getEmail() {
+ 		return userService.getCurrentUser().getEmail();
+ 	}
+ 	
+ 	public String getNickname() {
+ 		return userService.getCurrentUser().getNickname();
+ 	}
+     
     /*
     ****************************************************************************
     * doExecute()

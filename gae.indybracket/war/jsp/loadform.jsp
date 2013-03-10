@@ -13,8 +13,7 @@
 <div class="bracketForm">
  <form name="loadform" action="loadbracketaction.do" method="POST">
 	<table width="300">
-	  <tr><td class="formLabel" width="40%"> Your Name:</td><td align="right"> <input type="text" name="name" value=""/></td></tr>	  
-	  <tr><td class="formLabel" width="40%"> Password:</td><td align="right"> <input type="password" name="password" value=""/></td></tr>
+	  <tr><td class="formLabel" width="40%">Bracket Name:</td><td align="right"> <input type="text" name="name" value=""/></td></tr>	  
 	  <tr><td colspan="2" align="right"><input class="button" type="submit" value="Load Bracket"/></td></tr>
 	</table>   
  </form>
