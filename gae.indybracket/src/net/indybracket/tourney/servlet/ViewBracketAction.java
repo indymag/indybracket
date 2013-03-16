@@ -34,16 +34,17 @@ public class ViewBracketAction extends BaseAction {
         HttpServletResponse oResponse) {
         String oErrorCode = FORWARD_RETURN_SUCCESS;
 
-        String bracketName = oRequest.getParameter("name");
+        String fullName = oRequest.getParameter("name");
         // might be coming from add comment
-        if(bracketName == null)
+        if(fullName == null)
         {
-        	bracketName = (String)oSession.getAttribute("viewingBracket");
+        	fullName = (String)oSession.getAttribute("viewingBracket");
         }
 
         
         try {
-            Bracket oBracket = readBracket(bracketName, false);
+        	String id = fullNameToBracketId(fullName);
+            Bracket oBracket = readBracket(id, false);
             Bracket oMaster = readBracket(Bracket.PERFECT_ID, false);
 
             Grader oGrader = new Grader(new BlazerScorer2(), oMaster);
@@ -61,7 +62,7 @@ public class ViewBracketAction extends BaseAction {
             String midwestWinners = o3.toString().trim();
             String westWinners = o4.toString().trim();
 
-            oSession.setAttribute("viewingBracket", bracketName);
+            oSession.setAttribute("viewingBracket", fullName);
             
             oSession.setAttribute("ffWinners", ffWinners);
 

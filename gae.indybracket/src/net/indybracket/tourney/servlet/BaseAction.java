@@ -109,6 +109,7 @@ public abstract class BaseAction
      public Bracket readBracket(String bracketId, boolean bComplete)
      {
      	Bracket oEntry = ofy().load().type(Bracket.class).id(bracketId).get();
+     	oEntry.init();
      	oEntry.validate(bComplete);
      	return oEntry;
      } // readBracket()
@@ -116,6 +117,10 @@ public abstract class BaseAction
  	public String getBracketId(String bracketName) {
  		return getEmail() + "/" + bracketName;
  	}
+ 	
+ 	public String fullNameToBracketId(String fullBracketName) {
+ 		return fullBracketName.replace(" - ","/");
+ 	} 	
  	
  	public String getEmail() {
  		return userService.getCurrentUser().getEmail();
