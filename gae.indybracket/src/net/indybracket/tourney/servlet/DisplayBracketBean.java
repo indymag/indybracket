@@ -6,6 +6,8 @@
  */
 package net.indybracket.tourney.servlet;
 
+import java.io.Serializable;
+
 
 /*
 ********************************************************************************
@@ -15,8 +17,9 @@ package net.indybracket.tourney.servlet;
 * @author Scott Mennealy
 *
 */
-public class DisplayBracketBean {
-    private String name = "";
+public class DisplayBracketBean implements Serializable {
+	private static final long serialVersionUID = -7424345373301996667L;
+	private String name = "";
     private String score = "";
     private String maxScore = "";
     private String winner = "";

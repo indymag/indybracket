@@ -121,6 +121,11 @@ public class Bracket
         return sReturn;
     }
     
+    public void init() {
+    	// Used when loading from data store.
+    	importFromWebapp(msRegion1, msRegion2, msRegion3, msRegion4, msFF);
+    }
+    
     public void importFromWebapp(String s1, String s2, String s3, String s4, String sFF)    		
     {
         Vector oPicks[] = new Vector[7];
@@ -385,9 +390,9 @@ public class Bracket
 			if (oMatch.mnStatus == 0) {
 				throw new RuntimeException("Match not set: " + oMatch.getRound());
 			}
+			confirmStatusSet(oMatch.getPreMatch1());
+			confirmStatusSet(oMatch.getPreMatch2());
 		}
-		confirmStatusSet(oMatch.getPreMatch1());
-		confirmStatusSet(oMatch.getPreMatch2());
 	}
 
 	public boolean isComplete() {

@@ -56,9 +56,7 @@ public class ListBracketsAction
         {  
         	InitUtil.setupTeams(getResources(oRequest));
         	
-        	ofy().save().entity(Bracket.newDbInstance("123123")).now();
-        	ofy().save().entity(Bracket.newDbInstance("321321")).now();        	
-        	ofy().save().entity(Bracket.newDbInstance(Bracket.PERFECT_ID)).now();
+//        	ofy().save().entity(Bracket.newDbInstance(Bracket.PERFECT_ID)).now();
 
         	Bracket oMaster = readBracket(Bracket.PERFECT_ID, false);
         	if (oMaster == null)
@@ -108,6 +106,7 @@ public class ListBracketsAction
 		entries = entries.filter(new Predicate<Bracket>(){
 			@Override
 			public boolean apply(Bracket b) {
+				b.init();
 				return b.isComplete();
 			}});
 		return entries.toList();
