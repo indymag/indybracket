@@ -58,7 +58,7 @@ public class ListBracketsAction
         	
         	ofy().save().entity(Bracket.newDbInstance(Bracket.PERFECT_ID)).now();
 
-        	Bracket oMaster = readBracket(Bracket.PERFECT_ID, false);
+        	Bracket oMaster = readMaster();
         	if (oMaster == null)
         	{
         		throw new RuntimeException("Unable to read master");

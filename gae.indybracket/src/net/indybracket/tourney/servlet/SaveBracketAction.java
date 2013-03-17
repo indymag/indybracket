@@ -42,6 +42,8 @@ public class SaveBracketAction
         ActionMapping oMapping, ActionForm oActionForm,
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
+    	InitUtil.setupTeams(getResources(oRequest));
+
         String oReturnCode = FORWARD_RETURN_SUCCESS;
     	InitUtil.setupTeams(getResources(oRequest));
 
@@ -86,6 +88,16 @@ public class SaveBracketAction
         	return oMapping.findForward(oReturnCode);
         }
         
+		String email = getEmail();
+		Bracket existing = readBracket(bracketName, null, false);
+		if (existing != null) {
+			if (!email.equals(existing.getUserEmail())) {
+				oRequest.setAttribute("errorCode", "Another bracket with this name already exists");
+				oReturnCode = FORWARD_RETURN_FAILURE;
+				return oMapping.findForward(oReturnCode);	
+			}
+		}
+        
         try
         {
         	String ffWinners = (String) oSession.getAttribute("ffWinners");
@@ -99,7 +111,6 @@ public class SaveBracketAction
         			(String) oSession.getAttribute("westWinners");
         	if (oRequest.getUserPrincipal() != null) {
         		String principal = oRequest.getUserPrincipal().getName();
-        		String email = getEmail();
         		String nickname = getNickname();
         		String id = email + "/" + bracketName;
         		Bracket b = Bracket.newDbInstance(id);

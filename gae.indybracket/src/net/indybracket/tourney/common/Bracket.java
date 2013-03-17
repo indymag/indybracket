@@ -11,6 +11,7 @@ import java.util.Vector;
 import com.google.appengine.labs.repackaged.com.google.common.base.Splitter;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Bracket
@@ -28,7 +29,7 @@ public class Bracket
     private String msUserEmail;
     private String msUserNickname;
     private String msPrincipalName;
-    private String msEntryName = "";
+    private @Index String msEntryName = "";
     private String msRegion1;
     private String msRegion2;
     private String msRegion3;
@@ -357,7 +358,7 @@ public class Bracket
     }
 
     public String getName() {
-    	return msUserNickname + " - " + msEntryName;
+    	return msEntryName;
     }
     
     public String getUserEmail()

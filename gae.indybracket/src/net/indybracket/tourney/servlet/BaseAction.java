@@ -2,6 +2,7 @@ package net.indybracket.tourney.servlet;
 
 import static net.indybracket.tourney.common.OfyService.ofy;
 
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,8 @@ import org.apache.struts.action.ActionMessages;
 
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.google.common.base.Predicate;
+import com.google.common.collect.FluentIterable;
 
 
 /*
@@ -98,6 +101,10 @@ public abstract class BaseAction
         saveErrors(oRequest, oMessages);
 
     } // addError()
+    
+    public Bracket readMaster() {
+    	return ofy().load().type(Bracket.class).id(Bracket.PERFECT_ID).get();
+    }
 
     /*
      ****************************************************************************
@@ -106,9 +113,26 @@ public abstract class BaseAction
      */ /**
      *
      */
-     public Bracket readBracket(String bracketId, boolean bComplete)
+     public Bracket readBracket(final String name, final String email, boolean bComplete)
      {
-     	Bracket oEntry = ofy().load().type(Bracket.class).id(bracketId).get();
+     	FluentIterable<Bracket> brackets = FluentIterable.from(ofy().load().type(Bracket.class).filter("msEntryName", name));
+     	if (email != null) {
+     		brackets = brackets.filter(new Predicate<Bracket>() {
+				@Override
+				public boolean apply(Bracket b) {
+					return email.equalsIgnoreCase(b.getUserEmail());
+				}});
+     	}
+     	
+     	if (brackets.size() > 1) {
+     		throw new RuntimeException("Too many brackets matching name " + name);
+     	}
+     	
+     	if (brackets.isEmpty()) {
+     		return null;
+     	}
+     	
+     	Bracket oEntry = brackets.first().get();
      	oEntry.init();
      	oEntry.validate(bComplete);
      	return oEntry;

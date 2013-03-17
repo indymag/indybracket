@@ -48,8 +48,7 @@ public class LoadBracketAction
         {
             try
             {         
-            	String bracketId = getBracketId(bracketName);
-            	Bracket b = readBracket(bracketId, false);
+            	Bracket b = readBracket(bracketName, getEmail(), false);
                 oSession.setAttribute("loadedBracketName", bracketName);
                 
                 String eastWinners = b.getRegion1();
