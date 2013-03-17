@@ -23,6 +23,8 @@ public class Bracket
     
     private @Id String msId;
     // Properties that are peristed
+    private String msUserName;  // NOT USED - Just there to appease Objectify!!!!
+    
     private String msUserEmail;
     private String msUserNickname;
     private String msPrincipalName;
