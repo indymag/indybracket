@@ -24,7 +24,8 @@ public class Bracket
     private @Id String msId;
     // Properties that are peristed
     private String msUserEmail;
-    private String msUserName;
+    private String msUserNickname;
+    private String msPrincipalName;
     private String msEntryName = "";
     private String msRegion1;
     private String msRegion2;
@@ -333,18 +334,28 @@ public class Bracket
     	msEntryName = name;
     }
     
-    public String getUserName()
+    public String getPrincipalName()
     {
-        return msUserName;
+        return msPrincipalName;
     }
     
-    public void setUserName(String name)
+    public void setPrincipalName(String name)
     {
-    	msUserName = name;
+    	msPrincipalName = name;
     }
     
+    public String getUserNickname()
+    {
+        return msUserNickname;
+    }
+    
+    public void setUserNickname(String name)
+    {
+    	msUserNickname = name;
+    }
+
     public String getName() {
-    	return msUserName + " - " + msEntryName;
+    	return msUserNickname + " - " + msEntryName;
     }
     
     public String getUserEmail()

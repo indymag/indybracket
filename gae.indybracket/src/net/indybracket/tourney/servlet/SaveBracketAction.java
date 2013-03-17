@@ -105,7 +105,8 @@ public class SaveBracketAction
         		Bracket b = Bracket.newDbInstance(id);
         		b.setEntryName(bracketName);
         		b.setUserEmail(email);
-        		b.setUserName(nickname);
+        		b.setUserNickname(nickname);
+        		b.setPrincipalName(principal);
         		b.importFromWebapp(eastWinners, southWinners, midwestWinners, westWinners, ffWinners);
         		ofy().save().entity(b).now();
         		ActionMessages messages = new ActionMessages();
