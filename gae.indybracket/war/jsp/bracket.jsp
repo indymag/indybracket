@@ -1697,7 +1697,7 @@
    <input type="hidden" name="southWinners" value=""/>
    <input type="hidden" name="westWinners" value=""/>
     <input type="hidden" name="ffWinners" value=""/>
-   <div class="submitName">Entry Name</div>
+   <div class="submitName">Entry Name<br>(e.g. KobeB)</div>
    <div class="nameField">
 	<% java.lang.String sBracketName = (java.lang.String)session.getAttribute("loadedBracketName"); 
 		if((sBracketName != null) && (!sBracketName.equals(""))) { %>

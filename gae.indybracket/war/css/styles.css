@@ -337,7 +337,7 @@ a.columnlink:visited{
 }
 .nameField{
 	position:relative;
-	top:-15px;
+	top:-25px;
 	left:120px;
 	font-size:13px;
 	font-weight:bold;
@@ -534,7 +534,7 @@ a.tabLink:visited{
 .saveForm{
   	position:absolute;
   	width: 320px;
-  	height:70px;
+  	height:80px;
   	background-color:#ffffff;
   	top:60px;
   	left:360px;
