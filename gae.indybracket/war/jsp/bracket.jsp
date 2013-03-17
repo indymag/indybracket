@@ -29,9 +29,9 @@
 <body onLoad="initPage()">
 
 <div id="_eastTab" class="eastTab"><a href="#" onClick="viewBracket('east',1)" class="tabLink">EAST</a></div>
-<div id="_southTab" class="southTab"><a href="#" onClick="viewBracket('south',2)" class="tabLink">WEST</a></div>
-<div id="_midwestTab" class="midwestTab"><a href="#" onClick="viewBracket('midwest',3)" class="tabLink">SOUTHEAST</a></div>
-<div id="_westTab" class="westTab"><a href="#" onClick="viewBracket('west',4)" class="tabLink">SOUTHWEST</a></div>
+<div id="_southTab" class="southTab"><a href="#" onClick="viewBracket('south',2)" class="tabLink">SOUTH</a></div>
+<div id="_midwestTab" class="midwestTab"><a href="#" onClick="viewBracket('midwest',3)" class="tabLink">MIDWEST</a></div>
+<div id="_westTab" class="westTab"><a href="#" onClick="viewBracket('west',4)" class="tabLink">WEST</a></div>
 <div id="_ffTab" class="finalfourTab"><a href="#" onClick="viewBracket('ff',5)" class="tabLink">FINAL FOUR</a></div>
 <div class="bracketBox"></div>
 
@@ -1716,8 +1716,8 @@
 <div class="submitForm">
 <form name="validateForm" action="validatePicks.do" method="POST" style="border:0px;margin:0px;padding:0px;">
    <input type="hidden" name="eastWinners" value=""/>
-   <input type="hidden" name="midwestWinners" value=""/>
    <input type="hidden" name="southWinners" value=""/>
+   <input type="hidden" name="midwestWinners" value=""/>
    <input type="hidden" name="westWinners" value=""/>
     <input type="hidden" name="ffWinners" value=""/>
     <div class="ffButtons">
