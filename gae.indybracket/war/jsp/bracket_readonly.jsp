@@ -22,8 +22,7 @@
 	      	populateRegions(eastW,southW,midwestW,westW,ffW,true,eastWinner,southWinner,midwestWinner,westWinner);
 	      	
       		viewBracket("ff",5);
-      		
-      		startw();
+      		// startw();
       }
     
     // Scrolling Stuff
@@ -1757,7 +1756,7 @@
 <div class="champion" ID="<%= session.getAttribute("eastFFLabel") %>-champion" >
 <div id="champion"></div>
 </div>
-<!--
+<!--  NO COMMENTS
 <div class="commentFormLabel">Polite Comments</div>
 <div class="errorLabel">
 <font color="red">
@@ -1777,10 +1776,10 @@
   </form>
 </div>
 </div>
--->
 <div class="scrollcomments" align="left">
   <script language="JavaScript">document.write('<table align="left" border="2"><tr><td width='+wwidth+'px>');if(document.getElementById || document.all){document.write('<span style="width:'+wwidth+'px;"><div style="position:relative;overflow:hidden;width:'+wwidth+'px;height:'+wheight+'px;clip:rect(0 '+wwidth+'px '+wheight+'px 0);background-color:'+wbcolor+';" onMouseover="sspeed=0;" onMouseout="sspeed=restart">');if(operbr!=-1)document.write('<div id="operaslider" style="position:absolute;visibility:hidden;"></div>');document.write('<div id="wslider" style="position:absolute;height:'+wheight+'px;"></div></div></span>')}</script>
   <ilayer width=&{wwidth}; height=&{wheight}; name="wslider1" bgcolor=&{wbcolor};><layer name="wslider2" width=&{wwidth}; height=&{wheight}; onMouseover="sspeed=0;" onMouseout="sspeed=restart"></layer></ilayer>
 </div>
+END NO COMMENTS -->
 </body>
 </html>

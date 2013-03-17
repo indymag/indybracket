@@ -56,7 +56,7 @@ public class ListBracketsAction
         {  
         	InitUtil.setupTeams(getResources(oRequest));
         	
-//        	ofy().save().entity(Bracket.newDbInstance(Bracket.PERFECT_ID)).now();
+        	ofy().save().entity(Bracket.newDbInstance(Bracket.PERFECT_ID)).now();
 
         	Bracket oMaster = readBracket(Bracket.PERFECT_ID, false);
         	if (oMaster == null)
