@@ -32,6 +32,8 @@ public class ViewBracketAction extends BaseAction {
     public ActionForward doExecute(ActionMapping oMapping,
         ActionForm oActionForm, HttpServletRequest oRequest,
         HttpServletResponse oResponse) {
+    	if (true) throw new RuntimeException("Not yet!");
+
     	InitUtil.setupTeams(getResources(oRequest));
 
         String oErrorCode = FORWARD_RETURN_SUCCESS;
