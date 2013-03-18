@@ -23,7 +23,7 @@ I reserve the right to refuse any entry before the games start.</b>
 <b>Prize</b>: Winner takes all, I take no cut and get no discount.
 <br><br>
 <b>Entering</b><br>
-There are no passwords this year.  You're entry is tied to your Google Account.  You'll need to create a Google Account if you don't have one.
+There are no passwords this year.  Your entry is tied to your Google Account.  You'll need to create a Google Account if you don't have one.
 <br><br>
 On the final four tab, you will be able to Save your entry.  Choose a name that will be visible publicly and others will be able to identify.  First name + Last initial is a good option. (e.g. <b>OprahW</b>)  
 <br><br>
