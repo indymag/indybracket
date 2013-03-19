@@ -44,10 +44,24 @@
     <load-on-startup>2</load-on-startup>
   </servlet>
 
+  <servlet>
+    <servlet-name>fetchmaster</servlet-name>
+    <servlet-class>net.indybracket.tourney.servlet.FetchMaster</servlet-name>
+    <init-param>
+      <param-name>masterurl</param-name>
+      <param-value>https://raw.github.com/indymag/indybracket/master/data/2013/test.txt</param-value>
+    </init-param>
+  </servlet>
+
   <!-- Standard Action Servlet Mapping -->
   <servlet-mapping>
     <servlet-name>action</servlet-name>
     <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>fetchmaster</servlet-name>
+    <url-pattern>/cron/fetch</url-pattern>
   </servlet-mapping>
 
   <!-- The Usual Welcome File List -->
