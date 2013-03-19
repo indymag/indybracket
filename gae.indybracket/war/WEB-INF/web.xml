@@ -50,6 +50,11 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>fetch</servlet-name>
+    <url-pattern>/cron/fetch</url-pattern>
+  </servlet-mapping>
+
   <!-- The Usual Welcome File List -->
   <welcome-file-list>
     <welcome-file>jsp/pre-deadline-main.jsp</welcome-file>
