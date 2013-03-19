@@ -1,5 +1,7 @@
 package net.indybracket.tourney.servlet;
 
+import static net.indybracket.tourney.common.OfyService.ofy;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,6 +27,8 @@ public class FetchMaster extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
 	  Bracket b = readBracket();
+  	  ofy().save().entity(b).now();
+
 	  if (b != null) {
 		  resp.setStatus(200);
 	  } else {
@@ -42,7 +46,7 @@ public class FetchMaster extends HttpServlet {
           String sRegion3 = reader.readLine();
           String sRegion4 = reader.readLine();
           reader.close();
-          Bracket b = Bracket.newTransientInstance();
+          Bracket b = Bracket.newDbInstance(Bracket.PERFECT_ID);
           b.importFromWebapp(sRegion1, sRegion2, sRegion3, sRegion4, sFF);
           return b;
       } catch (IOException e) {

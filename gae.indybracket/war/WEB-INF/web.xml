@@ -46,7 +46,7 @@
 
   <servlet>
     <servlet-name>fetchmaster</servlet-name>
-    <servlet-class>net.indybracket.tourney.servlet.FetchMaster</servlet-name>
+    <servlet-class>net.indybracket.tourney.servlet.FetchMaster</servlet-class>
     <init-param>
       <param-name>masterurl</param-name>
       <param-value>https://raw.github.com/indymag/indybracket/master/data/2013/test.txt</param-value>

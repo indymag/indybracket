@@ -103,7 +103,9 @@ public abstract class BaseAction
     } // addError()
     
     public Bracket readMaster() {
-    	return ofy().load().type(Bracket.class).id(Bracket.PERFECT_ID).get();
+    	Bracket b = ofy().load().type(Bracket.class).id(Bracket.PERFECT_ID).get();
+    	b.init();
+    	return b;
     }
 
     /*
