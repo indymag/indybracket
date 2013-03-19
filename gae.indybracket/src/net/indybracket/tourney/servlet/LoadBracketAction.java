@@ -32,6 +32,7 @@ public class LoadBracketAction
         ActionMapping oMapping, ActionForm oActionForm,
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
+//    	if (true) throw new RuntimeException("No!");
         String oReturnCode = FORWARD_RETURN_SUCCESS;
         InitUtil.setupTeams(getResources(oRequest));
 

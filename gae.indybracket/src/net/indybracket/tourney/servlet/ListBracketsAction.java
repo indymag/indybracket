@@ -49,7 +49,6 @@ public class ListBracketsAction
         ActionMapping oMapping, ActionForm oActionForm,
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
-    	if (true) throw new RuntimeException("Not yet!");
         String oReturnCode = FORWARD_RETURN_SUCCESS;
         String sSortBy = oRequest.getParameter("sortBy");
         String sAsc = oRequest.getParameter("asc");
@@ -57,8 +56,6 @@ public class ListBracketsAction
         {  
         	InitUtil.setupTeams(getResources(oRequest));
         	
-        	ofy().save().entity(Bracket.newDbInstance(Bracket.PERFECT_ID)).now();
-
         	Bracket oMaster = readMaster();
         	if (oMaster == null)
         	{
