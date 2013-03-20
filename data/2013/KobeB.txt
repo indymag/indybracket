@@ -1,0 +1,5 @@
+Syracuse,Michigan St.,Michigan St.
+Indiana,NC St.,UNLV,Syracuse,Butler,Marquette,Illinois,Miami,NC St.,Syracuse,Marquette,Illinois,Syracuse,Marquette,Syracuse
+Kansas,North Carolina,VCU,Michigan,UCLA,Florida,San Diego St.,Georgetown,North Carolina,Michigan,Florida,San Diego St.,Michigan,Florida,Michigan
+Louisville,Colorado St.,Oklahoma St.,St. Louis,Memphis,Michigan St.,Creighton,Duke,Colorado St.,St. Louis,Michigan St.,Creighton,St. Louis,Michigan St.,Michigan St.
+Southern,Pittsburgh,Wisconsin,Kansas St.,Arizona,New Mexico,Notre Dame,Ohio St.,Pittsburgh,Kansas St.,New Mexico,Notre Dame,Kansas St.,Notre Dame,Kansas St.

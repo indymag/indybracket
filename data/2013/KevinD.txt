@@ -1,0 +1,5 @@
+Marquette,St. Louis,St. Louis
+Indiana,Temple,UNLV,Syracuse,Butler,Marquette,Illinois,Miami,Temple,Syracuse,Marquette,Illinois,Syracuse,Marquette,Marquette
+Western Kentucky,Villanova,VCU,Michigan,UCLA,Florida,San Diego St.,Georgetown,Villanova,Michigan,UCLA,San Diego St.,Michigan,UCLA,UCLA
+Louisville,Missouri,Oregon,St. Louis,Memphis,Michigan St.,Creighton,Duke,Missouri,St. Louis,Michigan St.,Creighton,St. Louis,Creighton,St. Louis
+Gonzaga,Pittsburgh,Wisconsin,Kansas St.,Arizona,New Mexico,Notre Dame,Ohio St.,Pittsburgh,Kansas St.,New Mexico,Notre Dame,Pittsburgh,New Mexico,Pittsburgh
