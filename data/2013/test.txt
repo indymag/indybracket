@@ -2,4 +2,4 @@
 Indiana,Temple, , , , , , , , , , , , ,
 , , , , , , , , , , , , , ,
 Louisville, , ,Montana, ,Valparaiso, , , , , , , , ,
-, ,Wisconsin,Kansas St., , , , , ,Wisconsin, , , , ,
+, ,Wisconsin,Kansas St., , , , , , , , , , ,
