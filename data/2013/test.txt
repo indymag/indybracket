@@ -2,4 +2,4 @@
 Indiana,Temple, ,Montana, , , , , , , , , , ,
 , , , , , , , , , , , , , ,
 Louisville, , , , ,Valparaiso, , , , , , , , ,
-, ,Wisconsin,Kansas St., , , , , ,Wisconsin, , , , ,
+Gonzaga,Pittsburgh,Wisconsin,Kansas St., , , , ,Pittsburgh,Wisconsin, , ,Pittsburgh, ,
