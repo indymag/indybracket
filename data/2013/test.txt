@@ -1,5 +1,5 @@
 , ,
-Indiana,Temple,UNLV,Montana, , , , , , , , , , ,
+Indiana,Temple,UNLV,Montana,Butler, , , , , , , , , ,
 Western Kentucky,Villanova,Akron,Michigan,Minnesota,Northwestern St., , , , , , , , ,
 Louisville,Missouri,Oregon,St. Louis,Memphis,Valparaiso,Creighton,Duke,Missouri,St. Louis,Memphis,Creighton, , ,
 Gonzaga,Pittsburgh,Wisconsin,Kansas St.,Belmont,Harvard,Iowa St.,Iona,Pittsburgh,Wisconsin, , ,Pittsburgh, ,
