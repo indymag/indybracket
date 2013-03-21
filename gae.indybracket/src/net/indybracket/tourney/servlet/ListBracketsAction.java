@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.indybracket.tourney.common.BeatenTable;
 import net.indybracket.tourney.common.Bracket;
-import net.indybracket.tourney.common.Team;
 import net.indybracket.tourney.scoring.BlazerScorer2;
 import net.indybracket.tourney.scoring.BracketResult;
 import net.indybracket.tourney.scoring.PoolGrader;
@@ -19,7 +18,6 @@ import net.indybracket.tourney.scoring.PoolStandings;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.util.MessageResources;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
@@ -82,7 +80,7 @@ public class ListBracketsAction
             BeatenTable oBeatenBy = new BeatenTable();
             PoolStandings oStandings = oGrader.gradePool(
             		oBrackets.toArray(new Bracket[oBrackets.size()]),oBeatenBy, sSortBy,sAsc);
-//            oBeatenBy.persist();
+            oBeatenBy.persist();
 
             Vector oScores = convertStandings(oStandings, oBeatenBy);
 

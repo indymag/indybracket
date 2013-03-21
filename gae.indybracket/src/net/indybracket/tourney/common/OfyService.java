@@ -6,7 +6,12 @@ import com.googlecode.objectify.ObjectifyService;
 
 public class OfyService {
 	static {
-		factory().register(Bracket.class);
+		try {
+			factory().register(Bracket.class);
+			factory().register(BeatenEntry.class);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public static Objectify ofy() {
