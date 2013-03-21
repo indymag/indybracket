@@ -66,7 +66,7 @@
 
   <!-- The Usual Welcome File List -->
   <welcome-file-list>
-    <welcome-file>jsp/pre-deadline-main.jsp</welcome-file>
+    <welcome-file>jsp/post-deadline-main.jsp</welcome-file>
   </welcome-file-list>
 
   <!-- Struts Tag Library Descriptors -->
