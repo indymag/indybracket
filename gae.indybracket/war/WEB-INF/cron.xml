@@ -4,6 +4,6 @@
     <url>/cron/fetch</url>
     <description>Fetch master file from github</description>
     <schedule>every 1 minutes</schedule>
-    <target>post-casaba</target>
+    <target>post-squeaky</target>
   </cron>
 </cronentries>
