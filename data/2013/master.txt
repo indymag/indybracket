@@ -1,5 +1,5 @@
 , ,
 , , , ,Butler,Marquette, , , , , , , , ,
-, , , , , , , , , , , , , ,
-, ,Oregon,St. Louis,Memphis,Michigan St., , , , , , , , ,
+, , ,Michigan, , , , , , , , , , ,
+Louisville, ,Oregon,St. Louis,Memphis,Michigan St., , , , , , , , ,
 Gonzaga,Wichita St., , , , , , , , , , , , ,
