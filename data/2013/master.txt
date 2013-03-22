@@ -2,4 +2,4 @@
 , ,California, ,Butler,Marquette, , , , , , , , ,
 , ,VCU,Michigan, , , , , , , , , , ,
 Louisville,Colorado St.,Oregon,St. Louis,Memphis,Michigan St., , , , , , , , ,
-Gonzaga,Wichita St., , ,Arizona, , , , , , , , , ,
+Gonzaga,Wichita St., , ,Arizona,Harvard, , , , , , , , ,
