@@ -1,5 +1,5 @@
 , ,
-, ,California, ,Butler,Marquette, , , , , , , , ,
+, ,California,Syracuse,Butler,Marquette, , , , , , , , ,
 , ,VCU,Michigan, , , , , , , , , , ,
 Louisville,Colorado St.,Oregon,St. Louis,Memphis,Michigan St., , , , , , , , ,
 Gonzaga,Wichita St., , ,Arizona,Harvard, , , , , , , , ,
