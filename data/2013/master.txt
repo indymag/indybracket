@@ -1,5 +1,5 @@
 , ,
-,Temple,California,Syracuse,Butler,Marquette, ,Miami, , , , , , ,
+Indiana,Temple,California,Syracuse,Butler,Marquette,Illinois,Miami, , , , , , ,
 , ,VCU,Michigan, , , , , , , , , , ,
 Louisville,Colorado St.,Oregon,St. Louis,Memphis,Michigan St.,Creighton,Duke, , , , , , ,
 Gonzaga,Wichita St.,Ole Miss,Boise St. or La Salle,Arizona,Harvard, , , , , , , , ,
