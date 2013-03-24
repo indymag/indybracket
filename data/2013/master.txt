@@ -1,5 +1,5 @@
 , ,
 Indiana,Temple,California,Syracuse,Butler,Marquette,Illinois,Miami,Indiana,Syracuse,Marquette, , , ,
-Kansas,North Carolina,VCU,Michigan,Minnesota,Florida,San Diego St.,Florida GC, ,Michigan, , , , ,
+Kansas,North Carolina,VCU,Michigan,Minnesota,Florida,San Diego St.,Florida GC,Kansas,Michigan, , , , ,
 Louisville,Colorado St.,Oregon,St. Louis,Memphis,Michigan St.,Creighton,Duke,Louisville,Oregon,Michigan St., , , ,
 Gonzaga,Wichita St.,Ole Miss,Boise St. or La Salle,Arizona,Harvard,Iowa St.,Ohio St.,Wichita St., ,Arizona,Ohio St., , ,
