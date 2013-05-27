@@ -2,7 +2,6 @@ package net.indybracket.tourney.servlet;
 
 import static net.indybracket.tourney.common.OfyService.ofy;
 
-import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;

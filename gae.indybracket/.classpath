@@ -11,6 +11,7 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-logging.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-collections.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-4.0b1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-14.0-rc1.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jsr305-2.0.1.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-14.0.1.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

@@ -42,7 +42,6 @@ public class SaveBracketAction
         ActionMapping oMapping, ActionForm oActionForm,
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
-    	if (true) throw new RuntimeException("No!");
     	InitUtil.setupTeams(getResources(oRequest));
 
         String oReturnCode = FORWARD_RETURN_SUCCESS;

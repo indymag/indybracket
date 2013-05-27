@@ -1,6 +1,5 @@
 package net.indybracket.tourney.servlet;
 
-import static net.indybracket.tourney.common.OfyService.ofy;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,7 +31,6 @@ public class LoadBracketAction
         ActionMapping oMapping, ActionForm oActionForm,
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
-    	if (true) throw new RuntimeException("No!");
         String oReturnCode = FORWARD_RETURN_SUCCESS;
         InitUtil.setupTeams(getResources(oRequest));
 
