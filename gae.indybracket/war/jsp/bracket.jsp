@@ -4,12 +4,13 @@
 <html>
 <head>
  <title>Tourney</title>
-<link href="css/styles.css" rel="stylesheet" type="text/css"/>
-<script language="javascript" src="js/jsFunctions.js"></script>
-<script language="javascript" src="js/initpage.js"></script>
+ <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+ <script language="javascript" src="js/jsFunctions.js"></script>
+ <script type="application/dart" src="dart2js/initpage.dart"></script>
+ <script src="dart2js/packages/browser/dart.js"></script>
 </head>
 
-<body onLoad="initPage()">
+<body>
 <div id="eastWinnersSession" class="loadedRegionSession"><%= session.getAttribute("eastWinners") %></div>
 <div id="southWinnersSession" class="loadedRegionSession"><%= session.getAttribute("southWinners") %></div>
 <div id="midwestWinnersSession" class="loadedRegionSession"><%= session.getAttribute("midwestWinners") %></div>
