@@ -20,6 +20,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
+import com.google.common.collect.Lists;
 
 
 /*
@@ -116,6 +117,11 @@ public abstract class BaseAction
      */
      public Bracket readBracket(final String name, final String email, boolean bComplete)
      {
+    	try {
+    	  FluentIterable.from(Lists.newArrayList());
+        } catch (Throwable th) {
+          // Hack to work around JSR 305 issues with Guava inside of AppEngine developer SDK.
+    	}    	 
      	FluentIterable<Bracket> brackets = FluentIterable.from(ofy().load().type(Bracket.class).filter("msEntryName", name));
      	if (email != null) {
      		brackets = brackets.filter(new Predicate<Bracket>() {
