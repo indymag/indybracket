@@ -4,22 +4,29 @@
 <html>
 <head>
  <title>Tourney</title>
- <link href="css/styles.css" rel="stylesheet" type="text/css"/>
- <script language="javascript" src="js/jsFunctions.js"></script>
- <script type="application/dart" src="dart2js/initpage.dart"></script>
- <script src="dart2js/packages/browser/dart.js"></script>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<script language="javascript" src="js/jsFunctions.js"></script>
+<script language="javascript">
+      document.onkeyup = KeyCheck; 
+      function initPage()
+      {
+      		var eastW = '<%= session.getAttribute("eastWinners") %>';
+      		var southW = '<%= session.getAttribute("southWinners") %>';
+      		var midwestW = '<%= session.getAttribute("midwestWinners") %>';
+      		var westW = '<%= session.getAttribute("westWinners") %>';
+      		var ffW = '<%= session.getAttribute("ffWinners") %>';
+	      	populateRegions(eastW,southW,midwestW,westW,ffW,false);
+	      	
+	      	var sErrorCode = '<%= request.getAttribute("errorCode") %>';
+	      	var sMissingRegion = '<%= request.getAttribute("missingRegion") %>';
+	      	var bGoodValidate = '<%= request.getAttribute("goodValidate") %>';
+	      	
+      		viewBracket("east",1, sMissingRegion, sErrorCode, bGoodValidate);		
+      }      
+</script>
 </head>
 
-<body>
-<div id="eastWinnersSession" class="loadedRegionSession"><%= session.getAttribute("eastWinners") %></div>
-<div id="southWinnersSession" class="loadedRegionSession"><%= session.getAttribute("southWinners") %></div>
-<div id="midwestWinnersSession" class="loadedRegionSession"><%= session.getAttribute("midwestWinners") %></div>
-<div id="westWinnersSession" class="loadedRegionSession"><%= session.getAttribute("westWinners") %></div>
-<div id="ffWinnersSession" class="loadedRegionSession"><%= session.getAttribute("ffWinners") %></div>
-
-<div id="sErrorCode" style="display: none;"><%= request.getAttribute("errorCode") %></div>
-<div id="sMissingRegion" style="display: none;"><%= request.getAttribute("missingRegion") %></div>
-<div id="bGoodValidate" style="display: none;"><%= request.getAttribute("goodValidate") %></div>
+<body onLoad="initPage()">
 
 <div id="_eastTab" class="eastTab"><a href="#" onClick="viewBracket('east',1)" class="tabLink">EAST</a></div>
 <div id="_southTab" class="southTab"><a href="#" onClick="viewBracket('south',2)" class="tabLink">SOUTH</a></div>
