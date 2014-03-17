@@ -16,7 +16,7 @@ I don't take any cut and pay like everyone else.  100% of the collected money go
 y can win more than one prize, even all of them.
 <ul>
 <li>The entry with the most points wins. This prize is 80% of the total.</b>
-<li>The entry that has the highest <b>max</b> after the first two rounds will get 10% (16 teams will be left).
+<li>The entry that has the highest <b>max possible points</b> after the first two rounds will get 10% (16 teams will be left).
 <li>The entry that knocks out the most other entries will get 10%.
 </ul>
 
