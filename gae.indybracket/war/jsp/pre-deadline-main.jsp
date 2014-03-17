@@ -18,7 +18,7 @@ I reserve the right to refuse any entry before the games start.</b>
 <br><br>
 <b>Fee</b>: $10
 <br><br>
-<b>Deadline</b>:  Thursday 3/21/2013 at 11:00 a.m. EDT 
+<b>Deadline</b>:  Thursday 3/20/2014 at 11:00 a.m. EDT 
 <br><br>
 <b>Prize</b>: Winner takes all, I take no cut and get no discount.
 <br><br>
@@ -41,10 +41,10 @@ weights are listed below.
 <li>6th Round - 50</li>
 </ul>
 
-So if you pick Kansas (#1 seed) to win their first 3 games and 
+So if you pick Florida (#1 seed) to win their first 3 games and 
 they only win their first 2, you would get 
 (1+4)*2 + (1+4)*4 = 30 points for their wins.  If you pick 
-Memphis (#6 seed) to win 2 games and they do, you would get 
+Baylor (#6 seed) to win 2 games and they do, you would get 
 (6+4)*2 + (6+4)*4 = 60 points for their wins.
 
 <br><br>
