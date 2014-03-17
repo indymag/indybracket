@@ -11,8 +11,18 @@
 <div class="titleBar">&nbsp;</div>
 <div class="titleHeader">NCAA Bracket Challenge</div>
 <div class="tourneyInfo">
-<br><br>
-<b>Scoring System</b>
+<h2>Prizes</h2>
+I don't take any cut and pay like everyone else.  100% of the collected money goes toward the prizes below.  The same entr
+y can win more than one prize, even all of them.
+<ul>
+<li>The entry with the most points wins. This prize is 80% of the total.</b>
+<li>The entry that has the highest <b>max</b> after the first two rounds will get 10% (16 teams will be left).
+<li>The entry that knocks out the most other entries will get 10%.
+</ul>
+
+In the event of any ties, the prize that was tied will be split evenly. For example, if two entries both knocked out the m
+ost other entries, they will each get 5% of the total (split 10% prize two ways).
+<h2>Scoring System</h2>
 <br>
 This year's scoring system is the same as in the most recent years.  
 It will be (seed + 4) * round weight for each win.  The round 
