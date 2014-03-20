@@ -1,5 +1,5 @@
 , ,
-, ,Harvard, , , , , , , , , , , ,
+, ,Harvard,Michigan St., , , , , , , , , , ,
 Florida,Pittsburgh, , ,Dayton,Syracuse, , , , , , , , ,
 , , , , , , , , , , , , , ,
 , , , , , ,Oregon,Wisconsin, , , , , , ,
