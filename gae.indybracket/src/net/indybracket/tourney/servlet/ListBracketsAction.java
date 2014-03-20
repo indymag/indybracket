@@ -24,6 +24,7 @@ import com.google.common.collect.FluentIterable;
 /**
  * @author Scott Mennealy
  */
+import com.google.common.collect.Lists;
 
 
 /*
@@ -47,7 +48,8 @@ public class ListBracketsAction
         ActionMapping oMapping, ActionForm oActionForm,
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
-        String oReturnCode = FORWARD_RETURN_SUCCESS;
+    	doJsrGuavaHack();
+    	String oReturnCode = FORWARD_RETURN_SUCCESS;
         String sSortBy = oRequest.getParameter("sortBy");
         String sAsc = oRequest.getParameter("asc");
         try
