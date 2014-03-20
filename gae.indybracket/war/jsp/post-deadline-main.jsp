@@ -12,8 +12,7 @@
 <div class="titleHeader">NCAA Bracket Challenge</div>
 <div class="tourneyInfo">
 <h2>Prizes</h2>
-I don't take any cut and pay like everyone else.  100% of the collected money goes toward the prizes below.  The same entr
-y can win more than one prize, even all of them.
+I don't take any cut and pay like everyone else.  100% of the collected money goes toward the prizes below.  The same entry can win more than one prize, even all of them.
 <ul>
 <li>The entry with the most points wins. This prize is 80% of the total.</b>
 <li>The entry that has the highest <b>max possible points</b> after the first two rounds will get 10% (16 teams will be left).
@@ -47,10 +46,7 @@ There are 4 play-in games.  These don't matter.  If you pick a play-in game winn
 round, you'll get points if either of the teams win.  It doesn't
 matter who wins the play-in game.
 <br><br>
-<b>Whoever has the most points wins.</b>
-<br><br>
 Feel free to ask questions as always.
-<br><br>Note: You can use the arrow keys to navigate through the regions
 <br><br>
 -- CS
 </div>
