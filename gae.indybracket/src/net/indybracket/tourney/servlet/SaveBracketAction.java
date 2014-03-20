@@ -42,6 +42,8 @@ public class SaveBracketAction
         ActionMapping oMapping, ActionForm oActionForm,
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
+    	if (true) return oMapping.findForward(FORWARD_RETURN_FAILURE);
+    	
     	InitUtil.setupTeams(getResources(oRequest));
 
         String oReturnCode = FORWARD_RETURN_SUCCESS;
