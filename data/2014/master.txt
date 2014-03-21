@@ -1,5 +1,5 @@
 , ,
 , ,Harvard,Michigan St., , ,UConn,Villanova, , , , , , ,
 Florida,Pittsburgh, , ,Dayton,Syracuse, , , , , , , , ,
-, ,St. Louis,Louisville, , ,Texas,Michigan, , , , , , ,
+, ,St. Louis,Louisville, ,Mercer,Texas,Michigan, , , , , , ,
 , ,N. Dakota St.,San Diego St., , ,Oregon,Wisconsin, , , , , , ,
