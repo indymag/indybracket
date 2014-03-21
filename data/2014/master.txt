@@ -2,4 +2,4 @@
 , ,Harvard,Michigan St., , ,UConn,Villanova, , , , , , ,
 Florida,Pittsburgh, , ,Dayton,Syracuse,Stanford, , , , , , , ,
 , ,St. Louis,Louisville,Iowa or Tennessee,Mercer,Texas,Michigan, , , , , , ,
-Arizona, ,N. Dakota St.,San Diego St.,Baylor, ,Oregon,Wisconsin, , , , , , ,
+Arizona, ,N. Dakota St.,San Diego St.,Baylor,Creighton,Oregon,Wisconsin, , , , , , ,
