@@ -1,5 +1,5 @@
 , ,
 ,Memphis,Harvard,Michigan St., , ,UConn,Villanova, , , , , , ,
 Florida,Pittsburgh, , ,Dayton,Syracuse,Stanford,Kansas, , , , , , ,
-, ,St. Louis,Louisville,Iowa or Tennessee,Mercer,Texas,Michigan, , , , , , ,
+Wichita St., ,St. Louis,Louisville,Iowa or Tennessee,Mercer,Texas,Michigan, , , , , , ,
 Arizona,Gonzaga,N. Dakota St.,San Diego St.,Baylor,Creighton,Oregon,Wisconsin, , , , , , ,
