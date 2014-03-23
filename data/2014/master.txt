@@ -1,5 +1,5 @@
 , ,
 Virginia,Memphis,Harvard,Michigan St.,North Carolina,Iowa St.,UConn,Villanova, , , , , , ,
-Florida,Pittsburgh,Stephen F. Austin,UCLA,Dayton,Syracuse,Stanford,Kansas,Florida, , ,Dayton, , ,
+Florida,Pittsburgh,Stephen F. Austin,UCLA,Dayton,Syracuse,Stanford,Kansas,Florida, ,Dayton, , , ,
 Wichita St.,Kentucky,St. Louis,Louisville,Iowa or Tennessee,Mercer,Texas,Michigan, ,Louisville, ,Michigan, , ,
 Arizona,Gonzaga,N. Dakota St.,San Diego St.,Baylor,Creighton,Oregon,Wisconsin, ,San Diego St., , , , ,
