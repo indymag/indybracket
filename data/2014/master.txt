@@ -2,4 +2,4 @@
 Virginia,Memphis,Harvard,Michigan St.,North Carolina,Iowa St.,UConn,Villanova,Virginia,Michigan St.,Iowa St.,UConn, , ,
 Florida,Pittsburgh,Stephen F. Austin,UCLA,Dayton,Syracuse,Stanford,Kansas,Florida,UCLA,Dayton,Stanford, ,Dayton,
 Wichita St.,Kentucky,St. Louis,Louisville,Iowa or Tennessee,Mercer,Texas,Michigan,Kentucky,Louisville,Iowa or Tennessee,Michigan, , ,
-Arizona,Gonzaga,N. Dakota St.,San Diego St.,Baylor,Creighton,Oregon,Wisconsin,Arizona,San Diego St.,Baylor,Wisconsin, , ,
+Arizona,Gonzaga,N. Dakota St.,San Diego St.,Baylor,Creighton,Oregon,Wisconsin,Arizona,San Diego St.,Baylor,Wisconsin, ,Wisconsin,
