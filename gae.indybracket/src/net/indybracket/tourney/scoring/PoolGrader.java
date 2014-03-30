@@ -33,14 +33,14 @@ public class PoolGrader
 		}
 	          
 		fillInBetterBrackets(oResults, oBeatenBy);		
-		Arrays.sort(oResults, BracketResult.comparator(sSortBy,Boolean.parseBoolean(sAsc)));
+		Arrays.sort(oResults, BracketResult.comparator(sSortBy,Boolean.parseBoolean(sAsc), oBeatenBy));
 		
 		return new PoolStandings(oResults);
 	}
 
 	private void fillInBetterBrackets(BracketResult[] oResults, BeatenTable oBeatenBy) 
 	{
-		Arrays.sort(oResults, BracketResult.comparator("score",false));
+		Arrays.sort(oResults, BracketResult.comparator("score",false, oBeatenBy));
 		for (int i=0; i < oResults.length; i++)
 		{
 			BracketResult oResult = oResults[i];

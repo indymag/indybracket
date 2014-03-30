@@ -2,6 +2,7 @@ package net.indybracket.tourney.scoring;
 
 import java.util.Comparator;
 
+import net.indybracket.tourney.common.BeatenTable;
 import net.indybracket.tourney.common.Bracket;
 import net.indybracket.tourney.common.Match;
 
@@ -92,26 +93,26 @@ public class BracketResult extends Bracket
     {
     	moBetterBracket = val;
     }
-    public static Comparator comparator(String sSortBy, boolean bAsc)
+    public static Comparator<BracketResult> comparator(String sSortBy, boolean bAsc, BeatenTable oBeatenBy)
     {
-        return new BracketResult().new BracketResultComparator(sSortBy, bAsc);
+        return new BracketResult().new BracketResultComparator(sSortBy, bAsc, oBeatenBy);
     }
 
-    public class BracketResultComparator implements Comparator
+    public class BracketResultComparator implements Comparator<BracketResult>
     {
         private String msSortBy = "score";
         private boolean mbAscending = false;
-        public BracketResultComparator(String sSortBy, boolean bAsc)
+        private BeatenTable moBeatenBy = null;
+        public BracketResultComparator(String sSortBy, boolean bAsc, BeatenTable oBeatenBy)
         {
         	msSortBy = sSortBy;
             mbAscending = bAsc;
+            moBeatenBy = oBeatenBy;
         }
-        public int compare(Object arg0, Object arg1)
+        public int compare(BracketResult oOne, BracketResult oTwo)
         {
-        	int returnVal = 0;;
-        	
-        	BracketResult oOne = (BracketResult) arg0;
-        	BracketResult oTwo = (BracketResult) arg1;
+        	int returnVal = 0;
+        	boolean doDefault = false;
         	if(msSortBy.equals("ff"))
         	{
 	        	if (oOne.getNumFinalFourAlive() > oTwo.getNumFinalFourAlive()) {
@@ -119,6 +120,8 @@ public class BracketResult extends Bracket
 	            }
 	            else if (oOne.getNumFinalFourAlive() < oTwo.getNumFinalFourAlive()) {
 	                returnVal = 1;
+	            } else {
+	            	doDefault = true;
 	            }
         	}
         	else if(msSortBy.equals("winner"))
@@ -140,19 +143,21 @@ public class BracketResult extends Bracket
         	}
         	else if(msSortBy.equals("better"))
         	{
-        		Bracket oBetterBracket1 = oOne.getBetterBracket();
-        		Bracket oBetterBracket2 = oTwo.getBetterBracket();
-        		if((oBetterBracket1 != null) && (oBetterBracket2 == null))
+        		String better1 = moBeatenBy.get(oOne.getBracket().getName());
+        		String better2 = moBeatenBy.get(oTwo.getBracket().getName());
+        		if((better1 != null) && (better2 == null))
         		{
         			returnVal = -1;
         		}
-        		else if((oBetterBracket1 == null) && (oBetterBracket2 != null))
+        		else if ((better1 == null) && (better2 != null))
         		{
         			returnVal = 1;
         		}
-        		else
+        		else if ((better1 == null) && (better2 == null))
         		{
-        			returnVal = 0;
+        			doDefault = true;
+        		} else {
+        			returnVal = better1.compareTo(better2);        			
         		}
         	}	        		
         	else if(msSortBy.equals("max"))
@@ -163,10 +168,16 @@ public class BracketResult extends Bracket
         	
         		else if (oOne.getMax() < oTwo.getMax()) {
         			returnVal = 1;
+        		} else {
+        			doDefault = true;
         		}
         	}
         	else
         	{
+        		doDefault = true;
+        	}
+        	
+        	if (doDefault) {
 	        	if (oOne.getScore() > oTwo.getScore()) {
 	                returnVal = -1;
 	            }
@@ -181,7 +192,6 @@ public class BracketResult extends Bracket
             }	
             
             return returnVal;
-        }
-        
+        }        
     }
 }
