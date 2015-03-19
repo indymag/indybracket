@@ -1,5 +1,5 @@
 , ,
 , , , , , , , , , , , , , ,
-, , , , ,UAB, , , , , , , , ,
+, , , ,UCLA,UAB, , , , , , , , ,
 , , , ,Butler,Notre Dame, , , , , , , , ,
 , , , , ,Georgia St., ,Arizona, , , , , , ,
