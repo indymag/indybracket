@@ -2,4 +2,4 @@
 , , , , , , , , , , , , , ,
 , , , ,UCLA,UAB, , , , , , , , ,
 , , , ,Butler,Notre Dame, , , , , , , , ,
-, , , , ,Georgia St., ,Arizona, , , , , , ,
+, , , ,Xavier,Georgia St., ,Arizona, , , , , , ,
