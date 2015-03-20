@@ -1,5 +1,5 @@
 , ,
 Villanova, , , , , , , , , , , , , ,
-, , , ,UCLA,UAB, , , , , , , , ,
+, ,Utah, ,UCLA,UAB, , , , , , , , ,
 ,Cincinatti, , ,Butler,Notre Dame, , , , , , , , ,
 , , ,North Carolina,Xavier,Georgia St.,Ohio St.,Arizona, , , , , , ,
