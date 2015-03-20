@@ -2,4 +2,4 @@
 Villanova, , , , , , , , , , , , , ,
 , , , ,UCLA,UAB, , , , , , , , ,
 ,Cincinatti, , ,Butler,Notre Dame, , , , , , , , ,
-, , , ,Xavier,Georgia St.,Ohio St.,Arizona, , , , , , ,
+, , ,North Carolina,Xavier,Georgia St.,Ohio St.,Arizona, , , , , , ,
