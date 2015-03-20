@@ -1,5 +1,5 @@
 , ,
 Villanova,NC State, , , , , , , , , , , , ,
 , ,Utah,Georgetown,UCLA,UAB, , , , , , , , ,
-Kentucky,Cincinatti, , ,Butler,Notre Dame, , , , , , , , ,
+Kentucky,Cincinatti,West Virginia,Maryland,Butler,Notre Dame, , , , , , , , ,
 , ,Arkansas,North Carolina,Xavier,Georgia St.,Ohio St.,Arizona, , , , , , ,
