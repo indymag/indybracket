@@ -1,5 +1,5 @@
 , ,
 Villanova,NC State,N. Iowa,Louisville, , ,Michigan St.,Virginia, , , , , , ,
-, ,Utah,Georgetown,UCLA,UAB, , , , , , , , ,
+Duke, ,Utah,Georgetown,UCLA,UAB, , , , , , , , ,
 Kentucky,Cincinatti,West Virginia,Maryland,Butler,Notre Dame,Wichita St.,Kansas, , , , , , ,
 ,Oregon,Arkansas,North Carolina,Xavier,Georgia St.,Ohio St.,Arizona, , , , , , ,
