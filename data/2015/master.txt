@@ -1,5 +1,5 @@
 , ,
 Villanova,NC State,N. Iowa,Louisville,Boise St./Dayton,Oklahoma,Michigan St.,Virginia,NC State, , , , , ,
 Duke,San Diego St.,Utah,Georgetown,UCLA,UAB,Iowa,Gonzaga, ,Utah,UCLA, , , ,
-Kentucky,Cincinatti,West Virginia,Maryland,Butler,Notre Dame,Wichita St.,Kansas,Kentucky, , , , , ,
+Kentucky,Cincinatti,West Virginia,Maryland,Butler,Notre Dame,Wichita St.,Kansas,Kentucky, ,Notre Dame, , , ,
 Wisconsin,Oregon,Arkansas,North Carolina,Xavier,Georgia St.,Ohio St.,Arizona, ,North Carolina,Xavier,Arizona, , ,
