@@ -20,45 +20,41 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-
 /*
-********************************************************************************
-* Class: ResetAction
-********************************************************************************
-*/ /**
+ ********************************************************************************
+ * Class: ResetAction
+ ********************************************************************************
+ *//**
 *
 */
-public class ResetAction
-    extends BaseAction
-{
-    /*
-    ****************************************************************************
-    * doExecute()
-    ****************************************************************************
-    */ /**
+public class ResetAction extends BaseAction {
+  /*
+   * ***************************************************************************
+   * doExecute()
+   * ***************************************************************************
+   *//**
     *
     */
-    public ActionForward doExecute(
-        ActionMapping oMapping, ActionForm oActionForm,
-        HttpServletRequest oRequest, HttpServletResponse oResponse)
-    {
-        oSession.setAttribute("ffWinners", "");
-        oSession.setAttribute("eastWinners", "");
-        oSession.setAttribute("southWinners", "");
-        oSession.setAttribute("midwestWinners", "");
-        oSession.setAttribute("westWinners", "");
-        oSession.setAttribute("loadedBracketName", "");
-        oSession.setAttribute("eastFFLabel", "");
-        oSession.setAttribute("southFFLabel", "");
-        oSession.setAttribute("midwestFFLabel", "");
-        oSession.setAttribute("westFFLabel", "");
-        oSession.setAttribute("eastFF", "");
-        oSession.setAttribute("southFF", "");
-        oSession.setAttribute("midwestFF", "");
-        oSession.setAttribute("westFF", "");
+  public ActionForward doExecute(ActionMapping oMapping,
+      ActionForm oActionForm, HttpServletRequest oRequest,
+      HttpServletResponse oResponse) {
+    oSession.setAttribute("ffWinners", "");
+    oSession.setAttribute("eastWinners", "");
+    oSession.setAttribute("southWinners", "");
+    oSession.setAttribute("midwestWinners", "");
+    oSession.setAttribute("westWinners", "");
+    oSession.setAttribute("loadedBracketName", "");
+    oSession.setAttribute("eastFFLabel", "");
+    oSession.setAttribute("southFFLabel", "");
+    oSession.setAttribute("midwestFFLabel", "");
+    oSession.setAttribute("westFFLabel", "");
+    oSession.setAttribute("eastFF", "");
+    oSession.setAttribute("southFF", "");
+    oSession.setAttribute("midwestFF", "");
+    oSession.setAttribute("westFF", "");
 
-        return oMapping.findForward(FORWARD_RETURN_SUCCESS);
+    return oMapping.findForward(FORWARD_RETURN_SUCCESS);
 
-    } // doExecute()
+  } // doExecute()
 
 } // Class: ResetAction

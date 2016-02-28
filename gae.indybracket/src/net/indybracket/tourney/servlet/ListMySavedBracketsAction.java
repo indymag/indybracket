@@ -29,26 +29,27 @@ public class ListMySavedBracketsAction extends BaseAction {
   }
 
   private List<DisplayBracketBean> getMyEntries() {
-    // Objectify doesn't want to work properly for filtering on msPrincipalName, even after re-saving a bracket.
+    // Objectify doesn't want to work properly for filtering on msPrincipalName,
+    // even after re-saving a bracket.
     // ** Jobu, I do it myself.
-    FluentIterable<Bracket> entries = FluentIterable.from(ofy().load().type(Bracket.class));
+    FluentIterable<Bracket> entries = FluentIterable.from(ofy().load().type(
+        Bracket.class));
     final String principal = getEmail();
 
-    return entries
-        .filter(new Predicate<Bracket>() {
-          @Override
-          public boolean apply(Bracket bracket) {
-            return bracket.getPrincipalName() != null && 
-                bracket.getPrincipalName().equals(principal);
-          }
-        })
-        .transform(new Function<Bracket, DisplayBracketBean>() {
-          @Override
-          public DisplayBracketBean apply(Bracket bracket) {
-            DisplayBracketBean oBean = new DisplayBracketBean();
-            oBean.setName(bracket.getEntryName());
-            oBean.setIsValid(bracket.isComplete());
-            return oBean;
-          }}).toList();
+    return entries.filter(new Predicate<Bracket>() {
+      @Override
+      public boolean apply(Bracket bracket) {
+        return bracket.getPrincipalName() != null
+            && bracket.getPrincipalName().equals(principal);
+      }
+    }).transform(new Function<Bracket, DisplayBracketBean>() {
+      @Override
+      public DisplayBracketBean apply(Bracket bracket) {
+        DisplayBracketBean oBean = new DisplayBracketBean();
+        oBean.setName(bracket.getEntryName());
+        oBean.setIsValid(bracket.isComplete());
+        return oBean;
+      }
+    }).toList();
   }
 }

@@ -5,21 +5,23 @@ import com.googlecode.objectify.annotation.Id;
 
 @Entity
 public class BeatenEntry {
-	@Id private String msLoser;
-	private String msBeater;
+  @Id
+  private String msLoser;
+  private String msBeater;
 
-	public BeatenEntry() {		
-	}
-	public BeatenEntry(String sBracket, String sBeatenBy) {
-		msLoser = sBracket;
-		msBeater = sBeatenBy;
-	}
-	
-	public String getLoser() {
-		return msLoser;
-	}
-	
-	public String getBeater() {
-		return msBeater;
-	}
+  public BeatenEntry() {
+  }
+
+  public BeatenEntry(String sBracket, String sBeatenBy) {
+    msLoser = sBracket;
+    msBeater = sBeatenBy;
+  }
+
+  public String getLoser() {
+    return msLoser;
+  }
+
+  public String getBeater() {
+    return msBeater;
+  }
 }

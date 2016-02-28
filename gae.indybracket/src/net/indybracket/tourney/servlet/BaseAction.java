@@ -22,161 +22,153 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Lists;
 
-
 /*
-********************************************************************************
-* Class: BaseAction
-********************************************************************************
-*/ /**
+ ********************************************************************************
+ * Class: BaseAction
+ ********************************************************************************
+ *//**
 *
 */
-public abstract class BaseAction
-    extends Action
-{
-	private static UserService userService = UserServiceFactory.getUserService();
+public abstract class BaseAction extends Action {
+  private static UserService userService = UserServiceFactory.getUserService();
 
-	public final String FORWARD_RETURN_SUCCESS = "success";
-	public final String FORWARD_RETURN_FAILURE = "failure";
-	
-    public String BRACKET_ROOT = "";
-    public String BRACKET_FILE_PATH = "";
-    public String BRACKET_COMPLETED_PATH = "";
-	public final int MAX_COMMENTS = 20;
+  public final String FORWARD_RETURN_SUCCESS = "success";
+  public final String FORWARD_RETURN_FAILURE = "failure";
 
-    public HttpSession oSession;
-    
-    /*
-    ****************************************************************************
-    * Constructor()
-    ****************************************************************************
-    */ /**
+  public String BRACKET_ROOT = "";
+  public String BRACKET_FILE_PATH = "";
+  public String BRACKET_COMPLETED_PATH = "";
+  public final int MAX_COMMENTS = 20;
+
+  public HttpSession oSession;
+
+  /*
+   * ***************************************************************************
+   * Constructor()
+   * ***************************************************************************
+   *//**
     *
     */
-    public BaseAction()
-    {
-        super();
+  public BaseAction() {
+    super();
 
-    } // Constructor()
+  } // Constructor()
 
-    /*
-    ****************************************************************************
-    * execute()
-    ****************************************************************************
-    */ /**
+  /*
+   * ***************************************************************************
+   * execute()
+   * ***************************************************************************
+   *//**
     *
     */
-    public ActionForward execute(
-        ActionMapping oMapping, ActionForm oActionForm,
-        HttpServletRequest oRequest, HttpServletResponse oResponse)
-        throws Exception
-    {
-    	ActionForward oReturn = null;
-    	doJsrGuavaHack();
-    	InitUtil.setupTeams(getResources(oRequest));
-        try
-        {
-	    	oSession = oRequest.getSession(false);	     
-	        oReturn = doExecute(oMapping, oActionForm, oRequest, oResponse);
-        }
-        catch(Exception e)
-        {
-        	oReturn = oMapping.findForward(FORWARD_RETURN_FAILURE);
-        }
-        
-        return oReturn;
-    } // execute()
-
-    /*
-    ****************************************************************************
-    * addError()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    protected void addError(HttpServletRequest oRequest, String sKey)
-    {
-        ActionMessages oMessages = new ActionMessages();
-        ActionMessage oMessage = new ActionMessage(sKey);
-
-        oMessages.add(Globals.ERROR_KEY, oMessage);
-
-        saveErrors(oRequest, oMessages);
-
-    } // addError()
-    
-    public Bracket readMaster() {
-    	Bracket b = ofy().load().type(Bracket.class).id(Bracket.PERFECT_ID).get();
-    	b.init();
-    	return b;
-    }
-    
-    protected void doJsrGuavaHack() {
-      try {
-        FluentIterable.from(Lists.newArrayList());
-       } catch (Throwable th) {
-         // Hack to work around JSR 305 issues with Guava inside of AppEngine developer SDK.
-       }    	     	    	
+  public ActionForward execute(ActionMapping oMapping, ActionForm oActionForm,
+      HttpServletRequest oRequest, HttpServletResponse oResponse)
+      throws Exception {
+    ActionForward oReturn = null;
+    doJsrGuavaHack();
+    InitUtil.setupTeams(getResources(oRequest));
+    try {
+      oSession = oRequest.getSession(false);
+      oReturn = doExecute(oMapping, oActionForm, oRequest, oResponse);
+    } catch (Exception e) {
+      oReturn = oMapping.findForward(FORWARD_RETURN_FAILURE);
     }
 
-    /*
-     ****************************************************************************
-     * readBracket()
-     ****************************************************************************
-     */ /**
+    return oReturn;
+  } // execute()
+
+  /*
+   * ***************************************************************************
+   * addError()
+   * ***************************************************************************
+   *//**
+    *
+    */
+  protected void addError(HttpServletRequest oRequest, String sKey) {
+    ActionMessages oMessages = new ActionMessages();
+    ActionMessage oMessage = new ActionMessage(sKey);
+
+    oMessages.add(Globals.ERROR_KEY, oMessage);
+
+    saveErrors(oRequest, oMessages);
+
+  } // addError()
+
+  public Bracket readMaster() {
+    Bracket b = ofy().load().type(Bracket.class).id(Bracket.PERFECT_ID).get();
+    b.init();
+    return b;
+  }
+
+  protected void doJsrGuavaHack() {
+    try {
+      FluentIterable.from(Lists.newArrayList());
+    } catch (Throwable th) {
+      // Hack to work around JSR 305 issues with Guava inside of AppEngine
+      // developer SDK.
+    }
+  }
+
+  /*
+   * ***************************************************************************
+   * readBracket()
+   * ***************************************************************************
+   *//**
      *
      */
-     public Bracket readBracket(final String name, final String email, boolean bComplete)
-     {
-        doJsrGuavaHack(); 
-     	FluentIterable<Bracket> brackets = FluentIterable.from(ofy().load().type(Bracket.class).filter("msEntryName", name));
-     	if (email != null) {
-     		brackets = brackets.filter(new Predicate<Bracket>() {
-				@Override
-				public boolean apply(Bracket b) {
-					return email.equalsIgnoreCase(b.getUserEmail());
-				}});
-     	}
-     	
-     	if (brackets.size() > 1) {
-     		throw new RuntimeException("Too many brackets matching name " + name);
-     	}
-     	
-     	if (brackets.isEmpty()) {
-     		return null;
-     	}
-     	
-     	Bracket oEntry = brackets.first().get();
-     	oEntry.init();
-     	oEntry.validate(bComplete);
-     	return oEntry;
-     } // readBracket()
-     
- 	public String getBracketId(String bracketName) {
- 		return getEmail() + "/" + bracketName;
- 	}
- 	
- 	public String fullNameToBracketId(String fullBracketName) {
- 		return fullBracketName.replace(" - ","/");
- 	} 	
- 	
- 	public String getEmail() {
- 		return userService.getCurrentUser().getEmail();
- 	}
- 	
- 	public String getNickname() {
- 		return userService.getCurrentUser().getNickname();
- 	}
-     
-    /*
-    ****************************************************************************
-    * doExecute()
-    ****************************************************************************
-    */ /**
+  public Bracket readBracket(final String name, final String email,
+      boolean bComplete) {
+    doJsrGuavaHack();
+    FluentIterable<Bracket> brackets = FluentIterable.from(ofy().load()
+        .type(Bracket.class).filter("msEntryName", name));
+    if (email != null) {
+      brackets = brackets.filter(new Predicate<Bracket>() {
+        @Override
+        public boolean apply(Bracket b) {
+          return email.equalsIgnoreCase(b.getUserEmail());
+        }
+      });
+    }
+
+    if (brackets.size() > 1) {
+      throw new RuntimeException("Too many brackets matching name " + name);
+    }
+
+    if (brackets.isEmpty()) {
+      return null;
+    }
+
+    Bracket oEntry = brackets.first().get();
+    oEntry.init();
+    oEntry.validate(bComplete);
+    return oEntry;
+  } // readBracket()
+
+  public String getBracketId(String bracketName) {
+    return getEmail() + "/" + bracketName;
+  }
+
+  public String fullNameToBracketId(String fullBracketName) {
+    return fullBracketName.replace(" - ", "/");
+  }
+
+  public String getEmail() {
+    return userService.getCurrentUser().getEmail();
+  }
+
+  public String getNickname() {
+    return userService.getCurrentUser().getNickname();
+  }
+
+  /*
+   * ***************************************************************************
+   * doExecute()
+   * ***************************************************************************
+   *//**
     *
     */
-    public abstract ActionForward doExecute(
-        ActionMapping oMapping, ActionForm oActionForm,
-        HttpServletRequest oRequest, HttpServletResponse oResponse)
-        throws Exception;
+  public abstract ActionForward doExecute(ActionMapping oMapping,
+      ActionForm oActionForm, HttpServletRequest oRequest,
+      HttpServletResponse oResponse) throws Exception;
 
 } // Class: BaseAction

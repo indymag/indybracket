@@ -26,125 +26,118 @@ import com.google.common.collect.FluentIterable;
  */
 import com.google.common.collect.Lists;
 
-
 /*
-********************************************************************************
-* Class: ListBracketsAction
-********************************************************************************
-*/ /**
+ ********************************************************************************
+ * Class: ListBracketsAction
+ ********************************************************************************
+ *//**
 *
 */
-public class ListBracketsAction
-    extends BaseAction
-{
-    /*
-    ****************************************************************************
-    * doExecute()
-    ****************************************************************************
-    */ /**
+public class ListBracketsAction extends BaseAction {
+  /*
+   * ***************************************************************************
+   * doExecute()
+   * ***************************************************************************
+   *//**
     *
     */
-    public ActionForward doExecute(
-        ActionMapping oMapping, ActionForm oActionForm,
-        HttpServletRequest oRequest, HttpServletResponse oResponse)
-    {
-    	// TODO - Use servlet params to determine if this action is allowed.
-    	if (false) return oMapping.findForward(FORWARD_RETURN_FAILURE);
+  public ActionForward doExecute(ActionMapping oMapping,
+      ActionForm oActionForm, HttpServletRequest oRequest,
+      HttpServletResponse oResponse) {
+    // TODO - Use servlet params to determine if this action is allowed.
+    if (false)
+      return oMapping.findForward(FORWARD_RETURN_FAILURE);
 
-    	String oReturnCode = FORWARD_RETURN_SUCCESS;
-        String sSortBy = oRequest.getParameter("sortBy");
-        String sAsc = oRequest.getParameter("asc");
-        try
-        {          	
-        	Bracket oMaster = readMaster();
-        	if (oMaster == null)
-        	{
-        		throw new RuntimeException("Unable to read master");
-        	}
+    String oReturnCode = FORWARD_RETURN_SUCCESS;
+    String sSortBy = oRequest.getParameter("sortBy");
+    String sAsc = oRequest.getParameter("asc");
+    try {
+      Bracket oMaster = readMaster();
+      if (oMaster == null) {
+        throw new RuntimeException("Unable to read master");
+      }
 
-        	PoolGrader oGrader = new PoolGrader(new BlazerScorer2(), oMaster);
+      PoolGrader oGrader = new PoolGrader(new BlazerScorer2(), oMaster);
 
-            List<Bracket> oBrackets = getEntries();
-            String[] oBracketNames = new String[oBrackets.size()];
-            
-            int i = 0;
-            for (Bracket oBracket : oBrackets)
-            {
-                oBracketNames[i++] = oBracket.getName();
-            }
-            
-            oSession.setAttribute("bracketnames", oBracketNames);
+      List<Bracket> oBrackets = getEntries();
+      String[] oBracketNames = new String[oBrackets.size()];
 
-            // Set default sort
-            sSortBy = ((sSortBy == null) || (sSortBy.equals(""))) ? "score" : sSortBy;
-            sAsc = ((sAsc == null) || (sAsc.equals(""))) ? "false" : sAsc;
+      int i = 0;
+      for (Bracket oBracket : oBrackets) {
+        oBracketNames[i++] = oBracket.getName();
+      }
 
-            BeatenTable oBeatenBy = new BeatenTable();
-            PoolStandings oStandings = oGrader.gradePool(
-            		oBrackets.toArray(new Bracket[oBrackets.size()]),oBeatenBy, sSortBy,sAsc);
-            oBeatenBy.persist();
+      oSession.setAttribute("bracketnames", oBracketNames);
 
-            Vector oScores = convertStandings(oStandings, oBeatenBy);
+      // Set default sort
+      sSortBy = ((sSortBy == null) || (sSortBy.equals(""))) ? "score" : sSortBy;
+      sAsc = ((sAsc == null) || (sAsc.equals(""))) ? "false" : sAsc;
 
-            oSession.setAttribute("bracketscores", oScores);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            oReturnCode = FORWARD_RETURN_FAILURE;
-        }
+      BeatenTable oBeatenBy = new BeatenTable();
+      PoolStandings oStandings = oGrader.gradePool(
+          oBrackets.toArray(new Bracket[oBrackets.size()]), oBeatenBy, sSortBy,
+          sAsc);
+      oBeatenBy.persist();
 
-        return oMapping.findForward(oReturnCode);
+      Vector oScores = convertStandings(oStandings, oBeatenBy);
 
-    } // doExecute()
+      oSession.setAttribute("bracketscores", oScores);
+    } catch (Exception e) {
+      e.printStackTrace();
+      oReturnCode = FORWARD_RETURN_FAILURE;
+    }
 
-	private List<Bracket> getEntries() {
-		FluentIterable<Bracket> entries = 
-				FluentIterable.from(ofy().load().type(Bracket.class).filter("msId !=", Bracket.PERFECT_ID));
-		entries = entries.filter(new Predicate<Bracket>(){
-			@Override
-			public boolean apply(Bracket b) {
-				b.init();
-				return b.isComplete();
-			}});
-		return entries.toList();
-	}
+    return oMapping.findForward(oReturnCode);
 
-	/*
-    ****************************************************************************
-    * convertStandings()
-    ****************************************************************************
-    */ /**
+  } // doExecute()
+
+  private List<Bracket> getEntries() {
+    FluentIterable<Bracket> entries = FluentIterable.from(ofy().load()
+        .type(Bracket.class).filter("msId !=", Bracket.PERFECT_ID));
+    entries = entries.filter(new Predicate<Bracket>() {
+      @Override
+      public boolean apply(Bracket b) {
+        b.init();
+        return b.isComplete();
+      }
+    });
+    return entries.toList();
+  }
+
+  /*
+   * ***************************************************************************
+   * convertStandings()
+   * ***************************************************************************
+   *//**
     *
     */
-    private Vector convertStandings(PoolStandings oStandings, BeatenTable oBeatenBy)
-    {
-        Vector oScores = new Vector();
-        BracketResult[] oResults = oStandings.moResults;
+  private Vector convertStandings(PoolStandings oStandings,
+      BeatenTable oBeatenBy) {
+    Vector oScores = new Vector();
+    BracketResult[] oResults = oStandings.moResults;
 
-        for (int i = 0; i < oResults.length; i++)
-        {
-            String sScore = Long.toString(oResults[i].getScore());
-            String sMaxScore = Long.toString(oResults[i].getMax());
-            String sWhoIsBetter = oBeatenBy.get(oResults[i].getBracket().getName());
-            
-            DisplayBracketBean oBean = new DisplayBracketBean();
-            oBean.setName(oResults[i].getBracket().getName());
-            oBean.setScore(sScore);
-            oBean.setMaxScore(sMaxScore);
-            oBean.setRank(i+1);
-            oBean.setChampionAlive(oResults[i].isChampionAlive());
-            oBean.setNumFinalFourTeams(oResults[i].getNumFinalFourAlive());
-            oBean.setWhoIsBetter(sWhoIsBetter);
-            oBean.setTotalComments(0);
-            oBean.setWinner(
-                oResults[i].getBracket().getChampionship().getWinner().getName());
+    for (int i = 0; i < oResults.length; i++) {
+      String sScore = Long.toString(oResults[i].getScore());
+      String sMaxScore = Long.toString(oResults[i].getMax());
+      String sWhoIsBetter = oBeatenBy.get(oResults[i].getBracket().getName());
 
-            oScores.add(oBean);
-        }
+      DisplayBracketBean oBean = new DisplayBracketBean();
+      oBean.setName(oResults[i].getBracket().getName());
+      oBean.setScore(sScore);
+      oBean.setMaxScore(sMaxScore);
+      oBean.setRank(i + 1);
+      oBean.setChampionAlive(oResults[i].isChampionAlive());
+      oBean.setNumFinalFourTeams(oResults[i].getNumFinalFourAlive());
+      oBean.setWhoIsBetter(sWhoIsBetter);
+      oBean.setTotalComments(0);
+      oBean.setWinner(oResults[i].getBracket().getChampionship().getWinner()
+          .getName());
 
-        return oScores;
+      oScores.add(oBean);
+    }
 
-    } // convertStandings()
+    return oScores;
+
+  } // convertStandings()
 
 } // Class: ListBracketsAction

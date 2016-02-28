@@ -12,157 +12,156 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-
 /*
-********************************************************************************
-* Class: ViewBracketAction
-********************************************************************************
-*/ /**
+ ********************************************************************************
+ * Class: ViewBracketAction
+ ********************************************************************************
+ *//**
 *
 */
 public class ViewBracketAction extends BaseAction {
 
-	/*
-    ****************************************************************************
-    * doExecute()
-    ****************************************************************************
-    */ /**
+  /*
+   * ***************************************************************************
+   * doExecute()
+   * ***************************************************************************
+   *//**
     *
     */
-    public ActionForward doExecute(ActionMapping oMapping,
-        ActionForm oActionForm, HttpServletRequest oRequest,
-        HttpServletResponse oResponse) {
-        String oErrorCode = FORWARD_RETURN_SUCCESS;
+  public ActionForward doExecute(ActionMapping oMapping,
+      ActionForm oActionForm, HttpServletRequest oRequest,
+      HttpServletResponse oResponse) {
+    String oErrorCode = FORWARD_RETURN_SUCCESS;
 
-        String name = oRequest.getParameter("name");
-        // might be coming from add comment
-        if(name == null)
-        {
-        	name = (String)oSession.getAttribute("viewingBracket");
-        }
+    String name = oRequest.getParameter("name");
+    // might be coming from add comment
+    if (name == null) {
+      name = (String) oSession.getAttribute("viewingBracket");
+    }
 
-        
-        try {
-            Bracket oBracket = readBracket(name, null, false);
-            Bracket oMaster = readMaster();
+    try {
+      Bracket oBracket = readBracket(name, null, false);
+      Bracket oMaster = readMaster();
 
-            Grader oGrader = new Grader(new BlazerScorer2(), oMaster);
-            BracketResult oResult = oGrader.grade(oBracket);
+      Grader oGrader = new Grader(new BlazerScorer2(), oMaster);
+      BracketResult oResult = oGrader.grade(oBracket);
 
-            StringBuffer o1 = new StringBuffer();
-            StringBuffer o2 = new StringBuffer();
-            StringBuffer o3 = new StringBuffer();
-            StringBuffer o4 = new StringBuffer();
-            StringBuffer oFF = new StringBuffer();
-            oResult.toWebAppStrings(o1, o2, o3, o4, oFF);
-            String ffWinners = oFF.toString().trim();
-            String eastWinners = o1.toString().trim();            
-            String southWinners = o2.toString().trim();
-            String midwestWinners = o3.toString().trim();
-            String westWinners = o4.toString().trim();
+      StringBuffer o1 = new StringBuffer();
+      StringBuffer o2 = new StringBuffer();
+      StringBuffer o3 = new StringBuffer();
+      StringBuffer o4 = new StringBuffer();
+      StringBuffer oFF = new StringBuffer();
+      oResult.toWebAppStrings(o1, o2, o3, o4, oFF);
+      String ffWinners = oFF.toString().trim();
+      String eastWinners = o1.toString().trim();
+      String southWinners = o2.toString().trim();
+      String midwestWinners = o3.toString().trim();
+      String westWinners = o4.toString().trim();
 
-            oSession.setAttribute("viewingBracket", name);
-            
-            oSession.setAttribute("ffWinners", ffWinners);
+      oSession.setAttribute("viewingBracket", name);
 
-            oSession.setAttribute("eastWinners", eastWinners);
-            oSession.setAttribute("southWinners", southWinners);
-            oSession.setAttribute("midwestWinners", midwestWinners);
-            oSession.setAttribute("westWinners", westWinners);
-            oSession.setAttribute("comments","");
+      oSession.setAttribute("ffWinners", ffWinners);
 
-            String eastFF = findWinner(eastWinners);
-            String midwestFF = findWinner(midwestWinners);
-            String southFF = findWinner(southWinners);
-            String westFF = findWinner(westWinners);
+      oSession.setAttribute("eastWinners", eastWinners);
+      oSession.setAttribute("southWinners", southWinners);
+      oSession.setAttribute("midwestWinners", midwestWinners);
+      oSession.setAttribute("westWinners", westWinners);
+      oSession.setAttribute("comments", "");
 
-            String unescapedEastFF = eastFF.replace("\\\'", "\'");
-            String unescapedSouthFF = southFF.replace("\\\'", "\'");
-            String unescapedMidwestFF = midwestFF.replace("\\\'", "\'");
-            String unescapedWestFF = westFF.replace("\\\'", "\'");
+      String eastFF = findWinner(eastWinners);
+      String midwestFF = findWinner(midwestWinners);
+      String southFF = findWinner(southWinners);
+      String westFF = findWinner(westWinners);
 
-            oSession.setAttribute("eastFFLabel", setGameStatus(unescapedEastFF, false));
-            oSession.setAttribute("southFFLabel", setGameStatus(unescapedSouthFF, false));
-            oSession.setAttribute("midwestFFLabel", setGameStatus(unescapedMidwestFF, false));
-            oSession.setAttribute("westFFLabel", setGameStatus(unescapedWestFF, false));
-            
-            oSession.setAttribute("eastFFLabelStatus", setGameStatus(unescapedEastFF, true));
-            oSession.setAttribute("southFFLabelStatus", setGameStatus(unescapedSouthFF, true));
-            oSession.setAttribute("midwestFFLabelStatus", setGameStatus(unescapedMidwestFF, true));
-            oSession.setAttribute("westFFLabelStatus", setGameStatus(unescapedWestFF, true));
-            
-            oSession.setAttribute("eastFF", eastFF);
-            oSession.setAttribute("southFF", southFF);
-            oSession.setAttribute("midwestFF", midwestFF);
-            oSession.setAttribute("westFF", westFF);
-        } catch (Exception e) {
-            oErrorCode = FORWARD_RETURN_FAILURE;
-            addError(oRequest, "invalid.bracket.name");
-        }
+      String unescapedEastFF = eastFF.replace("\\\'", "\'");
+      String unescapedSouthFF = southFF.replace("\\\'", "\'");
+      String unescapedMidwestFF = midwestFF.replace("\\\'", "\'");
+      String unescapedWestFF = westFF.replace("\\\'", "\'");
 
-        return oMapping.findForward(oErrorCode);
+      oSession.setAttribute("eastFFLabel",
+          setGameStatus(unescapedEastFF, false));
+      oSession.setAttribute("southFFLabel",
+          setGameStatus(unescapedSouthFF, false));
+      oSession.setAttribute("midwestFFLabel",
+          setGameStatus(unescapedMidwestFF, false));
+      oSession.setAttribute("westFFLabel",
+          setGameStatus(unescapedWestFF, false));
 
-    } // doExecute()
+      oSession.setAttribute("eastFFLabelStatus",
+          setGameStatus(unescapedEastFF, true));
+      oSession.setAttribute("southFFLabelStatus",
+          setGameStatus(unescapedSouthFF, true));
+      oSession.setAttribute("midwestFFLabelStatus",
+          setGameStatus(unescapedMidwestFF, true));
+      oSession.setAttribute("westFFLabelStatus",
+          setGameStatus(unescapedWestFF, true));
 
-    /*
-    ****************************************************************************
-    * setGameStatus()
-    ****************************************************************************
-    */ /**
+      oSession.setAttribute("eastFF", eastFF);
+      oSession.setAttribute("southFF", southFF);
+      oSession.setAttribute("midwestFF", midwestFF);
+      oSession.setAttribute("westFF", westFF);
+    } catch (Exception e) {
+      oErrorCode = FORWARD_RETURN_FAILURE;
+      addError(oRequest, "invalid.bracket.name");
+    }
+
+    return oMapping.findForward(oErrorCode);
+
+  } // doExecute()
+
+  /*
+   * ***************************************************************************
+   * setGameStatus()
+   * ***************************************************************************
+   *//**
     *
     */
-    private String setGameStatus(String oString, boolean bShowAll) {
-    	String oModified = "";
-    	String sPoints = "";
-    	
-        String[] oStatusLoss = oString.split("#");
-        String[] oStatusWin = oString.split("\\$");
-        String[] oStatusUnknown = oString.split("@");
-        if(oStatusLoss.length > 1)
-        {
-        	oModified = oStatusLoss[0];
-        	sPoints = " ("+oStatusLoss[1]+")";
-        }
-        else if(oStatusWin.length > 1)
-        {
-        	oModified = oStatusWin[0];
-        	sPoints = " ("+oStatusWin[1]+")";
-        }       
-        else if(oStatusUnknown.length > 1)
-        {
-        	oModified = oStatusUnknown[0];
-        	sPoints = " ("+oStatusUnknown[1]+")";
-        }
-        
-        if(bShowAll)
-        {
-        	oModified += sPoints;
-        }
-        
-        return oModified;
+  private String setGameStatus(String oString, boolean bShowAll) {
+    String oModified = "";
+    String sPoints = "";
 
-    } // setGameStatus()
+    String[] oStatusLoss = oString.split("#");
+    String[] oStatusWin = oString.split("\\$");
+    String[] oStatusUnknown = oString.split("@");
+    if (oStatusLoss.length > 1) {
+      oModified = oStatusLoss[0];
+      sPoints = " (" + oStatusLoss[1] + ")";
+    } else if (oStatusWin.length > 1) {
+      oModified = oStatusWin[0];
+      sPoints = " (" + oStatusWin[1] + ")";
+    } else if (oStatusUnknown.length > 1) {
+      oModified = oStatusUnknown[0];
+      sPoints = " (" + oStatusUnknown[1] + ")";
+    }
 
-    /*
-    ****************************************************************************
-    * findWinner()
-    ****************************************************************************
-    */ /**
+    if (bShowAll) {
+      oModified += sPoints;
+    }
+
+    return oModified;
+
+  } // setGameStatus()
+
+  /*
+   * ***************************************************************************
+   * findWinner()
+   * ***************************************************************************
+   *//**
     *
     */
-    public String findWinner(String winners) {
-        String winner = " ";
+  public String findWinner(String winners) {
+    String winner = " ";
 
-        if (winners != null) {
-            String[] splitWinners = winners.split(",");
+    if (winners != null) {
+      String[] splitWinners = winners.split(",");
 
-            if (splitWinners.length == 15) {
-                winner = splitWinners[splitWinners.length - 1];
-            }
-        }
+      if (splitWinners.length == 15) {
+        winner = splitWinners[splitWinners.length - 1];
+      }
+    }
 
-        return winner;
+    return winner;
 
-    } // findWinner()
+  } // findWinner()
 
 } // Class: ViewBracketAction
