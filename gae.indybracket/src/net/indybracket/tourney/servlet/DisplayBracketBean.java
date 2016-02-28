@@ -10,234 +10,260 @@ import java.io.Serializable;
 
 
 /*
-********************************************************************************
-* Class: DisplayBracketBean
-********************************************************************************
-*/ /**
-* @author Scott Mennealy
-*
-*/
+ ********************************************************************************
+ * Class: DisplayBracketBean
+ ********************************************************************************
+ */ /**
+ * @author Scott Mennealy
+ *
+ */
 public class DisplayBracketBean implements Serializable {
-	private static final long serialVersionUID = -7424345373301996667L;
-	private String name = "";
-    private String score = "";
-    private String maxScore = "";
-    private String winner = "";
-    private String whoIsBetter = "";
-    private int totalComments = 0;
-    private int rank = 0;
-    private int numFinalFourTeams = 0;
-    private boolean isChampionAlive = true;
+  private static final long serialVersionUID = -7424345373301996667L;
+  private String name = "";
+  private String score = "";
+  private String maxScore = "";
+  private String winner = "";
+  private String whoIsBetter = "";
+  private int totalComments = 0;
+  private int rank = 0;
+  private int numFinalFourTeams = 0;
+  private boolean isChampionAlive = true;
+  private boolean isValid = false;
 
-    /*
-    ****************************************************************************
-    * Constructor()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    public DisplayBracketBean() {
+  /*
+   ****************************************************************************
+   * Constructor()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public DisplayBracketBean() {
 
-    } // Constructor()
+  } // Constructor()
 
-    /*
-    ****************************************************************************
-    * getName()
-    ****************************************************************************
-    */ /**
-    * @return Returns the name.
-    */
-    public String getName() {
-        return name;
+  /*
+   ****************************************************************************
+   * getName()
+   ****************************************************************************
+   */ /**
+   * @return Returns the name.
+   */
+  public String getName() {
+    return name;
 
-    } // getName()
+  } // getName()
 
-    /*
-    ****************************************************************************
-    * setName()
-    ****************************************************************************
-    */ /**
-    * @param name The name to set.
-    */
-    public void setName(String name) {
-        this.name = name;
+  /*
+   ****************************************************************************
+   * setName()
+   ****************************************************************************
+   */ /**
+   * @param name The name to set.
+   */
+  public void setName(String name) {
+    this.name = name;
 
-    } // setName()
+  } // setName()
 
-    /*
-    ****************************************************************************
-    * getScore()
-    ****************************************************************************
-    */ /**
-    * @return Returns the score.
-    */
-    public String getScore() {
-        return score;
+  /*
+   ****************************************************************************
+   * getScore()
+   ****************************************************************************
+   */ /**
+   * @return Returns the score.
+   */
+  public String getScore() {
+    return score;
 
-    } // getScore()
+  } // getScore()
 
-    /*
-    ****************************************************************************
-    * setScore()
-    ****************************************************************************
-    */ /**
-    * @param score The score to set.
-    */
-    public void setScore(String score) {
-        this.score = score;
+  /*
+   ****************************************************************************
+   * setScore()
+   ****************************************************************************
+   */ /**
+   * @param score The score to set.
+   */
+  public void setScore(String score) {
+    this.score = score;
 
-    } // setScore()
+  } // setScore()
 
-    /*
-    ****************************************************************************
-    * getMaxScore()
-    ****************************************************************************
-    */ /**
-    * @return Returns the score.
-    */
-    public String getMaxScore() {
-        return maxScore;
+  /*
+   ****************************************************************************
+   * getMaxScore()
+   ****************************************************************************
+   */ /**
+   * @return Returns the score.
+   */
+  public String getMaxScore() {
+    return maxScore;
 
-    } // getMaxScore()
+  } // getMaxScore()
 
-    /*
-    ****************************************************************************
-    * setMaxScore()
-    ****************************************************************************
-    */ /**
-    * @param score The score to set.
-    */
-    public void setMaxScore(String score) {
-        this.maxScore = score;
+  /*
+   ****************************************************************************
+   * setMaxScore()
+   ****************************************************************************
+   */ /**
+   * @param score The score to set.
+   */
+  public void setMaxScore(String score) {
+    this.maxScore = score;
 
-    } // setMaxScore()
+  } // setMaxScore()
 
-    /*
-    ****************************************************************************
-    * getWinner()
-    ****************************************************************************
-    */ /**
-    * @return Returns the winner.
-    */
-    public String getWinner() {
-        return winner;
+  /*
+   ****************************************************************************
+   * getWinner()
+   ****************************************************************************
+   */ /**
+   * @return Returns the winner.
+   */
+  public String getWinner() {
+    return winner;
 
-    } // getWinner()
+  } // getWinner()
 
-    /*
-    ****************************************************************************
-    * setWinner()
-    ****************************************************************************
-    */ /**
-    * @param winner The winner to set.
-    */
-    public void setWinner(String winner) {
-        this.winner = winner;
+  /*
+   ****************************************************************************
+   * setWinner()
+   ****************************************************************************
+   */ /**
+   * @param winner The winner to set.
+   */
+  public void setWinner(String winner) {
+    this.winner = winner;
 
-    } // setWinner()
+  } // setWinner()
 
-    /*
-    ****************************************************************************
-    * getWhoIsBetter()
-    ****************************************************************************
-    */ /**
-    * @return Returns the winner.
-    */
-    public String getWhoIsBetter() {
-        return whoIsBetter;
+  /*
+   ****************************************************************************
+   * getWhoIsBetter()
+   ****************************************************************************
+   */ /**
+   * @return Returns the winner.
+   */
+  public String getWhoIsBetter() {
+    return whoIsBetter;
 
-    } // getWhoIsBetter()
+  } // getWhoIsBetter()
 
-    /*
-    ****************************************************************************
-    * setWhoIsBetter()
-    ****************************************************************************
-    */ /**
-    * @param winner The winner to set.
-    */
-    public void setWhoIsBetter(String whoIsBetter) {
-        this.whoIsBetter = whoIsBetter;
+  /*
+   ****************************************************************************
+   * setWhoIsBetter()
+   ****************************************************************************
+   */ /**
+   * @param winner The winner to set.
+   */
+  public void setWhoIsBetter(String whoIsBetter) {
+    this.whoIsBetter = whoIsBetter;
 
-    } // setWhoIsBetter()
+  } // setWhoIsBetter()
 
-    /*
-    ****************************************************************************
-    * isChampionAlive()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    public boolean isChampionAlive() {
-        return isChampionAlive;
+  /*
+   ****************************************************************************
+   * isChampionAlive()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public boolean isChampionAlive() {
+    return isChampionAlive;
 
-    } // isChampionAlive()
+  } // isChampionAlive()
 
-    /*
-    ****************************************************************************
-    * setChampionAlive()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    public void setChampionAlive(boolean isChampionAlive) {
-        this.isChampionAlive = isChampionAlive;
+  /*
+   ****************************************************************************
+   * setChampionAlive()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public void setChampionAlive(boolean isChampionAlive) {
+    this.isChampionAlive = isChampionAlive;
 
-    } // setChampionAlive()
+  } // setChampionAlive()
 
-    /*
-    ****************************************************************************
-    * getNumFinalFourTeams()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    public int getNumFinalFourTeams() {
-        return numFinalFourTeams;
+  /*
+   ****************************************************************************
+   * isValid()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public boolean isValid() {
+    return isValid;
 
-    } // getNumFinalFourTeams()
+  } // isValid()
 
-    /*
-    ****************************************************************************
-    * setNumFinalFourTeams()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    public void setNumFinalFourTeams(int numFinalFourTeams) {
-        this.numFinalFourTeams = numFinalFourTeams;
+  /*
+   ****************************************************************************
+   * setIsValid()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public void setIsValid(boolean isValid) {
+    this.isValid = isValid;
 
-    } // setNumFinalFourTeams()
+  } // setIsValid()
 
-    /*
-    ****************************************************************************
-    * getRank()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    public int getRank() {
-        return rank;
 
-    } // getRank()
+  /*
+   ****************************************************************************
+   * getNumFinalFourTeams()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public int getNumFinalFourTeams() {
+    return numFinalFourTeams;
 
-    /*
-    ****************************************************************************
-    * setRank()
-    ****************************************************************************
-    */ /**
-    *
-    */
-    public void setRank(int rank) {
-        this.rank = rank;
+  } // getNumFinalFourTeams()
 
-    } // setRank()
+  /*
+   ****************************************************************************
+   * setNumFinalFourTeams()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public void setNumFinalFourTeams(int numFinalFourTeams) {
+    this.numFinalFourTeams = numFinalFourTeams;
 
-	public int getTotalComments() {
-		return totalComments;
-	}
+  } // setNumFinalFourTeams()
 
-	public void setTotalComments(int totalComments) {
-		this.totalComments = totalComments;
-	}
+  /*
+   ****************************************************************************
+   * getRank()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public int getRank() {
+    return rank;
+
+  } // getRank()
+
+  /*
+   ****************************************************************************
+   * setRank()
+   ****************************************************************************
+   */ /**
+   *
+   */
+  public void setRank(int rank) {
+    this.rank = rank;
+
+  } // setRank()
+
+  public int getTotalComments() {
+    return totalComments;
+  }
+
+  public void setTotalComments(int totalComments) {
+    this.totalComments = totalComments;
+  }
 
 } // Class: DisplayBracketBean

@@ -71,6 +71,8 @@ public abstract class BaseAction
         throws Exception
     {
     	ActionForward oReturn = null;
+    	doJsrGuavaHack();
+    	InitUtil.setupTeams(getResources(oRequest));
         try
         {
 	    	oSession = oRequest.getSession(false);	     

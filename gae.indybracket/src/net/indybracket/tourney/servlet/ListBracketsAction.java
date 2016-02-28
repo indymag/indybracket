@@ -51,14 +51,11 @@ public class ListBracketsAction
     	// TODO - Use servlet params to determine if this action is allowed.
     	if (false) return oMapping.findForward(FORWARD_RETURN_FAILURE);
 
-    	doJsrGuavaHack();
     	String oReturnCode = FORWARD_RETURN_SUCCESS;
         String sSortBy = oRequest.getParameter("sortBy");
         String sAsc = oRequest.getParameter("asc");
         try
-        {  
-        	InitUtil.setupTeams(getResources(oRequest));
-        	
+        {          	
         	Bracket oMaster = readMaster();
         	if (oMaster == null)
         	{

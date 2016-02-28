@@ -28,7 +28,7 @@ public class Bracket
     
     private String msUserEmail;
     private String msUserNickname;
-    private String msPrincipalName;
+    private @Index String msPrincipalName;
     private @Index String msEntryName = "";
     private String msRegion1;
     private String msRegion2;

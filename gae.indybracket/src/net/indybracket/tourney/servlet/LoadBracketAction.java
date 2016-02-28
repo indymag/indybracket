@@ -32,7 +32,6 @@ public class LoadBracketAction
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
         String oReturnCode = FORWARD_RETURN_SUCCESS;
-        InitUtil.setupTeams(getResources(oRequest));
 
         String bracketName = oRequest.getParameter("name");
         bracketName = (bracketName == null) ? "" : bracketName.trim();

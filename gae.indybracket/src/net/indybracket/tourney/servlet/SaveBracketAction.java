@@ -45,8 +45,6 @@ public class SaveBracketAction
     	// TODO - Use servlet params to determine if this action is allowed.
     	if (false) return oMapping.findForward(FORWARD_RETURN_FAILURE);
     	
-    	InitUtil.setupTeams(getResources(oRequest));
-
         String oReturnCode = FORWARD_RETURN_SUCCESS;
     	InitUtil.setupTeams(getResources(oRequest));
 
