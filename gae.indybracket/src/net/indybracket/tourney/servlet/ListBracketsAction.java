@@ -48,6 +48,9 @@ public class ListBracketsAction
         ActionMapping oMapping, ActionForm oActionForm,
         HttpServletRequest oRequest, HttpServletResponse oResponse)
     {
+    	// TODO - Use servlet params to determine if this action is allowed.
+    	if (false) return oMapping.findForward(FORWARD_RETURN_FAILURE);
+
     	doJsrGuavaHack();
     	String oReturnCode = FORWARD_RETURN_SUCCESS;
         String sSortBy = oRequest.getParameter("sortBy");

@@ -41,6 +41,10 @@
       <param-name>detail</param-name>
       <param-value>2</param-value>
     </init-param>
+    <init-param>
+      <param-name>actions</param-name>
+      <param-value>list,modify</param-value>
+    </init-param>
     <load-on-startup>2</load-on-startup>
   </servlet>
 
@@ -66,7 +70,7 @@
 
   <!-- The Usual Welcome File List -->
   <welcome-file-list>
-    <welcome-file>jsp/post-deadline-main.jsp</welcome-file>
+    <welcome-file>jsp/pre-deadline-main.jsp</welcome-file>
   </welcome-file-list>
 
   <!-- Struts Tag Library Descriptors -->
