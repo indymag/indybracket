@@ -45,7 +45,7 @@
     <action path="/listmysavedbracketsaction"
             type="net.indybracket.tourney.servlet.ListMySavedBracketsAction"            
             scope="request">
-            <forward name="success" path="/jsp/listmysavedbrackets.do" />
+            <forward name="success" path="/listmysavedbrackets.do" />
     </action>
       
     <action path="/bracket" forward="/jsp/bracket.jsp"/>
