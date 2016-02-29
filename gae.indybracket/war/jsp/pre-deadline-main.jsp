@@ -62,7 +62,7 @@ Feel free to ask questions as always.
 -- CS
 </div>
 <div class="newBracket"><a href="newbracket.do" class="team"><img src="images/signup.gif" border="0" /></a></div>
-<div class="loadBracket"><a href="loadform.do" class="team"><img src="images/load_saved.gif" border="0" /></a></div>
+<div class="loadBracket"><a href="listmysavedbracketsaction.do" class="team"><img src="images/load_saved.gif" border="0" /></a></div>
 </form>
 </body>
 </html>
