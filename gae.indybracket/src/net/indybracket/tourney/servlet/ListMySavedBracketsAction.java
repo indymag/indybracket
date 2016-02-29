@@ -24,7 +24,7 @@ public class ListMySavedBracketsAction extends BaseAction {
       ActionForm oActionForm, HttpServletRequest oRequest,
       HttpServletResponse oResponse) throws Exception {
     List<DisplayBracketBean> myBrackets = getMyEntries();
-    oSession.setAttribute("myBrackets", myBrackets);
+    oSession.setAttribute("mybrackets", myBrackets);
     return oMapping.findForward(FORWARD_RETURN_SUCCESS);
   }
 

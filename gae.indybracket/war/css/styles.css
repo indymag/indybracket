@@ -1764,3 +1764,43 @@ a.tabLink:visited{
   color: #000000;
   font-weight:bold;	
 }
+
+/*  For listing "your brackets" */
+.yourBracketsHeader{
+	position:absolute;
+	top:96px;
+	left:50px;
+	width:300px;
+	border-top:1px solid #000000;
+	border-bottom:1px solid #000000;
+	border-right:1px solid #000000;
+	border-left:1px solid #000000;	
+	font-size:18px;
+	font-weight:bold;
+	color: #ffffff;		
+	background-color:#666633;
+	padding:10px;	
+}
+.isValidLabel{
+     position:absolute;
+     top:110px;
+     left:260px;
+     font-size:13px;
+     font-weight:bold;
+     color: #ffffff;
+}
+.mybracketlistbox{	
+	position:absolute;
+	top:130px;
+	left:50px;
+	width:300px;
+	border-top:1px solid #000000;
+	border-bottom:1px solid #000000;
+	border-right:1px solid #000000;
+	border-left:1px solid #000000;	
+	background-color:#ffffff;	
+	font-size:15px;
+	font-weight:bold;
+	color: #ffffff;	
+	padding:10px;	
+}
