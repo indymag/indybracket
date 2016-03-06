@@ -39,6 +39,7 @@ public class ListMySavedBracketsAction extends BaseAction {
     return entries.filter(new Predicate<Bracket>() {
       @Override
       public boolean apply(Bracket bracket) {
+        bracket.init();
         return bracket.getPrincipalName() != null
             && bracket.getPrincipalName().equals(principal);
       }
