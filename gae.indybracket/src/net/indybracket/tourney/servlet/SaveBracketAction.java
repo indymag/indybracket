@@ -6,7 +6,6 @@ package net.indybracket.tourney.servlet;
 import static net.indybracket.tourney.common.OfyService.ofy;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpServletResponse;
 
 import net.indybracket.tourney.common.Bracket;
@@ -16,9 +15,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
-
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 
 /*
  ********************************************************************************
@@ -35,12 +31,13 @@ public class SaveBracketAction extends BaseAction {
    *//**
     *
     */
-  public ActionForward doExecute(ActionMapping oMapping,
-      ActionForm oActionForm, HttpServletRequest oRequest,
-      HttpServletResponse oResponse) {
-    // TODO - Use servlet params to determine if this action is allowed.
-    if (false)
+  public ActionForward doExecute(ActionMapping oMapping, ActionForm oActionForm,
+      HttpServletRequest oRequest, HttpServletResponse oResponse) {
+    try {
+      assertActionAllowed(ACTION_AUTHZ.MODIFY_SELF);
+    } catch (RuntimeException ex) {
       return oMapping.findForward(FORWARD_RETURN_FAILURE);
+    }
 
     String oReturnCode = FORWARD_RETURN_SUCCESS;
     InitUtil.setupTeams(getResources(oRequest));
@@ -51,16 +48,16 @@ public class SaveBracketAction extends BaseAction {
     String westWinnersRequest = oRequest.getParameter("westWinners");
     String ffWinnersRequest = oRequest.getParameter("ffWinners");
 
-    eastWinnersRequest = (eastWinnersRequest != null) ? eastWinnersRequest
-        .replace("\'", "\\\'") : eastWinnersRequest;
-    midwestWinnersRequest = (midwestWinnersRequest != null) ? midwestWinnersRequest
-        .replace("\'", "\\\'") : midwestWinnersRequest;
-    southWinnersRequest = (southWinnersRequest != null) ? southWinnersRequest
-        .replace("\'", "\\\'") : southWinnersRequest;
-    westWinnersRequest = (westWinnersRequest != null) ? westWinnersRequest
-        .replace("\'", "\\\'") : westWinnersRequest;
-    ffWinnersRequest = (ffWinnersRequest != null) ? ffWinnersRequest.replace(
-        "\'", "\\\'") : ffWinnersRequest;
+    eastWinnersRequest = (eastWinnersRequest != null) ? eastWinnersRequest.replace("\'", "\\\'")
+        : eastWinnersRequest;
+    midwestWinnersRequest = (midwestWinnersRequest != null) ? midwestWinnersRequest.replace("\'",
+        "\\\'") : midwestWinnersRequest;
+    southWinnersRequest = (southWinnersRequest != null) ? southWinnersRequest.replace("\'", "\\\'")
+        : southWinnersRequest;
+    westWinnersRequest = (westWinnersRequest != null) ? westWinnersRequest.replace("\'", "\\\'")
+        : westWinnersRequest;
+    ffWinnersRequest = (ffWinnersRequest != null) ? ffWinnersRequest.replace("\'", "\\\'")
+        : ffWinnersRequest;
 
     oSession.setAttribute("ffWinners", ffWinnersRequest);
     oSession.setAttribute("eastWinners", eastWinnersRequest);
@@ -68,8 +65,7 @@ public class SaveBracketAction extends BaseAction {
     oSession.setAttribute("southWinners", southWinnersRequest);
     oSession.setAttribute("westWinners", westWinnersRequest);
 
-    String loadedBracketName = (String) oSession
-        .getAttribute("loadedBracketName");
+    String loadedBracketName = (String) oSession.getAttribute("loadedBracketName");
     loadedBracketName = (loadedBracketName == null) ? "" : loadedBracketName;
 
     String bracketName = oRequest.getParameter("bracketName");
@@ -92,8 +88,7 @@ public class SaveBracketAction extends BaseAction {
     Bracket existing = readBracket(bracketName, null, false);
     if (existing != null) {
       if (!email.equals(existing.getUserEmail())) {
-        oRequest.setAttribute("errorCode",
-            "Another bracket with this name already exists");
+        oRequest.setAttribute("errorCode", "Another bracket with this name already exists");
         oReturnCode = FORWARD_RETURN_FAILURE;
         return oMapping.findForward(oReturnCode);
       }
@@ -114,8 +109,7 @@ public class SaveBracketAction extends BaseAction {
         b.setUserEmail(email);
         b.setUserNickname(nickname);
         b.setPrincipalName(principal);
-        b.importFromWebapp(eastWinners, southWinners, midwestWinners,
-            westWinners, ffWinners);
+        b.importFromWebapp(eastWinners, southWinners, midwestWinners, westWinners, ffWinners);
         ofy().save().entity(b).now();
         ActionMessages messages = new ActionMessages();
         ActionMessage message = new ActionMessage("success.saved");
@@ -127,13 +121,11 @@ public class SaveBracketAction extends BaseAction {
 
     } catch (Exception e) {
       e.printStackTrace();
-      oRequest.setAttribute("errorCode",
-          "Failed to save. Check bracket root directory");
+      oRequest.setAttribute("errorCode", "Failed to save. Check bracket root directory");
       oReturnCode = FORWARD_RETURN_FAILURE;
     }
 
     return oMapping.findForward(oReturnCode);
 
   } // doExecute()
-
 } // Class: SaveBracketAction

@@ -24,9 +24,14 @@ public class LoadBracketAction extends BaseAction {
    *//**
     *
     */
-  public ActionForward doExecute(ActionMapping oMapping,
-      ActionForm oActionForm, HttpServletRequest oRequest,
-      HttpServletResponse oResponse) {
+  public ActionForward doExecute(ActionMapping oMapping, ActionForm oActionForm,
+      HttpServletRequest oRequest, HttpServletResponse oResponse) {
+    try {
+      assertActionAllowed(ACTION_AUTHZ.MODIFY_SELF);
+    } catch (RuntimeException ex) {
+      return oMapping.findForward(FORWARD_RETURN_FAILURE);
+    }
+
     String oReturnCode = FORWARD_RETURN_SUCCESS;
 
     String bracketName = oRequest.getParameter("name");

@@ -24,7 +24,6 @@ import com.google.common.collect.FluentIterable;
 /**
  * @author Scott Mennealy
  */
-import com.google.common.collect.Lists;
 
 /*
  ********************************************************************************
@@ -41,17 +40,14 @@ public class ListBracketsAction extends BaseAction {
    *//**
     *
     */
-  public ActionForward doExecute(ActionMapping oMapping,
-      ActionForm oActionForm, HttpServletRequest oRequest,
-      HttpServletResponse oResponse) {
-    // TODO - Use servlet params to determine if this action is allowed.
-    if (false)
-      return oMapping.findForward(FORWARD_RETURN_FAILURE);
+  public ActionForward doExecute(ActionMapping oMapping, ActionForm oActionForm,
+      HttpServletRequest oRequest, HttpServletResponse oResponse) {
 
     String oReturnCode = FORWARD_RETURN_SUCCESS;
     String sSortBy = oRequest.getParameter("sortBy");
     String sAsc = oRequest.getParameter("asc");
     try {
+      assertActionAllowed(ACTION_AUTHZ.VIEW_OTHER);
       Bracket oMaster = readMaster();
       if (oMaster == null) {
         throw new RuntimeException("Unable to read master");
@@ -75,8 +71,7 @@ public class ListBracketsAction extends BaseAction {
 
       BeatenTable oBeatenBy = new BeatenTable();
       PoolStandings oStandings = oGrader.gradePool(
-          oBrackets.toArray(new Bracket[oBrackets.size()]), oBeatenBy, sSortBy,
-          sAsc);
+          oBrackets.toArray(new Bracket[oBrackets.size()]), oBeatenBy, sSortBy, sAsc);
       oBeatenBy.persist();
 
       Vector oScores = convertStandings(oStandings, oBeatenBy);
@@ -92,8 +87,8 @@ public class ListBracketsAction extends BaseAction {
   } // doExecute()
 
   private List<Bracket> getEntries() {
-    FluentIterable<Bracket> entries = FluentIterable.from(ofy().load()
-        .type(Bracket.class).filter("msId !=", Bracket.PERFECT_ID));
+    FluentIterable<Bracket> entries = FluentIterable.from(ofy().load().type(Bracket.class)
+        .filter("msId !=", Bracket.PERFECT_ID));
     entries = entries.filter(new Predicate<Bracket>() {
       @Override
       public boolean apply(Bracket b) {
@@ -111,8 +106,7 @@ public class ListBracketsAction extends BaseAction {
    *//**
     *
     */
-  private Vector convertStandings(PoolStandings oStandings,
-      BeatenTable oBeatenBy) {
+  private Vector convertStandings(PoolStandings oStandings, BeatenTable oBeatenBy) {
     Vector oScores = new Vector();
     BracketResult[] oResults = oStandings.moResults;
 
@@ -130,8 +124,7 @@ public class ListBracketsAction extends BaseAction {
       oBean.setNumFinalFourTeams(oResults[i].getNumFinalFourAlive());
       oBean.setWhoIsBetter(sWhoIsBetter);
       oBean.setTotalComments(0);
-      oBean.setWinner(oResults[i].getBracket().getChampionship().getWinner()
-          .getName());
+      oBean.setWinner(oResults[i].getBracket().getChampionship().getWinner().getName());
 
       oScores.add(oBean);
     }

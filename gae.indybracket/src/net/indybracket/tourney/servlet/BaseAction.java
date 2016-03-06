@@ -2,6 +2,7 @@ package net.indybracket.tourney.servlet;
 
 import static net.indybracket.tourney.common.OfyService.ofy;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,6 +43,16 @@ public abstract class BaseAction extends Action {
 
   public HttpSession oSession;
 
+  public enum ACTION_AUTHZ {
+    VIEW_OTHER("viewOther"), MODIFY_SELF("modifySelf");
+
+    ACTION_AUTHZ(String value) {
+      this.value = value;
+    }
+
+    private String value;
+  }
+
   /*
    * ***************************************************************************
    * Constructor()
@@ -54,6 +65,18 @@ public abstract class BaseAction extends Action {
 
   } // Constructor()
 
+  protected void assertActionAllowed(ACTION_AUTHZ action) {
+    ServletContext context = oSession.getServletContext();
+    String allowed = context.getInitParameter("actionsAllowed");
+    for (String x : allowed.split(",")) {
+      if (x.equalsIgnoreCase(action.value)) {
+        return;
+      }
+    }
+
+    throw new RuntimeException(action + " not allowed");
+  }
+
   /*
    * ***************************************************************************
    * execute()
@@ -62,8 +85,7 @@ public abstract class BaseAction extends Action {
     *
     */
   public ActionForward execute(ActionMapping oMapping, ActionForm oActionForm,
-      HttpServletRequest oRequest, HttpServletResponse oResponse)
-      throws Exception {
+      HttpServletRequest oRequest, HttpServletResponse oResponse) throws Exception {
     ActionForward oReturn = null;
     doJsrGuavaHack();
     InitUtil.setupTeams(getResources(oRequest));
@@ -116,11 +138,10 @@ public abstract class BaseAction extends Action {
    *//**
      *
      */
-  public Bracket readBracket(final String name, final String email,
-      boolean bComplete) {
+  public Bracket readBracket(final String name, final String email, boolean bComplete) {
     doJsrGuavaHack();
-    FluentIterable<Bracket> brackets = FluentIterable.from(ofy().load()
-        .type(Bracket.class).filter("msEntryName", name));
+    FluentIterable<Bracket> brackets = FluentIterable.from(ofy().load().type(Bracket.class)
+        .filter("msEntryName", name));
     if (email != null) {
       brackets = brackets.filter(new Predicate<Bracket>() {
         @Override
@@ -167,8 +188,7 @@ public abstract class BaseAction extends Action {
    *//**
     *
     */
-  public abstract ActionForward doExecute(ActionMapping oMapping,
-      ActionForm oActionForm, HttpServletRequest oRequest,
-      HttpServletResponse oResponse) throws Exception;
+  public abstract ActionForward doExecute(ActionMapping oMapping, ActionForm oActionForm,
+      HttpServletRequest oRequest, HttpServletResponse oResponse) throws Exception;
 
 } // Class: BaseAction

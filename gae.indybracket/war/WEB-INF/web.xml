@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <!-- This is a context init parameter -->
+    <context-param>
+      <param-name>actionsAllowed</param-name>
+      <param-value>viewOther,modifySelf</param-value>
+    </context-param>
+    
 	<servlet>
 		<servlet-name>Gae_indybracket</servlet-name>
 		<servlet-class>net.indybracket.tourney.Gae_indybracketServlet</servlet-class>
@@ -40,10 +46,6 @@
     <init-param>
       <param-name>detail</param-name>
       <param-value>2</param-value>
-    </init-param>
-    <init-param>
-      <param-name>actions</param-name>
-      <param-value>list,modify</param-value>
     </init-param>
     <load-on-startup>2</load-on-startup>
   </servlet>

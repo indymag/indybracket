@@ -28,9 +28,8 @@ public class ViewBracketAction extends BaseAction {
    *//**
     *
     */
-  public ActionForward doExecute(ActionMapping oMapping,
-      ActionForm oActionForm, HttpServletRequest oRequest,
-      HttpServletResponse oResponse) {
+  public ActionForward doExecute(ActionMapping oMapping, ActionForm oActionForm,
+      HttpServletRequest oRequest, HttpServletResponse oResponse) {
     String oErrorCode = FORWARD_RETURN_SUCCESS;
 
     String name = oRequest.getParameter("name");
@@ -40,6 +39,7 @@ public class ViewBracketAction extends BaseAction {
     }
 
     try {
+      assertActionAllowed(ACTION_AUTHZ.VIEW_OTHER);
       Bracket oBracket = readBracket(name, null, false);
       Bracket oMaster = readMaster();
 
@@ -78,23 +78,15 @@ public class ViewBracketAction extends BaseAction {
       String unescapedMidwestFF = midwestFF.replace("\\\'", "\'");
       String unescapedWestFF = westFF.replace("\\\'", "\'");
 
-      oSession.setAttribute("eastFFLabel",
-          setGameStatus(unescapedEastFF, false));
-      oSession.setAttribute("southFFLabel",
-          setGameStatus(unescapedSouthFF, false));
-      oSession.setAttribute("midwestFFLabel",
-          setGameStatus(unescapedMidwestFF, false));
-      oSession.setAttribute("westFFLabel",
-          setGameStatus(unescapedWestFF, false));
+      oSession.setAttribute("eastFFLabel", setGameStatus(unescapedEastFF, false));
+      oSession.setAttribute("southFFLabel", setGameStatus(unescapedSouthFF, false));
+      oSession.setAttribute("midwestFFLabel", setGameStatus(unescapedMidwestFF, false));
+      oSession.setAttribute("westFFLabel", setGameStatus(unescapedWestFF, false));
 
-      oSession.setAttribute("eastFFLabelStatus",
-          setGameStatus(unescapedEastFF, true));
-      oSession.setAttribute("southFFLabelStatus",
-          setGameStatus(unescapedSouthFF, true));
-      oSession.setAttribute("midwestFFLabelStatus",
-          setGameStatus(unescapedMidwestFF, true));
-      oSession.setAttribute("westFFLabelStatus",
-          setGameStatus(unescapedWestFF, true));
+      oSession.setAttribute("eastFFLabelStatus", setGameStatus(unescapedEastFF, true));
+      oSession.setAttribute("southFFLabelStatus", setGameStatus(unescapedSouthFF, true));
+      oSession.setAttribute("midwestFFLabelStatus", setGameStatus(unescapedMidwestFF, true));
+      oSession.setAttribute("westFFLabelStatus", setGameStatus(unescapedWestFF, true));
 
       oSession.setAttribute("eastFF", eastFF);
       oSession.setAttribute("southFF", southFF);
