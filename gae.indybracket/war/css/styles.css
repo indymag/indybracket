@@ -599,7 +599,7 @@ a.tabLink:visited{
 	position:absolute;
 	left:51px;
 	top:14px; 
-	width:45px;
+	width:80px;
 	height:20px;
 	background-color:#ccccf0;
 	border-top:1px solid #0066cc;
@@ -613,7 +613,7 @@ a.tabLink:visited{
 	position:absolute;
 	left:51px;
 	top:14px; 
-	width:45px;
+	width:80px;
 	height:18px;
 	background-color:#cccccc;
 	border-bottom:1px solid #0066cc;
@@ -626,9 +626,9 @@ a.tabLink:visited{
 	text-align:center;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	position:absolute;
-	left:99px;
+	left:134px;
 	top:14px; 
-	width:80px;
+	width:45px;
 	height:20px;
 	background-color:#ccccf0;
 	border-top:1px solid #0066cc;
@@ -640,9 +640,9 @@ a.tabLink:visited{
 	text-align:center;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	position:absolute;
-	left:99px;
+	left:134px;
 	top:14px; 
-	width:80px;
+	width:45px;
 	height:18px;
 	background-color:#cccccc;
 	border-bottom:1px solid #0066cc;
