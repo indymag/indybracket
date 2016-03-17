@@ -2,4 +2,4 @@
 , , , , , , , , , , , , , ,
 Virginia,Butler, ,Iowa St., , , , , , , , , , ,
 ,Connecticut, , , , , , , , , , , , ,
-, , ,Duke, , , , , , , , , , ,
+, ,Yale,Duke, , , , , , , , , , ,
