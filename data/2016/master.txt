@@ -1,5 +1,5 @@
 , ,
 , , , , , , , , , , , , , ,
-Virginia,Butler, ,Iowa St., , , , , , , , , , ,
+Virginia,Butler,Little Rock,Iowa St., , , , , , , , , , ,
 Kansas,Connecticut, , , , , , , , , , , , ,
 , ,Yale,Duke, , , , , , , , , , ,
