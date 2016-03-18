@@ -2,4 +2,4 @@
 North Carolina,Providence,Indiana,Kentucky, , , , , , , , , , ,
 Virginia,Butler,Little Rock,Iowa St.,Gonzaga,Utah,Syracuse,Middle Tennessee, , , , , , ,
 Kansas,Connecticut, ,Hawaii,Vanderbilt/Wichita St.,Miami Fl.,Iowa,Villanova, , , , , , ,
-, ,Yale,Duke, , ,VCU, , , , , , , ,
+, ,Yale,Duke, , ,VCU,Oklahoma, , , , , , ,
