@@ -1,5 +1,5 @@
 , ,
 North Carolina,Providence,Indiana,Kentucky, , , , , , , , , , ,
-Virginia,Butler,Little Rock,Iowa St., ,Utah, , , , , , , , ,
+Virginia,Butler,Little Rock,Iowa St.,Gonzaga,Utah, , , , , , , , ,
 Kansas,Connecticut, , ,Vanderbilt/Wichita St.,Miami Fl., , , , , , , , ,
 , ,Yale,Duke, , , , , , , , , , ,
