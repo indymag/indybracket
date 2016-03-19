@@ -2,4 +2,4 @@
 North Carolina,Providence,Indiana,Kentucky,Notre Dame,Stephen F. Austin,Wisconsin,Xavier, , , , , , ,
 Virginia,Butler,Little Rock,Iowa St.,Gonzaga,Utah,Syracuse,Middle Tennessee, , , , , , ,
 Kansas,Connecticut,Maryland,Hawaii,Vanderbilt/Wichita St.,Miami Fl.,Iowa,Villanova, , ,Miami Fl., , , ,
-Oregon,St. Joseph\'s,Yale,Duke,Northern Iowa,Texas A&M,VCU,Oklahoma, , , , , , ,
+Oregon,St. Joseph\'s,Yale,Duke,Northern Iowa,Texas A&M,VCU,Oklahoma, ,Duke, , , , ,
