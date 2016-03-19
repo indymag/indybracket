@@ -106,7 +106,7 @@ a.columnlink:visited{
 	position:absolute;
 	top:96px;
 	left:50px;
-	width:600px;
+	width:700px;
 	border-top:1px solid #000000;
 	border-bottom:1px solid #000000;
 	border-right:1px solid #000000;
@@ -117,36 +117,18 @@ a.columnlink:visited{
 	background-color:#666633;
 	padding:10px;	
 }
-.winLabel{
-	position:absolute;
-	top:110px;
-	left:465px;
-	font-size:13px;
-	font-weight:bold;
-	color: #ffffff;		
-}
 .scoreLabel{
      position:absolute;
      top:110px;
-     left:260px;
+     left:280px;
      font-size:13px;
      font-weight:bold;
      color: #ffffff;
-}
-.beatenLabel
-{
-	position:absolute;
-	top:110px;
-	left:585px;
-	font-size:13px;
-	font-weight:bold;
-	color: #ffffff;
-}
-									   
+}									   
 .maxScoreLabel{
 	position:absolute;
 	top:110px;
-	left:315px;
+	left:335px;
 	font-size:13px;
 	font-weight:bold;
 	color: #ffffff;		
@@ -154,16 +136,33 @@ a.columnlink:visited{
 .ffAliveLabel{
 	position:absolute;
 	top:110px;
-	left:350px;
+	left:380px;
 	font-size:13px;
 	font-weight:bold;
 	color: #ffffff;		
+}
+.winLabel{
+	position:absolute;
+	top:110px;
+	left:445px;
+	font-size:13px;
+	font-weight:bold;
+	color: #ffffff;		
+}
+.beatenLabel
+{
+	position:absolute;
+	top:110px;
+	left:560px;
+	font-size:13px;
+	font-weight:bold;
+	color: #ffffff;
 }
 .listbox{	
 	position:absolute;
 	top:130px;
 	left:50px;
-	width:600px;
+	width:700px;
 	border-top:1px solid #000000;
 	border-bottom:1px solid #000000;
 	border-right:1px solid #000000;
@@ -173,6 +172,28 @@ a.columnlink:visited{
 	font-weight:bold;
 	color: #ffffff;	
 	padding:10px;	
+}
+.rankCell{
+	left:10px;	
+	width:20px;
+}
+.nameCell{
+	width:200px;	
+}
+.scoreCell{
+	width:55px;	
+}
+.maxCell{
+	width:45px;	
+}
+.ffAliveCell{
+	width:65px;	
+}
+.winnerCell{
+	width:115px;	
+}
+.beatenByCell{
+	width:200px;	
 }
 .scenario{
 	font-size:13px;

@@ -116,8 +116,19 @@ public abstract class BaseAction extends Action {
 
   } // addError()
 
+  @SuppressWarnings("unused")
   public Bracket readMaster() {
-    Bracket b = ofy().load().type(Bracket.class).id(Bracket.PERFECT_ID).get();
+    Bracket b = null;
+    if (false) {
+      b = Bracket.newTransientInstance();
+      b.getBaseMatches()[0].setStatus(2);
+      b.getBaseMatches()[1].setStatus(1);
+      b.getBaseMatches()[2].setStatus(1);
+      b.getBaseMatches()[3].setStatus(1);
+      b.getBaseMatches()[4].setStatus(2);
+    } else {
+      b = ofy().load().type(Bracket.class).id(Bracket.PERFECT_ID).get();
+    }
     b.init();
     return b;
   }

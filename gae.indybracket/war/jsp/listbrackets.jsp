@@ -40,26 +40,26 @@
 		DisplayBracketBean oBean = (DisplayBracketBean)oScores.get(i);%>
 	 <% if((counter % 2) == 0){ %>
 		<tr class="white">
-		  <td width="5%"><%= oBean.getRank() %></td>
-		  <td width="30%"><a href="viewbracket.do?name=<%= oBean.getName() %>"><%= oBean.getName() %></a>&#160;<% if(oBean.getTotalComments() > 0){ %><font style="color:red;font-size:11px">(<%= oBean.getTotalComments() %>)</font><% } %></td>
-		  <td width="7%"><%= oBean.getScore() %></td>
-		  <td width="8%"><%= oBean.getMaxScore() %></td>
-		  <td width="5%"><%= oBean.getNumFinalFourTeams() %></td>
-		  <td width="25%" align="right">
+		  <td class="rankCell"><%= oBean.getRank() %></td>
+		  <td class="nameCell"><a href="viewbracket.do?name=<%= oBean.getName() %>"><%= oBean.getName() %></a>&#160;<% if(oBean.getTotalComments() > 0){ %><font style="color:red;font-size:11px">(<%= oBean.getTotalComments() %>)</font><% } %></td>
+		  <td class="scoreCell"><%= oBean.getScore() %></td>
+		  <td class="maxCell"><%= oBean.getMaxScore() %></td>
+		  <td class="ffAliveCell"><%= oBean.getNumFinalFourTeams() %></td>
+		  <td class="winnerCell">
 			<% if(!(oBean.isChampionAlive())){ %><span style="text-decoration:line-through;color:red"><%= oBean.getWinner() %></span><% }else{%><%= oBean.getWinner() %><%}%>			
 	        </td>
-		  <td width="20%" align="right"><%= oBean.getWhoIsBetter() %></td></tr> 
+		  <td class="beatenByCell"><%= oBean.getWhoIsBetter() %></td></tr> 
 	 <% } else{ %>
 		<tr class="offwhite">
-	  	  <td width="5%"><%= oBean.getRank() %></td>
-		  <td width="30%"><a href="viewbracket.do?name=<%= oBean.getName() %>"><%= oBean.getName() %></a>&#160;<% if(oBean.getTotalComments() > 0){ %><font style="color:red;font-size:11px">(<%= oBean.getTotalComments() %>)</font><% } %></td>
-		  <td width="7%"><%= oBean.getScore() %></td>
-		  <td width="8%"><%= oBean.getMaxScore() %></td>
-		  <td width="5%"><%= oBean.getNumFinalFourTeams() %></td>
-		  <td width="25%" align="right">			
-				<% if(!(oBean.isChampionAlive())){ %><span style="text-decoration:line-through;color:red"><%= oBean.getWinner() %></span><% }else{%><%= oBean.getWinner() %><%}%>
-		 </td>
-		  <td width="20%" align="right"><%= oBean.getWhoIsBetter() %></td></tr> 
+		  <td class="rankCell"><%= oBean.getRank() %></td>
+		  <td class="nameCell"><a href="viewbracket.do?name=<%= oBean.getName() %>"><%= oBean.getName() %></a>&#160;<% if(oBean.getTotalComments() > 0){ %><font style="color:red;font-size:11px">(<%= oBean.getTotalComments() %>)</font><% } %></td>
+		  <td class="scoreCell"><%= oBean.getScore() %></td>
+		  <td class="maxCell"><%= oBean.getMaxScore() %></td>
+		  <td class="ffAliveCell"><%= oBean.getNumFinalFourTeams() %></td>
+		  <td class="winnerCell">
+			<% if(!(oBean.isChampionAlive())){ %><span style="text-decoration:line-through;color:red"><%= oBean.getWinner() %></span><% }else{%><%= oBean.getWinner() %><%}%>			
+	        </td>
+		  <td class="beatenByCell"><%= oBean.getWhoIsBetter() %></td></tr> 	 
       <%	}
 		 counter++;   
  		} %>
