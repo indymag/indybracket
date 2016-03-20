@@ -195,6 +195,13 @@ a.columnlink:visited{
 .beatenByCell{
 	width:200px;	
 }
+.celebrityDisclaimer{
+	color: gray;
+}
+.celebrityLabel{
+	display: inline;
+	color: gray;
+}
 .scenario{
 	font-size:13px;
 	font-weight:normal;

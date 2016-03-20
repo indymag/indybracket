@@ -119,7 +119,7 @@ public abstract class BaseAction extends Action {
   @SuppressWarnings("unused")
   public Bracket readMaster() {
     Bracket b = null;
-    if (true) {
+    if (false) {
       b = Bracket.newTransientInstance();
       b.getBaseMatches()[0].setStatus(2);
       b.getBaseMatches()[1].setStatus(1);
