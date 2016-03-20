@@ -37,7 +37,12 @@ public class PoolGrader {
     for (int i = 0; i < oResults.length; i++) {
       BracketResult oResult = oResults[i];
 
-      // skip this bracket, don't need the info
+      // Don't calculate beaten by for celebrity entries.
+      if (oResult.getBracket().isCelebrity()) {
+        continue;
+      }
+
+      // Skip this bracket because we already have a beaten by entry.
       if (oBeatenBy.get(oResult.getBracket().getName()).length() > 0) {
         continue;
       }
@@ -49,6 +54,8 @@ public class PoolGrader {
         if (oResults[j].getMax() < oResult.getScore()) {
           continue;
         }
+
+        // A celebrity bracket cannot beat a real bracket.
         if (oResults[j].getBracket().isCelebrity()) {
           continue;
         }
