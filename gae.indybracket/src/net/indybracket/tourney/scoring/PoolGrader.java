@@ -14,28 +14,25 @@ public class PoolGrader {
     moMaster = oMaster;
   }
 
-  public PoolStandings gradePool(Bracket[] oEntries, BeatenTable oBeatenBy,
-      String sSortBy, String sAsc) {
+  public PoolStandings gradePool(Bracket[] oEntries, BeatenTable oBeatenBy, String sSortBy,
+      String sAsc) {
     Grader oGrader = new Grader(moScorer, moMaster);
     BracketResult[] oResults = new BracketResult[oEntries.length];
     for (int i = 0; i < oEntries.length; i++) {
       try {
         oResults[i] = oGrader.grade(oEntries[i]);
       } catch (Exception oEx) {
-        throw new RuntimeException("Failure to grade " + oEntries[i].getName(),
-            oEx);
+        throw new RuntimeException("Failure to grade " + oEntries[i].getName(), oEx);
       }
     }
 
     fillInBetterBrackets(oResults, oBeatenBy);
-    Arrays.sort(oResults, BracketResult.comparator(sSortBy,
-        Boolean.parseBoolean(sAsc), oBeatenBy));
+    Arrays.sort(oResults, BracketResult.comparator(sSortBy, Boolean.parseBoolean(sAsc), oBeatenBy));
 
     return new PoolStandings(oResults);
   }
 
-  private void fillInBetterBrackets(BracketResult[] oResults,
-      BeatenTable oBeatenBy) {
+  private void fillInBetterBrackets(BracketResult[] oResults, BeatenTable oBeatenBy) {
     Arrays.sort(oResults, BracketResult.comparator("score", false, oBeatenBy));
     for (int i = 0; i < oResults.length; i++) {
       BracketResult oResult = oResults[i];
@@ -52,15 +49,13 @@ public class PoolGrader {
         if (oResults[j].getMax() < oResult.getScore()) {
           continue;
         }
-        if (oResults[j].getBracket().getName().startsWith("Celebrity", 0)) {
+        if (oResults[j].getBracket().isCelebrity()) {
           continue;
         }
         // if our best can't beat this guy, we are cooked
-        if (oGrader.grade(oResults[j].getBracket()).getScore() > oResult
-            .getMax()) {
+        if (oGrader.grade(oResults[j].getBracket()).getScore() > oResult.getMax()) {
           // oBracket.setBetterBracket(oResults[j].getBracket());
-          oBeatenBy.addBeaten(oResult.getBracket().getName(), oResults[j]
-              .getBracket().getName());
+          oBeatenBy.addBeaten(oResult.getBracket().getName(), oResults[j].getBracket().getName());
           break;
         }
       }

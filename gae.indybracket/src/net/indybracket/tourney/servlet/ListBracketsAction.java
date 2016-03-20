@@ -21,6 +21,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
+
 /**
  * @author Scott Mennealy
  */
@@ -110,21 +111,29 @@ public class ListBracketsAction extends BaseAction {
     Vector oScores = new Vector();
     BracketResult[] oResults = oStandings.moResults;
 
+    int nextRank = 1;
     for (int i = 0; i < oResults.length; i++) {
+      Bracket b = oResults[i].getBracket();
       String sScore = Long.toString(oResults[i].getScore());
       String sMaxScore = Long.toString(oResults[i].getMax());
-      String sWhoIsBetter = oBeatenBy.get(oResults[i].getBracket().getName());
+      String sWhoIsBetter = oBeatenBy.get(b.getName());
 
       DisplayBracketBean oBean = new DisplayBracketBean();
-      oBean.setName(oResults[i].getBracket().getName());
+      oBean.setName(b.getName());
       oBean.setScore(sScore);
       oBean.setMaxScore(sMaxScore);
-      oBean.setRank(i + 1);
       oBean.setChampionAlive(oResults[i].isChampionAlive());
       oBean.setNumFinalFourTeams(oResults[i].getNumFinalFourAlive());
       oBean.setWhoIsBetter(sWhoIsBetter);
       oBean.setTotalComments(0);
-      oBean.setWinner(oResults[i].getBracket().getChampionship().getWinner().getName());
+      oBean.setWinner(b.getChampionship().getWinner().getName());
+
+      if (b.isCelebrity()) {
+        oBean.setRank("");
+      } else {
+        oBean.setRank(Long.toString(nextRank));
+        nextRank++;
+      }
 
       oScores.add(oBean);
     }

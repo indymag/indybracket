@@ -24,7 +24,7 @@ public class DisplayBracketBean implements Serializable {
   private String winner = "";
   private String whoIsBetter = "";
   private int totalComments = 0;
-  private int rank = 0;
+  private String rank = "";
   private int numFinalFourTeams = 0;
   private boolean isChampionAlive = true;
   private boolean isValid = false;
@@ -244,7 +244,7 @@ public class DisplayBracketBean implements Serializable {
    *//**
    *
    */
-  public int getRank() {
+  public String getRank() {
     return rank;
 
   } // getRank()
@@ -256,7 +256,7 @@ public class DisplayBracketBean implements Serializable {
    *//**
    *
    */
-  public void setRank(int rank) {
+  public void setRank(String rank) {
     this.rank = rank;
 
   } // setRank()

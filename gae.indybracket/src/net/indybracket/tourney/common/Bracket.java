@@ -82,8 +82,7 @@ public class Bracket {
     }
 
     moChampionship = oPrevRound[0];
-    importFromWebapp(DEFAULT_REGION, DEFAULT_REGION, DEFAULT_REGION,
-        DEFAULT_REGION, DEFAULT_FF);
+    importFromWebapp(DEFAULT_REGION, DEFAULT_REGION, DEFAULT_REGION, DEFAULT_REGION, DEFAULT_FF);
   }
 
   /**
@@ -98,6 +97,10 @@ public class Bracket {
    */
   public Match getChampionship() {
     return moChampionship;
+  }
+
+  public boolean isCelebrity() {
+    return getName().startsWith("Celebrity");
   }
 
   public String toString() {
@@ -117,8 +120,7 @@ public class Bracket {
     importFromWebapp(msRegion1, msRegion2, msRegion3, msRegion4, msFF);
   }
 
-  public void importFromWebapp(String s1, String s2, String s3, String s4,
-      String sFF) {
+  public void importFromWebapp(String s1, String s2, String s3, String s4, String sFF) {
     Vector oPicks[] = new Vector[7];
     for (int i = 0; i < oPicks.length; i++) {
       oPicks[i] = new Vector();
@@ -171,8 +173,8 @@ public class Bracket {
     }
   }
 
-  public void toWebAppStrings(StringBuffer o1, StringBuffer o2,
-      StringBuffer o3, StringBuffer o4, StringBuffer oFF) {
+  public void toWebAppStrings(StringBuffer o1, StringBuffer o2, StringBuffer o3, StringBuffer o4,
+      StringBuffer oFF) {
     printRegion(o1, 0, 7);
     printRegion(o2, 8, 15);
     printRegion(o3, 16, 23);
@@ -240,8 +242,7 @@ public class Bracket {
       if (oTeam != null) {
         sWinner = oTeam.getName() + "(" + oTeam.getSeed() + ")";
       }
-      String sLine = "Round " + Integer.toString(oMatch.getRound()) + ": "
-          + sWinner;
+      String sLine = "Round " + Integer.toString(oMatch.getRound()) + ": " + sWinner;
 
       oOut.write(sLine.getBytes());
       oOut.write('\n');
