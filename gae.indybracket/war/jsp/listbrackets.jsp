@@ -71,7 +71,7 @@
        <li><div class="celebrityLabel">Obama</div> uses President Obama's bracket. Note: Obama2016 is a real entry that used the same picks.
        <li><div class="celebrityLabel">JahnaviClass</div> is Jahnavi's 2nd grade class bracket.  The students voted for each selection as a group.
        <li><div class="celebrityLabel">538Unweighted</div> uses <a href="http://fivethirtyeight.com/features/how-fivethirtyeight-is-forecasting-the-2016-ncaa-tournament/">FiveThirtyEight's Elo ranking</a> for each prediction.
-       <li><div class="celebrityLabel">538Weighted</div> uses <a href="http://projects.fivethirtyeight.com/2016-march-madness-predictions/">FiveThirtyEight's win probabilities</a> weighted against my scoring system. The team that maximizes the <a href="https://en.wikipedia.org/wiki/Expected_value">expected value</a> for points is chosen for each pick.
+       <li><div class="celebrityLabel">538Weighted</div> uses <a href="http://projects.fivethirtyeight.com/2016-march-madness-predictions/">FiveThirtyEight's win probabilities</a> weighted against my scoring system. The team that maximizes the <a href="https://en.wikipedia.org/wiki/Expected_value">expected value</a> for points is chosen for each game.
      </ul>
    </div>
 </div>
