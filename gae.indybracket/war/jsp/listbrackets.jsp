@@ -66,7 +66,7 @@
   </table>
 <br/>
 </div>
-
+<div class="celebrityDisclaimer">Celebrity brackets are included for information purposes only.</div>
 
 </body>
 </html>

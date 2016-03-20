@@ -1,5 +1,5 @@
 , ,
 North Carolina,Providence,Indiana,Kentucky,Notre Dame,Stephen F. Austin,Wisconsin,Xavier,North Carolina,Indiana, , , , ,
 Virginia,Butler,Little Rock,Iowa St.,Gonzaga,Utah,Syracuse,Middle Tennessee,Virginia,Iowa St.,Gonzaga, , , ,
-Kansas,Connecticut,Maryland,Hawaii,Vanderbilt/Wichita St.,Miami Fl.,Iowa,Villanova,Kansas, ,Miami Fl., , , ,
+Kansas,Connecticut,Maryland,Hawaii,Vanderbilt/Wichita St.,Miami Fl.,Iowa,Villanova,Kansas, ,Miami Fl.,Villanova, , ,
 Oregon,St. Joseph\'s,Yale,Duke,Northern Iowa,Texas A&M,VCU,Oklahoma, ,Duke, , , , ,
