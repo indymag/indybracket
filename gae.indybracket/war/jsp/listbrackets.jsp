@@ -45,8 +45,8 @@
 		}
 		
     %>
-	 <% if (oBean.isCelebrity()) { %>
-        <tr class="celebrityrow">
+	 <% if ((oBean.getWhoIsBetter().equals("")) && !oBean.isCelebrity()) { %>
+        <tr class="aliverow">
 	 <% } else if((counter % 2) == 0){ %>
 		<tr class="white">
 	 <% } else{ %>
