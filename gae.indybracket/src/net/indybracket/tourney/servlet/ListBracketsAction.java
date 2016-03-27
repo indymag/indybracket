@@ -127,6 +127,7 @@ public class ListBracketsAction extends BaseAction {
       oBean.setWhoIsBetter(sWhoIsBetter);
       oBean.setTotalComments(0);
       oBean.setWinner(b.getChampionship().getWinner().getName());
+      oBean.setIsCelebrity(b.isCelebrity());
 
       if (b.isCelebrity()) {
         oBean.setRank("");

@@ -16,6 +16,8 @@
     }
     boolean bAsc = java.lang.Boolean.parseBoolean(sAsc);
 	bAsc = !bAsc;
+	
+    boolean bShowCeleb = true;
 %>
 <body bgcolor="#f0f0f0">
 <!--<div class="scenarios"></div>-->
@@ -37,20 +39,20 @@
   <table border="0" width="100%" cellpadding="0" cellspacing="0">
 	<% int counter = 0; 
 	  for (int i = 0; i<oScores.size(); i++) { 
-		DisplayBracketBean oBean = (DisplayBracketBean)oScores.get(i);%>
-	 <% if((counter % 2) == 0){ %>
+		DisplayBracketBean oBean = (DisplayBracketBean)oScores.get(i);
+		if (oBean.isCelebrity() && !bShowCeleb) {
+		  continue;
+		}
+		
+    %>
+	 <% if (oBean.isCelebrity()) { %>
+        <tr class="celebrityrow">
+	 <% } else if((counter % 2) == 0){ %>
 		<tr class="white">
-		  <td class="rankCell"><%= oBean.getRank() %></td>
-		  <td class="nameCell"><a href="viewbracket.do?name=<%= oBean.getName() %>"><%= oBean.getName() %></a>&#160;<% if(oBean.getTotalComments() > 0){ %><font style="color:red;font-size:11px">(<%= oBean.getTotalComments() %>)</font><% } %></td>
-		  <td class="scoreCell"><%= oBean.getScore() %></td>
-		  <td class="maxCell"><%= oBean.getMaxScore() %></td>
-		  <td class="ffAliveCell"><%= oBean.getNumFinalFourTeams() %></td>
-		  <td class="winnerCell">
-			<% if(!(oBean.isChampionAlive())){ %><span style="text-decoration:line-through;color:red"><%= oBean.getWinner() %></span><% }else{%><%= oBean.getWinner() %><%}%>			
-	        </td>
-		  <td class="beatenByCell"><%= oBean.getWhoIsBetter() %></td></tr> 
 	 <% } else{ %>
 		<tr class="offwhite">
+     <%	}
+     %>
 		  <td class="rankCell"><%= oBean.getRank() %></td>
 		  <td class="nameCell"><a href="viewbracket.do?name=<%= oBean.getName() %>"><%= oBean.getName() %></a>&#160;<% if(oBean.getTotalComments() > 0){ %><font style="color:red;font-size:11px">(<%= oBean.getTotalComments() %>)</font><% } %></td>
 		  <td class="scoreCell"><%= oBean.getScore() %></td>
@@ -59,10 +61,13 @@
 		  <td class="winnerCell">
 			<% if(!(oBean.isChampionAlive())){ %><span style="text-decoration:line-through;color:red"><%= oBean.getWinner() %></span><% }else{%><%= oBean.getWinner() %><%}%>			
 	        </td>
-		  <td class="beatenByCell"><%= oBean.getWhoIsBetter() %></td></tr> 	 
-      <%	}
-		 counter++;   
- 		} %>
+		  <td class="beatenByCell"><%= oBean.getWhoIsBetter() %></td>
+		</tr>
+     <% 	 
+		counter++;
+     }
+     %>		  
+		  
   </table>
   <br/>
    <div class="celebrityDisclaimer">

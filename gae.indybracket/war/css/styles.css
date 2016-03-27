@@ -13,6 +13,12 @@ body{
 	font-weight:bold;
 	color: #000000;	
 }
+.celebrityrow{
+	background-color:#ffcc66;	
+	font-size:15px;
+	font-weight:bold;
+	color: #000000;	
+}
 #bracketname{
 	position:absolute;
 	top:10px;

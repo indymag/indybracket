@@ -28,6 +28,7 @@ public class DisplayBracketBean implements Serializable {
   private int numFinalFourTeams = 0;
   private boolean isChampionAlive = true;
   private boolean isValid = false;
+  private boolean isCelebrity = false;
 
   /*
    * ***************************************************************************
@@ -268,5 +269,29 @@ public class DisplayBracketBean implements Serializable {
   public void setTotalComments(int totalComments) {
     this.totalComments = totalComments;
   }
+
+  /*
+   * ***************************************************************************
+   * isValid()
+   * ***************************************************************************
+   *//**
+   *
+   */
+  public boolean isCelebrity() {
+    return isCelebrity;
+
+  } // isValid()
+
+  /*
+   * ***************************************************************************
+   * setIsValid()
+   * ***************************************************************************
+   *//**
+   *
+   */
+  public void setIsCelebrity(boolean val) {
+    this.isCelebrity = val;
+
+  } // setIsValid()
 
 } // Class: DisplayBracketBean
