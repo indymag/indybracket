@@ -38,7 +38,7 @@ weights are listed below.
 So if you pick Kansas (#1 seed) to win their first 3 games and 
 they only win their first 2, you would get 
 (1+4)*2 + (1+4)*4 = 30 points for their wins.  If you pick 
-Texas (#6 seed) to win 2 games and they do, you would get 
+Maryland (#6 seed) to win 2 games and they do, you would get 
 (6+4)*2 + (6+4)*4 = 60 points for their wins.
 
 <br><br>

@@ -2,7 +2,7 @@
     <!-- This is a context init parameter -->
     <context-param>
       <param-name>actionsAllowed</param-name>
-      <param-value>viewOther</param-value>
+      <param-value>viewOther,modifySelf</param-value>
     </context-param>
     
 	<servlet>

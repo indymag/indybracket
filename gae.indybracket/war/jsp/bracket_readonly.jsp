@@ -51,9 +51,9 @@
 <body onLoad="initPage()" align="left">
 
 <div id="_eastTab" class="eastTab"><a href="#" onClick="viewBracket('east',1)" class="tabLink">EAST</a></div>
-<div id="_southTab" class="southTab"><a href="#" onClick="viewBracket('south',2)" class="tabLink">MIDWEST</a></div>
-<div id="_midwestTab" class="midwestTab"><a href="#" onClick="viewBracket('midwest',3)" class="tabLink">SOUTH</a></div>
-<div id="_westTab" class="westTab"><a href="#" onClick="viewBracket('west',4)" class="tabLink">WEST</a></div>
+<div id="_southTab" class="southTab"><a href="#" onClick="viewBracket('south',2)" class="tabLink">WEST</a></div>
+<div id="_midwestTab" class="midwestTab"><a href="#" onClick="viewBracket('midwest',3)" class="tabLink">MIDWEST</a></div>
+<div id="_westTab" class="westTab"><a href="#" onClick="viewBracket('west',4)" class="tabLink">SOUTH</a></div>
 <div id="_ffTab" class="finalfourTab"><a href="#" onClick="viewBracket('ff',5)" class="tabLink">FINAL FOUR</a></div>
 
 <div class="bracketBox"></div>
