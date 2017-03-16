@@ -45,9 +45,7 @@
 		}
 		
     %>
-	 <% if ((oBean.getWhoIsBetter().equals("")) && !oBean.isCelebrity()) { %>
-        <tr class="aliverow">
-	 <% } else if((counter % 2) == 0){ %>
+	 <% if((counter % 2) == 0){ %>
 		<tr class="white">
 	 <% } else{ %>
 		<tr class="offwhite">
@@ -69,6 +67,7 @@
      %>		  
 		  
   </table>
+  <!-- Remove celebrity brackets
   <br/>
    <div class="celebrityDisclaimer">
      Celebrity brackets are not included for rank or "beaten by" analysis. They are for reference only.
@@ -79,6 +78,7 @@
        <li><div class="celebrityLabel">538Weighted</div> uses <a href="http://projects.fivethirtyeight.com/2016-march-madness-predictions/">FiveThirtyEight's win probabilities</a> weighted against my scoring system. The team that maximizes the <a href="https://en.wikipedia.org/wiki/Expected_value">expected value</a> for points is chosen for each game.
      </ul>
    </div>
+  -->
 </div>
 
 </body>
