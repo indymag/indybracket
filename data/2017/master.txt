@@ -1,5 +1,5 @@
 , ,
 Villanova,Wisconsin,Virginia,Florida, ,Baylor, , , , , , , , ,
 Gonzaga,Northwestern,Notre Dame,West Virginia,Xavier,Florida St.,St. Mary\'s,Arizona, , , , , , ,
-, ,Iowa St.,Purdue, , ,Michigan, , , , , , , ,
+, ,Iowa St.,Purdue, ,Oregon,Michigan, , , , , , , ,
 ,Arkansas,Middle Tenn. St.,Butler, , , , , , , , , , ,
