@@ -1,5 +1,5 @@
 , ,
 , ,Virginia,Florida, , , , , , , , , , ,
-Gonzaga,Northwestern,Notre Dame,West Virginia, , , , , , , , , , ,
+Gonzaga,Northwestern,Notre Dame,West Virginia,Xavier, , , , , , , , , ,
 , , , , , , , , , , , , , ,
 , ,Middle Tenn. St.,Butler, , , , , , , , , , ,
