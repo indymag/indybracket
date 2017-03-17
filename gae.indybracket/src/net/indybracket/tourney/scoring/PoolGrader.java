@@ -26,7 +26,7 @@ public class PoolGrader {
       }
     }
 
-    fillInBetterBrackets(oResults, oBeatenBy);
+    // fillInBetterBrackets(oResults, oBeatenBy);
     Arrays.sort(oResults, BracketResult.comparator(sSortBy, Boolean.parseBoolean(sAsc), oBeatenBy));
 
     return new PoolStandings(oResults);
