@@ -1,5 +1,5 @@
 , ,
-Villanova,Wisconsin,Virginia,Florida,Providence/USC,Baylor, ,Duke, , , , , , ,
+Villanova,Wisconsin,Virginia,Florida,Providence/USC,Baylor,South Carolina,Duke, , , , , , ,
 Gonzaga,Northwestern,Notre Dame,West Virginia,Xavier,Florida St.,St. Mary\'s,Arizona, , , , , , ,
-Kansas, ,Iowa St.,Purdue,Rhode Island,Oregon,Michigan,Louisville, , , , , , ,
-North Carolina,Arkansas,Middle Tenn. St.,Butler,Cincinnati, ,Wichita St., , , , , , , ,
+Kansas,Michigan St.,Iowa St.,Purdue,Rhode Island,Oregon,Michigan,Louisville, , , , , , ,
+North Carolina,Arkansas,Middle Tenn. St.,Butler,Cincinnati,UCLA,Wichita St.,Kentucky, , , , , , ,
