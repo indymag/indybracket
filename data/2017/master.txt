@@ -2,4 +2,4 @@
 Villanova,Wisconsin,Virginia,Florida,Providence/USC,Baylor, ,Duke, , , , , , ,
 Gonzaga,Northwestern,Notre Dame,West Virginia,Xavier,Florida St.,St. Mary\'s,Arizona, , , , , , ,
 Kansas, ,Iowa St.,Purdue,Rhode Island,Oregon,Michigan,Louisville, , , , , , ,
-North Carolina,Arkansas,Middle Tenn. St.,Butler, , , , , , , , , , ,
+North Carolina,Arkansas,Middle Tenn. St.,Butler, , ,Wichita St., , , , , , , ,
