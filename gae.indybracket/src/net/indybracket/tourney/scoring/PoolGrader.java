@@ -15,7 +15,7 @@ public class PoolGrader {
   }
 
   public PoolStandings gradePool(Bracket[] oEntries, BeatenTable oBeatenBy, String sSortBy,
-      String sAsc) {
+      String sAsc, boolean bCheckNewBeatenBy) {
     Grader oGrader = new Grader(moScorer, moMaster);
     BracketResult[] oResults = new BracketResult[oEntries.length];
     for (int i = 0; i < oEntries.length; i++) {
@@ -26,7 +26,9 @@ public class PoolGrader {
       }
     }
 
-    // fillInBetterBrackets(oResults, oBeatenBy);
+    if (bCheckNewBeatenBy) {
+      fillInBetterBrackets(oResults, oBeatenBy);
+    }
     Arrays.sort(oResults, BracketResult.comparator(sSortBy, Boolean.parseBoolean(sAsc), oBeatenBy));
 
     return new PoolStandings(oResults);

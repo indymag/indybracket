@@ -8,19 +8,19 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.indybracket.tourney.common.BeatenTable;
-import net.indybracket.tourney.common.Bracket;
-import net.indybracket.tourney.scoring.BlazerScorer2;
-import net.indybracket.tourney.scoring.BracketResult;
-import net.indybracket.tourney.scoring.PoolGrader;
-import net.indybracket.tourney.scoring.PoolStandings;
-
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
+
+import net.indybracket.tourney.common.BeatenTable;
+import net.indybracket.tourney.common.Bracket;
+import net.indybracket.tourney.scoring.BlazerScorer2;
+import net.indybracket.tourney.scoring.BracketResult;
+import net.indybracket.tourney.scoring.PoolGrader;
+import net.indybracket.tourney.scoring.PoolStandings;
 
 /**
  * @author Scott Mennealy
@@ -31,8 +31,8 @@ import com.google.common.collect.FluentIterable;
  * Class: ListBracketsAction
  ********************************************************************************
  *//**
-*
-*/
+   *
+   */
 public class ListBracketsAction extends BaseAction {
   /*
    * ***************************************************************************
@@ -47,6 +47,7 @@ public class ListBracketsAction extends BaseAction {
     String oReturnCode = FORWARD_RETURN_SUCCESS;
     String sSortBy = oRequest.getParameter("sortBy");
     String sAsc = oRequest.getParameter("asc");
+    String sEvalAll = oRequest.getParameter("evalAll");
     try {
       assertActionAllowed(ACTION_AUTHZ.VIEW_OTHER);
       Bracket oMaster = readMaster();
@@ -69,10 +70,11 @@ public class ListBracketsAction extends BaseAction {
       // Set default sort
       sSortBy = ((sSortBy == null) || (sSortBy.equals(""))) ? "score" : sSortBy;
       sAsc = ((sAsc == null) || (sAsc.equals(""))) ? "false" : sAsc;
+      boolean bCheckNewBeatenBy = ((sEvalAll == null) || (sEvalAll.equals(""))) ? false : true;
 
       BeatenTable oBeatenBy = new BeatenTable();
-      PoolStandings oStandings = oGrader.gradePool(
-          oBrackets.toArray(new Bracket[oBrackets.size()]), oBeatenBy, sSortBy, sAsc);
+      PoolStandings oStandings = oGrader.gradePool(oBrackets.toArray(new Bracket[oBrackets.size()]),
+          oBeatenBy, sSortBy, sAsc, bCheckNewBeatenBy);
       oBeatenBy.persist();
 
       Vector oScores = convertStandings(oStandings, oBeatenBy);
@@ -88,8 +90,8 @@ public class ListBracketsAction extends BaseAction {
   } // doExecute()
 
   private List<Bracket> getEntries() {
-    FluentIterable<Bracket> entries = FluentIterable.from(ofy().load().type(Bracket.class)
-        .filter("msId !=", Bracket.PERFECT_ID));
+    FluentIterable<Bracket> entries = FluentIterable
+        .from(ofy().load().type(Bracket.class).filter("msId !=", Bracket.PERFECT_ID));
     entries = entries.filter(new Predicate<Bracket>() {
       @Override
       public boolean apply(Bracket b) {
